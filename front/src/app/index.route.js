@@ -10,13 +10,13 @@
       .when('/home', {
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'vm'
       })
 
         .when('/home/iam/a/very/long/url', {
             templateUrl: 'app/main/second.html',
             controller: 'MainController',
-            controllerAs: 'second'
+            controllerAs: 'vm'
         })
       .otherwise({
         redirectTo: '/home'

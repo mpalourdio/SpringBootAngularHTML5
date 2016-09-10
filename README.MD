@@ -1,4 +1,4 @@
-SpringBoot 1.4 and AngularJS 1.x with HTML 5 router
+Spring Boot 1.4 and AngularJS 1.x with HTML 5 router
 ===============================================
 
 This project provides an example of an angular single page application, served by ``Tomcat``,

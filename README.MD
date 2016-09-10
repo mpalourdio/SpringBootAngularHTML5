@@ -16,7 +16,7 @@ put them on a front-end reverse proxy that could serve the application assets.
 
 To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:8080/my-context](http://localhost:8080/my-context).
 
-If you want to play with the front part, go to the [front folder](front). Once you have built the project, put the files on src/main/resources.
+If you want to play with the front part, go to the [front folder](front). Once you have built the project, put the files in [src/main/resources/static](src/main/resources/static).
 
 The front-end part has been scaffolded with [https://github.com/Swiip/generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular).
 

@@ -12,7 +12,7 @@ This ``html5 $locationProvider`` mode makes pretty URL, but has a default : Refr
 http error if no RewriteRule is provided by the http server that serve the application or by an .htaccess.
 
 Static files in ``src/main/resources`` have been put in a [static](/src/main/resources/static/static) subfolder, just to show the possibility to
-put them on a reverse front-end reverse proxy that could serve the application assets.
+put them on a front-end reverse proxy that could serve the application assets.
 
 To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:8080/my-context](http://localhost:8080/my-context).
 

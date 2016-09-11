@@ -8,7 +8,7 @@ The [ForwarderController] (src/main/java/com/mpalourdio/html5/mvc/ForwarderContr
 
 It's useful if you want to serve an angularJS application with the ``html5 $locationProvider``, and avoid the dashed URL.
 
-This ``html5 $locationProvider`` mode makes pretty URL, but has a default : Refreshing pages gives a 404
+This ``html5 $locationProvider`` mode makes pretty URL, but has a default : Refreshing pages (or accessing them directly) gives a 404
 http error if no RewriteRule is provided by the http server that serve the application or by an .htaccess.
 
 Static files in ``src/main/resources`` have been put in a [static](/src/main/resources/static/static) subfolder, just to show the possibility to

@@ -16,6 +16,6 @@
             }, function (reason) {
                 $log.error(reason);
             });
-        }
+        };
     }
 })();

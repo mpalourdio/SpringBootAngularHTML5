@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mpalourdio.projects</groupId>
-    <artifactId>springbootangularhmtl5</artifactId>
+    <artifactId>springbootangularhtml5</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

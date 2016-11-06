@@ -10,7 +10,6 @@
         var vm = this;
 
         vm.callService = function () {
-            console.log('yep');
             $http.get('api/service1').then(function (response) {
                 vm.result = response;
             }, function (reason) {

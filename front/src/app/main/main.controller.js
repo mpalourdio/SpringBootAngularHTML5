@@ -6,14 +6,15 @@
         .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController($http, $log) {
+    function MainController(HttpService, $q) {
         var vm = this;
 
-        vm.callService = function () {
-            $http.get('api/service1').then(function (response) {
-                vm.result = response;
+        vm.callServices = function () {
+            $q.all([HttpService.backendService(), HttpService.externalService()]).then(function (result) {
+                vm.result = result[0];
+                console.log(result[1]);
             }, function (reason) {
-                $log.error(reason);
+                console.log(reason);
             });
         };
     }

@@ -1,7 +1,9 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('springbootangularhtml5', ['ngRoute']);
-
+    angular
+        .module('springbootangularhtml5', [
+            'ngRoute',
+            'httpInterceptorModule'
+        ]);
 })();

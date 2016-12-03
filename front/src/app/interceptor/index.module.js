@@ -1,6 +1,6 @@
 /**
  * This interceptor catch http 200 responses body that
- * contain a specific string portion. If the portion is found,
+ * contain a specific substring. If the substring is found,
  * then the redirection happens.
  */
 

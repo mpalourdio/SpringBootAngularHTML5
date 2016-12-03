@@ -13,7 +13,7 @@
         .config(appConfiguration);
 
     function InterceptorConfigFactory() {
-        var errorStringSection = '<meta';
+        var subStringToFind = '<meta';
 
         return {
             redirectUrl: 'http://redirect.me',
@@ -22,8 +22,8 @@
 
                 return this.redirectUrl;
             },
-            getStringToCheck: function () {
-                return errorStringSection;
+            getSubStringToFind: function () {
+                return subStringToFind;
             }
         };
     }
@@ -48,7 +48,7 @@
                 console.log('response ->', response);
 
                 if (isString(response.data) && !!response.data &&
-                    -1 !== response.data.indexOf(InterceptorConfigFactory.getStringToCheck())) {
+                    -1 !== response.data.indexOf(InterceptorConfigFactory.getSubStringToFind())) {
                     $window.location.href = InterceptorConfigFactory.redirectUrl;
                 }
 

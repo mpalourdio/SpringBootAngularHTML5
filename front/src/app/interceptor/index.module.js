@@ -1,6 +1,6 @@
 /**
  * This interceptor catch http 200 responses body that
- * contain a specific substring. If the substring is found,
+ * contain a specific header. If the header is found,
  * then the redirection happens.
  */
 
@@ -13,7 +13,7 @@
         .config(appConfiguration);
 
     function InterceptorConfigFactory() {
-        var subStringToFind = '<meta';
+        var specificHeader = 'custom-header';
 
         return {
             redirectUrl: 'http://redirect.me',
@@ -22,8 +22,8 @@
 
                 return this.redirectUrl;
             },
-            getSubStringToFind: function () {
-                return subStringToFind;
+            getSpecificHeader: function () {
+                return specificHeader;
             }
         };
     }
@@ -32,23 +32,13 @@
         $httpProvider.interceptors.push(interceptorHandler);
     }
 
-    // we dont want ot call indexOf on something that's not a string
-    function isString(obj) {
-        return (Object.prototype.toString.call(obj) === '[object String]');
-    }
-
     function interceptorHandler($q, $window, InterceptorConfigFactory) {
         return {
             request: function (config) {
-                console.log('config ->', config);
-
                 return config;
             },
             response: function (response) {
-                console.log('response ->', response);
-
-                if (isString(response.data) && !!response.data &&
-                    -1 !== response.data.indexOf(InterceptorConfigFactory.getSubStringToFind())) {
+                if (!!response.headers(InterceptorConfigFactory.getSpecificHeader())) {
                     $window.location.href = InterceptorConfigFactory.redirectUrl;
                 }
 

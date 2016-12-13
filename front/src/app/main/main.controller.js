@@ -18,5 +18,9 @@
                 console.log(reason);
             });
         };
+
+        vm.customHeader = function () {
+            HttpService.customHeader();
+        };
     }
 })();

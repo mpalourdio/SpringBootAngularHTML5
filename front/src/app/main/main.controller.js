@@ -6,8 +6,9 @@
         .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController(HttpService, $q) {
+    function MainController(HttpService, $q, $location) {
         var vm = this;
+        vm.isHtml5Enabled = $location.$$html5;
 
         vm.callServices = function () {
             $q.all([HttpService.backendService(), HttpService.externalService()]).then(function (result) {

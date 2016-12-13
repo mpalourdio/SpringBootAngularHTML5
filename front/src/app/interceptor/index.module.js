@@ -1,5 +1,5 @@
 /**
- * This interceptor catch http 200 responses body that
+ * This interceptor catches http 200 responses body that
  * contain a specific header. If the header is found,
  * then the redirection happens.
  */

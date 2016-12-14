@@ -6,7 +6,9 @@
             $http,
             interceptorConfigFactory,
             $window,
-            url;
+            urlThatReturnsSpecificHeader,
+            urlThatDoesNotReturnSpecificHeader,
+            response;
 
         beforeEach(module('httpInterceptorModule'));
 
@@ -25,8 +27,12 @@
             interceptorConfigFactory = _InterceptorConfigFactory_;
             $window = _$window_;
 
-            url = '/whatever';
-            $httpBackend.whenGET(url).respond(null, {'custom-header': '1'});
+            urlThatReturnsSpecificHeader = '/specificheader';
+            $httpBackend.whenGET(urlThatReturnsSpecificHeader).respond(null, {'custom-header': '1'});
+
+            urlThatDoesNotReturnSpecificHeader = '/idonthavespecificheader';
+            response = {obiwan: "kenobi"};
+            $httpBackend.whenGET(urlThatDoesNotReturnSpecificHeader).respond(response);
         }));
 
         afterEach(function () {
@@ -35,15 +41,28 @@
         });
 
         it('should redirect when specific header is found', function () {
-            $http.get(url);
+            $http.get(urlThatReturnsSpecificHeader);
             $httpBackend.flush();
+
             expect($window.location.href).toBe(interceptorConfigFactory.redirectUrl);
 
         });
 
+        it('should simply return response when specific header is NOT found', function () {
+            var expectedResponse = null;
+            $http.get(urlThatDoesNotReturnSpecificHeader).then(function (response) {
+                expectedResponse = response.data;
+            });
+            $httpBackend.flush();
+
+            expect(expectedResponse.obiwan).toBe(response.obiwan);
+
+        });
+
         it('should be able to set a custom redirect url', function () {
-            var customUrl = "http://www.example.com";
+            var customUrl = 'http://www.example.com';
             interceptorConfigFactory.setRedirectUrl(customUrl);
+
             expect(interceptorConfigFactory.redirectUrl).toBe(customUrl);
         });
     });

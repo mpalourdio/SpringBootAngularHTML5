@@ -10,30 +10,31 @@
             urlThatDoesNotReturnSpecificHeader,
             response;
 
-        beforeEach(module('httpInterceptorModule'));
-
-        //ugly, but necessery to reset $window
-        beforeEach(module('httpInterceptorModule', function ($provide) {
-            $provide.value('$window', {
-                location: {
-                    href: null
-                }
+        beforeEach(function () {
+            module('httpInterceptorModule', function ($provide) {
+                //ugly, but necessery to reset $window
+                $provide.value('$window', {
+                    location: {
+                        href: null
+                    }
+                });
             });
-        }));
 
-        beforeEach(inject(function (_$httpBackend_, _$http_, _InterceptorConfigFactory_, _$window_) {
-            $httpBackend = _$httpBackend_;
-            $http = _$http_;
-            interceptorConfigFactory = _InterceptorConfigFactory_;
-            $window = _$window_;
+            inject(function (_$httpBackend_, _$http_, _InterceptorConfigFactory_, _$window_) {
+                $httpBackend = _$httpBackend_;
+                $http = _$http_;
+                interceptorConfigFactory = _InterceptorConfigFactory_;
+                $window = _$window_;
 
-            urlThatReturnsSpecificHeader = '/specificheader';
-            $httpBackend.whenGET(urlThatReturnsSpecificHeader).respond(null, {'custom-header': '1'});
+                urlThatReturnsSpecificHeader = '/specificheader';
+                $httpBackend.whenGET(urlThatReturnsSpecificHeader).respond(null, {'custom-header': '1'});
 
-            urlThatDoesNotReturnSpecificHeader = '/idonthavespecificheader';
-            response = {obiwan: "kenobi"};
-            $httpBackend.whenGET(urlThatDoesNotReturnSpecificHeader).respond(response);
-        }));
+                urlThatDoesNotReturnSpecificHeader = '/idonthavespecificheader';
+                response = {obiwan: "kenobi"};
+                $httpBackend.whenGET(urlThatDoesNotReturnSpecificHeader).respond(response);
+            });
+        });
+
 
         afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();

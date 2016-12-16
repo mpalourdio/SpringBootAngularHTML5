@@ -12,7 +12,7 @@
 
         beforeEach(function () {
             module('httpInterceptorModule', function ($provide) {
-                //ugly, but necessery to reset $window
+                //ugly, but necessary to reset $window
                 $provide.value('$window', {
                     location: {
                         href: null

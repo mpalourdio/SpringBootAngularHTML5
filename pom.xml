@@ -3,7 +3,7 @@
 
     <groupId>com.mpalourdio.projects</groupId>
     <artifactId>springbootangularhtml5</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SpringBoot and Angular HTML5 Router</name>
@@ -16,7 +16,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:mpalourdio/SpringBootAngularHTML5.git</developerConnection>
-        <tag>springbootangularhtml5-1.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <build>

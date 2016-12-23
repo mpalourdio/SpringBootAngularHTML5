@@ -10,8 +10,7 @@
 package com.mpalourdio.html5.mvc;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,12 +18,12 @@ public class ForwarderController {
 
     private static final String APP_DIR = "/home";
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @GetMapping(path = "/")
     public ModelAndView redirectToApplicationRoot() {
         return new ModelAndView("redirect:" + APP_DIR);
     }
 
-    @RequestMapping(path = APP_DIR + "/**", method = RequestMethod.GET)
+    @GetMapping(path = APP_DIR + "/**")
     public String forwardtoHome() {
         return "forward:/index.html";
     }

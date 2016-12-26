@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ForwarderController {
 
     private static final String APP_DIR = "/home";
+    private static final String FORWARD_INDEX_HTML = "forward:/index.html";
 
     @GetMapping(path = "/")
     public ModelAndView redirectToApplicationRoot() {
@@ -25,6 +26,6 @@ public class ForwarderController {
 
     @GetMapping(path = APP_DIR + "/**")
     public String forwardtoHome() {
-        return "forward:/index.html";
+        return FORWARD_INDEX_HTML;
     }
 }

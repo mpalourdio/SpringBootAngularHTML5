@@ -11,17 +11,24 @@ package com.mpalourdio.html5;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
 
 @SpringBootApplication
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {
         final ApplicationContext ctx = SpringApplication.run(Application.class, args);
         final String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);
         Arrays.stream(beanNames).forEach(System.out::println);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
     }
 }

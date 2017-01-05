@@ -4,7 +4,7 @@
     <groupId>com.mpalourdio.projects</groupId>
     <artifactId>springbootangularhtml5</artifactId>
     <version>1.0.2-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>SpringBoot and Angular HTML5 Router</name>
     <url>http://maven.apache.org</url>
@@ -133,6 +133,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

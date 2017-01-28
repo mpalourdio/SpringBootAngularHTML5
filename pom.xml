@@ -9,10 +9,13 @@
 
     <name>SpringBoot and Angular HTML5 Router</name>
     <url>https://github.com/mpalourdio/SpringBootAngularHTML5</url>
+    <description>Spring Boot and AngularJS project with HTML5 router</description>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.4.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <scm>
@@ -133,6 +136,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
 

@@ -11,7 +11,16 @@
         vm.isHtml5Enabled = $location.$$html5;
 
         vm.callServices = function () {
-            $q.all([HttpService.backendService(), HttpService.externalService()]).then(function (result) {
+            $q.all([
+                HttpService.backendService(),
+                HttpService.unknownService(),
+                HttpService.externalService(),
+                HttpService.backendService(),
+                HttpService.unknownService(),
+                HttpService.externalService(),
+                HttpService.backendService(),
+                HttpService.unknownService(),
+                HttpService.externalService()]).then(function (result) {
                 vm.result = result[0];
                 console.log(result[1]);
             }, function (reason) {

@@ -43,7 +43,7 @@ function browserSyncInit(baseDir, browser) {
      */
     server.middleware = [
         proxyMiddleware('/my-context/api', {
-            target: 'http://localhost:8080'
+            target: 'http://localhost:10000'
         })
     ];
 

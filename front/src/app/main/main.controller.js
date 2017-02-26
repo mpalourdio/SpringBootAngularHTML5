@@ -21,10 +21,12 @@
                 HttpService.backendService(),
                 HttpService.unknownService(),
                 HttpService.externalService()]).then(function (result) {
-                vm.result = result[0];
-                console.log(result[1]);
+                vm.result = result[0]; //won't happen, as some requests fail
             }, function (reason) {
                 console.log(reason);
+                HttpService.backendService().then(function (result) {
+                    vm.result = result;
+                });
             });
         };
 

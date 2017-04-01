@@ -1,5 +1,5 @@
-Spring Boot 1.5.x and Angular 4 with HTML 5 router
-===============================================
+Spring Boot 1.5.x and Angular 4.x with HTML 5 router
+====================================================
 
 This project provides an example of an Angular single page application, served by ``Tomcat``,
 configured with the ``html5 router``.
@@ -18,5 +18,5 @@ To test the project, run [Application](src/main/java/com/mpalourdio/html5/Applic
 
 If you want to play with the front part, go to the [front folder](front). Once you have built the project, put the files in [src/main/resources/static](src/main/resources/static).
 
-The front-end part has been scaffolded with [https://github.com/angular/angular-cli](https://github.com/angular/angular-cli).
+The front-end part has been scaffolded with [angular-cli](https://github.com/angular/angular-cli).
 

@@ -6,7 +6,7 @@
         "ng": "ng",
         "start": "ng serve --proxy-config proxy.conf.json",
         "build": "ng build",
-        "test": "ng test",
+        "test": "ng test --watch false",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
@@ -33,7 +33,7 @@
         "jasmine-core": "~2.5.2",
         "jasmine-spec-reporter": "~3.2.0",
         "karma": "~1.4.1",
-        "karma-chrome-launcher": "~2.0.0",
+        "karma-phantomjs-launcher": "^1.0.4",
         "karma-cli": "~1.0.1",
         "karma-jasmine": "~1.1.0",
         "karma-jasmine-html-reporter": "^0.2.2",
@@ -41,6 +41,7 @@
         "protractor": "~5.1.0",
         "ts-node": "~2.0.0",
         "tslint": "~4.5.0",
-        "typescript": "~2.2.0"
+        "typescript": "~2.2.0",
+        "phantomjs-prebuilt": "^2.1.14"
     }
 }

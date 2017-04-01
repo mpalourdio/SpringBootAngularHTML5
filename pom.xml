@@ -81,6 +81,7 @@
                             <arguments>
                                 <argument>build</argument>
                                 <argument>--prod</argument>
+                                <argument>--deploy-url=static</argument>
                             </arguments>
                         </configuration>
                         <goals>
@@ -98,7 +99,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>copy-ng-dist</id>
+                        <id>copy-dist-index</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -108,7 +109,29 @@
                             <resources>
                                 <resource>
                                     <directory>front/dist</directory>
-                                    <filtering>false</filtering>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>index.html</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-dist-assets</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>front/dist</directory>
+                                    <filtering>true</filtering>
+                                    <excludes>
+                                        <exclude>index.html</exclude>
+                                    </excludes>
                                 </resource>
                             </resources>
                         </configuration>

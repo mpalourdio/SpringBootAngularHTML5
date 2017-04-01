@@ -1,0 +1,19 @@
+{
+    "/my-context/api/*": {
+        "target": "http://localhost:10000",
+        "changeOrigin": true,
+        "secure": false,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    },
+    "/my-context/*": {
+        "target": "http://localhost:4200",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/my-context": ""
+        }
+    }
+}

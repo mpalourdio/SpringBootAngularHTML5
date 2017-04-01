@@ -74,25 +74,13 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>exec-bower-install</id>
+                        <id>exec-ngcli-build</id>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <executable>bower</executable>
-                            <arguments>
-                                <argument>install</argument>
-                            </arguments>
-                        </configuration>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>exec-gulp-build</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <executable>gulp</executable>
+                            <executable>ng</executable>
                             <arguments>
                                 <argument>build</argument>
+                                <argument>--prod</argument>
                             </arguments>
                         </configuration>
                         <goals>
@@ -110,7 +98,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>copy-gulp-dist</id>
+                        <id>copy-ng-dist</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>copy-resources</goal>

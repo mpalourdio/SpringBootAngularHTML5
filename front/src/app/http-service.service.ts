@@ -10,7 +10,7 @@ export class HttpServiceService {
     constructor(private http: Http) {
     }
 
-    runQuery(): Promise<any[]> {
+    runQuery(): Promise<String[]> {
         return this.http.get(url)
             .toPromise()
             .then(this.extractData, this.handleError);

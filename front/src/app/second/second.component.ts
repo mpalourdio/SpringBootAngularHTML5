@@ -7,9 +7,8 @@ import { HttpServiceService } from '../http-service.service';
     styleUrls: ['./second.component.css'],
     providers: [HttpServiceService]
 })
-export class SecondComponent implements OnInit {
-
-    results;
+export class SecondComponent {
+    results: String[];
 
     constructor(private httpService: HttpServiceService) {
     }
@@ -19,8 +18,4 @@ export class SecondComponent implements OnInit {
             items => this.results = items
         );
     }
-
-    ngOnInit() {
-    }
-
 }

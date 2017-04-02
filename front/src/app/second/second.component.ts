@@ -34,5 +34,16 @@ export class SecondComponent {
                 error => this.errorMessage = <any>error
             );
     }
+
+    singleServiceCall() {
+        this.successQueryResults = [];
+        this.slowQueryResults = [];
+        this.httpService
+            .runSuccessQuery()
+            .subscribe(
+                results => this.successQueryResults = results,
+                error => this.errorMessage = <any>error
+            );
+    }
 }
 

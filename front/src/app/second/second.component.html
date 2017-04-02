@@ -1,6 +1,7 @@
 \o/ Now you can refresh me (hit F5) (or <a routerLink="/home">go back</a>) <br>
 
-<button (click)="callServices()">Click me to call backend</button><br>
+<button (click)="callServices()">Click me to call ALL backend services</button><br>
+<button (click)="singleServiceCall()">Click me to call a single backend services</button><br>
 <pre>
 {{successQueryResults | json}}
 {{slowQueryResults | json}}

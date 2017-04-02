@@ -4,7 +4,7 @@
 
     <groupId>com.mpalourdio.projects</groupId>
     <artifactId>springbootangularhtml5</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SpringBoot and AngularJS HTML5 Router</name>

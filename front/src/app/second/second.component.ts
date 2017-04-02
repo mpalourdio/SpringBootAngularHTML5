@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class SecondComponent {
     successQueryResults: String[];
-    customHeaderQueryResults: String[];
+    slowQueryResults: String[];
     errorMessage: any;
 
     constructor(private httpService: HttpServiceService) {
@@ -18,18 +18,18 @@ export class SecondComponent {
 
     callServices() {
         this.successQueryResults = [];
-        this.customHeaderQueryResults = [];
+        this.slowQueryResults = [];
         this.errorMessage = [];
 
         Observable.forkJoin([
             this.httpService.runSuccessQuery(),
-            this.httpService.runCustomHeadersQuery()
+            this.httpService.runSlowQuery()
         ])
             .subscribe(
                 results => {
                     console.log(results);
                     this.successQueryResults = results[0];
-                    this.customHeaderQueryResults = results[1];
+                    this.slowQueryResults = results[1];
                 },
                 error => this.errorMessage = <any>error
             );

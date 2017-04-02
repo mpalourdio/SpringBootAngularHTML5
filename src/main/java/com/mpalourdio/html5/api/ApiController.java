@@ -32,6 +32,14 @@ public class ApiController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/slowservice")
+    public ResponseEntity<List<String>> slowService() throws InterruptedException {
+        final List<String> results = new ArrayList<>();
+        results.add("Hey, I am the slow response");
+        Thread.sleep(3000);
+        return new ResponseEntity<>(results, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/customheader")
     public ResponseEntity<List<String>> iSendACustomHeader() {
         final HttpHeaders httpHeaders = new HttpHeaders();

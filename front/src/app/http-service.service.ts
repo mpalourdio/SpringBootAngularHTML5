@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-const url = 'api/service1';
-
 @Injectable()
 export class HttpServiceService {
 
@@ -14,7 +12,7 @@ export class HttpServiceService {
     }
 
     runSuccessQuery(): Observable<String[]> {
-        return this.http.get(url)
+        return this.http.get('api/service1')
             .map(this.extractData)
             .catch(this.handleError);
     }

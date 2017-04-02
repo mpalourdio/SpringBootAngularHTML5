@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
 import { Observable } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class SecondComponent {
         this.successQueryResults = [];
         this.customHeaderQueryResults = [];
         this.errorMessage = [];
-        
+
         Observable.forkJoin([
             this.httpService.runSuccessQuery(),
             this.httpService.runCustomHeadersQuery()

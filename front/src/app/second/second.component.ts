@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-second',
@@ -8,14 +9,30 @@ import { HttpServiceService } from '../http-service.service';
     providers: [HttpServiceService]
 })
 export class SecondComponent {
-    results: String[];
+    successQueryResults: String[];
+    customHeaderQueryResults: String[];
+    errorMessage: any;
 
     constructor(private httpService: HttpServiceService) {
     }
 
     callServices() {
-        this.httpService.runQuery().then(
-            items => this.results = items
-        );
+        this.successQueryResults = [];
+        this.customHeaderQueryResults = [];
+        this.errorMessage = [];
+        
+        Observable.forkJoin([
+            this.httpService.runSuccessQuery(),
+            this.httpService.runCustomHeadersQuery()
+        ])
+            .subscribe(
+                results => {
+                    console.log(results);
+                    this.successQueryResults = results[0];
+                    this.customHeaderQueryResults = results[1];
+                },
+                error => this.errorMessage = <any>error
+            );
     }
 }
+

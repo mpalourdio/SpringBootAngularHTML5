@@ -36,7 +36,9 @@ public class ApiController {
     public ResponseEntity<List<String>> iSendACustomHeader() {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("custom-header", "1");
+        final List<String> results = new ArrayList<>();
+        results.add("Request with custom header");
 
-        return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(results, httpHeaders, HttpStatus.OK);
     }
 }

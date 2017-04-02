@@ -2,5 +2,9 @@
 
 <button (click)="callServices()">Click me to call backend</button><br>
 <pre>
-{{results | json}}
+{{successQueryResults | json}}
+{{customHeaderQueryResults | json}}
+</pre>
+<pre>
+errors (if any) : {{errorMessage | json}}
 </pre>

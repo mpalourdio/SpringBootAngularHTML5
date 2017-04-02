@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs';
+
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 const url = 'api/service1';
 
@@ -10,10 +13,16 @@ export class HttpServiceService {
     constructor(private http: Http) {
     }
 
-    runQuery(): Promise<String[]> {
+    runSuccessQuery(): Observable<String[]> {
         return this.http.get(url)
-            .toPromise()
-            .then(this.extractData, this.handleError);
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    runCustomHeadersQuery(): Observable<String[]> {
+        return this.http.get('api/customheader')
+            .map(this.extractData)
+            .catch(this.handleError);
     }
 
     private extractData(res: Response) {

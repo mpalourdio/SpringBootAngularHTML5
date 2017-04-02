@@ -124,6 +124,13 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
+                            <nonFilteredFileExtensions>
+                                <nonFilteredFileExtension>oet</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>svg</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                            </nonFilteredFileExtensions>
                             <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
                             <resources>
                                 <resource>

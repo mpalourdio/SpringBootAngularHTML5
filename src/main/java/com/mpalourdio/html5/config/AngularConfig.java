@@ -31,7 +31,8 @@ public class AngularConfig extends WebMvcConfigurerAdapter {
     public AngularConfig(
             @Value("${apiPath}") final String apiPath,
             @Value("${server.contextPath}") final String contextPath,
-            final ResourceProperties resourceProperties) {
+            final ResourceProperties resourceProperties
+    ) {
         this.apiPath = apiPath;
         this.contextPath = contextPath;
         this.resourceProperties = resourceProperties;
@@ -41,7 +42,8 @@ public class AngularConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations(resourceProperties.getStaticLocations())
-                .setCachePeriod(resourceProperties.getCachePeriod()).resourceChain(true)
+                .setCachePeriod(resourceProperties.getCachePeriod())
+                .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
     }
 

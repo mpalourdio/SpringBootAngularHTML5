@@ -9,6 +9,7 @@
 
 package com.mpalourdio.html5.config;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.springframework.web.servlet.resource.TransformedResource;
 
 import java.io.IOException;
 
@@ -23,12 +25,15 @@ import java.io.IOException;
 public class AngularConfig extends WebMvcConfigurerAdapter {
 
     private final String apiPath;
+    private final String contextPath;
     private final ResourceProperties resourceProperties;
 
     public AngularConfig(
             @Value("${apiPath}") final String apiPath,
+            @Value("${server.contextPath}") final String contextPath,
             final ResourceProperties resourceProperties) {
         this.apiPath = apiPath;
+        this.contextPath = contextPath;
         this.resourceProperties = resourceProperties;
     }
 
@@ -52,10 +57,12 @@ public class AngularConfig extends WebMvcConfigurerAdapter {
             if (apiPath != null && ("/" + resourcePath).startsWith(apiPath)) {
                 return null;
             }
-            
+
             resource = location.createRelative("index.html");
             if (resource.exists() && resource.isReadable()) {
-                return resource;
+                String html = IOUtils.toString(resource.getInputStream(), "UTF-8");
+                html = html.replace("#context-path#", contextPath + "/");
+                return new TransformedResource(resource, html.getBytes());
             }
 
             return null;

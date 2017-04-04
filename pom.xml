@@ -32,6 +32,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -81,6 +86,7 @@
                             <arguments>
                                 <argument>build</argument>
                                 <argument>--prod</argument>
+                                <argument>--base-href=#context-path#</argument>
                                 <argument>--deploy-url=static</argument>
                             </arguments>
                         </configuration>
@@ -165,6 +171,7 @@
         <versions-maven-plugin.version>2.3</versions-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <commons-io.version>2.5</commons-io.version>
     </properties>
 
 </project>

@@ -6,6 +6,8 @@ configured with the ``html5 router``.
 
 The [AngularConfig](src/main/java/com/mpalourdio/html5/config/AngularConfig.java) makes the magic here.
 
+The base-href in configured by the ResourceResolver. It takes the value of the application context-path.
+
 It's useful if you want to serve an Angular application with the ``html5 router``, and avoid the dashed URL.
 
 This ``html5 router`` mode makes pretty URL, but has a default : Refreshing pages (or accessing them directly) gives a 404

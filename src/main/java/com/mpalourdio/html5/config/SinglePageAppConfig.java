@@ -24,24 +24,28 @@ import java.io.IOException;
 @Configuration
 public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
 
-    private final String apiPath;
+    private static final String API_PATH = "/api";
+    private static final String PATH_PATTERNS = "/**";
+    private static final String FRONT_CONTROLLER = "index.html";
+    private static final String RESOURCES_LOCATION = "classpath:/static/";
+    private static final String CONTEXT_PATH_PLACEHOLDER = "#context-path#";
+    private static final String FRONT_CONTROLLER_ENCODING = "UTF-8";
+
     private final String contextPath;
     private final ResourceProperties resourceProperties;
 
     public SinglePageAppConfig(
-            @Value("${apiPath}") final String apiPath,
             @Value("${server.contextPath}") final String contextPath,
             final ResourceProperties resourceProperties
     ) {
-        this.apiPath = apiPath;
         this.contextPath = contextPath;
         this.resourceProperties = resourceProperties;
     }
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/")
+        registry.addResourceHandler(PATH_PATTERNS)
+                .addResourceLocations(RESOURCES_LOCATION)
                 .setCachePeriod(resourceProperties.getCachePeriod())
                 .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
@@ -56,15 +60,15 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
                 return resource;
             }
 
-            if (apiPath != null && ("/" + resourcePath).startsWith(apiPath)) {
+            if (("/" + resourcePath).startsWith(API_PATH)) {
                 return null;
             }
 
-            resource = location.createRelative("index.html");
+            resource = location.createRelative(FRONT_CONTROLLER);
             if (resource.exists() && resource.isReadable()) {
-                String html = IOUtils.toString(resource.getInputStream(), "UTF-8");
-                html = html.replace("#context-path#", contextPath + "/");
-                return new TransformedResource(resource, html.getBytes());
+                String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
+                fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
+                return new TransformedResource(resource, fileContent.getBytes());
             }
 
             return null;

@@ -4,7 +4,7 @@ Spring Boot 1.5.x and Angular 4.x with HTML 5 router
 This project provides an example of an Angular single page application, served by ``Tomcat``,
 configured with the ``html5 router``.
 
-The [ForwarderController](src/main/java/com/mpalourdio/html5/mvc/ForwarderController.java) acts like a replacement for mod_rewrite : It forwards every single request that match ``context path`` to index.html.
+The [AngularConfig](src/main/java/com/mpalourdio/html5/config/AngularConfig.java) makes the magic here.
 
 It's useful if you want to serve an Angular application with the ``html5 router``, and avoid the dashed URL.
 

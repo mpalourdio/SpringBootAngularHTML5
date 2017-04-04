@@ -41,7 +41,7 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations(resourceProperties.getStaticLocations())
+                .addResourceLocations("classpath:/static/")
                 .setCachePeriod(resourceProperties.getCachePeriod())
                 .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());

@@ -6,12 +6,14 @@ configured with the ``html5 router``.
 
 The [AngularConfig](src/main/java/com/mpalourdio/html5/config/AngularConfig.java) makes the magic here.
 
-The base-href in configured by the ResourceResolver. It takes the value of the application context-path.
+The ``base-href`` in configured by the ResourceResolver. It takes the value of the application context-path.
 
 It's useful if you want to serve an Angular application with the ``html5 router``, and avoid the dashed URL.
 
 This ``html5 router`` mode makes pretty URL, but has a default : Refreshing pages (or accessing them directly) gives a 404
 http error if no RewriteRule is provided by the http server that serve the application or by an .htaccess.
+
+Handling the ``base-href`` dynamically can be tricky too. Here it's done once and for all by the ResourceResolver.
 
 Static files in ``src/main/resources`` have been put in a [static](/src/main/resources/static/static) subfolder, just to show the possibility to
 put them on a front-end reverse proxy that could serve the application assets.

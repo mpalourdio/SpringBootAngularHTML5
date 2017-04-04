@@ -22,13 +22,13 @@ import org.springframework.web.servlet.resource.TransformedResource;
 import java.io.IOException;
 
 @Configuration
-public class AngularConfig extends WebMvcConfigurerAdapter {
+public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
 
     private final String apiPath;
     private final String contextPath;
     private final ResourceProperties resourceProperties;
 
-    public AngularConfig(
+    public SinglePageAppConfig(
             @Value("${apiPath}") final String apiPath,
             @Value("${server.contextPath}") final String contextPath,
             final ResourceProperties resourceProperties

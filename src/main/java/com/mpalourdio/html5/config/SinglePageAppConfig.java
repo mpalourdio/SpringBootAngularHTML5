@@ -45,7 +45,7 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
-                .addResourceLocations(RESOURCES_LOCATION)
+                .addResourceLocations(resourceProperties.getStaticLocations())
                 .setCachePeriod(resourceProperties.getCachePeriod())
                 .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
@@ -53,22 +53,33 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
+        private TransformedResource transformedResource(final Resource resource) throws IOException {
+            String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
+            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
+            return new TransformedResource(resource, fileContent.getBytes());
+        }
+
         @Override
         protected Resource getResource(final String resourcePath, final Resource location) throws IOException {
             Resource resource = location.createRelative(resourcePath);
             if (resource.exists() && resource.isReadable()) {
+                //if the asked resource is index.html, we serve it with the base-href rewritten
+                if (resourcePath.contains(FRONT_CONTROLLER)) {
+                    return transformedResource(resource);
+                }
+
                 return resource;
             }
 
+            //do not serve a Resource on an reserved URI
             if (("/" + resourcePath).startsWith(API_PATH)) {
                 return null;
             }
 
+            //we just refreshed a page, no ?
             resource = location.createRelative(FRONT_CONTROLLER);
             if (resource.exists() && resource.isReadable()) {
-                String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-                fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
-                return new TransformedResource(resource, fileContent.getBytes());
+                return transformedResource(resource);
             }
 
             return null;

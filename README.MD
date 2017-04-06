@@ -15,10 +15,7 @@ http error if no RewriteRule is provided by the http server that serve the appli
 
 Handling the ``base-href`` dynamically can be tricky too. Here it's done once and for all by the ResourceResolver.
 
-Static files in ``src/main/resources`` have been put in a [static](/src/main/resources/static/static) subfolder, just to show the possibility to
-put them on a front-end reverse proxy that could serve the application assets.
-
-To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:10000/my-context](http://localhost:10000/my-context).
+To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context).
 
 If you want to play with the front part, go to the [front folder](front). Once you have built the project, put the files in [src/main/resources/static](src/main/resources/static).
 

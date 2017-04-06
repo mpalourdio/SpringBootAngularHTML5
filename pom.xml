@@ -87,7 +87,6 @@
                                 <argument>build</argument>
                                 <argument>--prod</argument>
                                 <argument>--base-href=#context-path#</argument>
-                                <argument>--deploy-url=static</argument>
                             </arguments>
                         </configuration>
                         <goals>
@@ -137,14 +136,11 @@
                                 <nonFilteredFileExtension>woff</nonFilteredFileExtension>
                                 <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
                             </nonFilteredFileExtensions>
-                            <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
+                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>front/dist</directory>
                                     <filtering>true</filtering>
-                                    <excludes>
-                                        <exclude>index.html</exclude>
-                                    </excludes>
                                 </resource>
                             </resources>
                         </configuration>

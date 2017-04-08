@@ -17,7 +17,7 @@ Handling the ``base-href`` dynamically can be tricky too. Here it's done once an
 
 This project includes too a custom [http interceptor](front/src/app/http-interceptor.service.ts). It's useful to show a [loader](https://github.com/tobiasahlin/SpinKit) during long http requests for example.
 
-To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context).
+To test the project, run [SpringBootAngularHTML5Application](src/main/java/com/mpalourdio/html5/SpringBootAngularHTML5Application.java), and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context).
 
 If you want to play with the front part, go to the [front folder](front). Once you have built the project, put the files in [src/main/resources/static](src/main/resources/static).
 

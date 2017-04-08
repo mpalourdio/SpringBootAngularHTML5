@@ -25,7 +25,7 @@ export class HttpServiceService {
     }
 
     runSlowQuery(): Observable<String[]> {
-        return this.http.get('api/slowsedrvice')
+        return this.http.get('api/slowservice')
             .map(this.extractData)
             .catch(this.handleError);
     }

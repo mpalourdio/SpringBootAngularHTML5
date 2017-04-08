@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { HttpInterceptorService } from './http-interceptor.service';
 
 @Injectable()
 export class HttpServiceService {
 
-    constructor(private http: Http) {
+    constructor(private http: HttpInterceptorService) {
     }
 
     runSuccessQuery(): Observable<String[]> {
@@ -17,8 +18,14 @@ export class HttpServiceService {
             .catch(this.handleError);
     }
 
+    runCustomHeaderQuery(): Observable<String[]> {
+        return this.http.get('api/customheader')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     runSlowQuery(): Observable<String[]> {
-        return this.http.get('api/slowservice')
+        return this.http.get('api/slowsedrvice')
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -28,7 +35,7 @@ export class HttpServiceService {
     }
 
     private handleError(error: Response | any) {
-        return Promise.reject(error);
+        return Observable.throw(error);
     }
 
 }

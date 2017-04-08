@@ -12,7 +12,7 @@ import { HttpInterceptorService } from '../http-interceptor.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-spinner',
+    selector: 'spinner',
     templateUrl: './spinner.component.html',
     styleUrls: ['./spinner.component.css']
 })

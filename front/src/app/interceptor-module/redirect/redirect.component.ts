@@ -11,7 +11,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { HttpInterceptorService } from '../http-interceptor.service';
 
 @Component({
-    selector: 'app-redirect',
+    selector: 'redirector',
     templateUrl: './redirect.component.html',
     styleUrls: ['./redirect.component.css']
 })

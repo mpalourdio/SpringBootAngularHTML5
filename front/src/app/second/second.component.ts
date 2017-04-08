@@ -38,8 +38,17 @@ export class SecondComponent {
     singleServiceCall() {
         this.successQueryResults = [];
         this.slowQueryResults = [];
-        this.httpService
-            .runSuccessQuery()
+        this.httpService.runSuccessQuery()
+            .subscribe(
+                results => this.successQueryResults = results,
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    customHeader() {
+        this.successQueryResults = [];
+        this.slowQueryResults = [];
+        this.httpService.runCustomHeaderQuery()
             .subscribe(
                 results => this.successQueryResults = results,
                 error => this.errorMessage = <any>error

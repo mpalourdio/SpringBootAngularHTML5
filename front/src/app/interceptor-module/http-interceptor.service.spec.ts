@@ -9,18 +9,14 @@
 
 import { inject, TestBed } from '@angular/core/testing';
 
-import { HttpInterceptorService, HttpInterceptorServiceFactory } from './http-interceptor.service';
-import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { HttpInterceptorService, HttpInterceptorServiceFactoryProvider } from './http-interceptor.service';
+import { HttpModule } from '@angular/http';
 
 describe('HttpInterceptorService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
-            providers: [{
-                provide: HttpInterceptorService,
-                useFactory: HttpInterceptorServiceFactory,
-                deps: [XHRBackend, RequestOptions]
-            }]
+            providers: [HttpInterceptorService, HttpInterceptorServiceFactoryProvider]
         });
     });
 

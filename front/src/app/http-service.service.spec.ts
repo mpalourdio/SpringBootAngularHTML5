@@ -7,16 +7,24 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { HttpServiceService } from './http-service.service';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { HttpInterceptorService, HttpInterceptorServiceFactory } from './http-interceptor.service';
 
 describe('HttpServiceService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [HttpServiceService],
             imports: [HttpModule],
+            providers: [
+                HttpServiceService,
+                {
+                    provide: HttpInterceptorService,
+                    useFactory: HttpInterceptorServiceFactory,
+                    deps: [XHRBackend, RequestOptions]
+                }
+            ]
         });
     });
 

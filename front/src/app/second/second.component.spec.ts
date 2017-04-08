@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SecondComponent } from './second.component';
 import { HttpServiceService } from '../http-service.service';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { HttpInterceptorService, HttpInterceptorServiceFactory } from '../http-interceptor.service';
 
 /*
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -20,7 +21,14 @@ describe('SecondComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [SecondComponent],
-            providers: [HttpServiceService],
+            providers: [
+                HttpServiceService,
+                {
+                    provide: HttpInterceptorService,
+                    useFactory: HttpInterceptorServiceFactory,
+                    deps: [XHRBackend, RequestOptions]
+                }
+            ],
             imports: [HttpModule],
         })
             .compileComponents();

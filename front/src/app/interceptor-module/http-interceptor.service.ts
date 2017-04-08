@@ -74,3 +74,10 @@ export class HttpInterceptorService extends Http {
 export function HttpInterceptorServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
     return new HttpInterceptorService(backend, defaultOptions);
 }
+
+export let HttpInterceptorServiceFactoryProvider =
+    {
+        provide: HttpInterceptorService,
+        useFactory: HttpInterceptorServiceFactory,
+        deps: [XHRBackend, RequestOptions]
+    };

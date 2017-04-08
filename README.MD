@@ -4,7 +4,7 @@ Spring Boot 1.5.x and Angular 4.x with HTML 5 router
 This project provides an example of an Angular single page application, served by ``Tomcat``,
 configured with the ``html5 router``.
 
-The [AngularConfig](src/main/java/com/mpalourdio/html5/config/AngularConfig.java) makes the magic here.
+The [SinglePageAppConfig](src/main/java/com/mpalourdio/html5/config/SinglePageAppConfig.java) makes the magic here.
 
 The ``base-href`` in configured by the ResourceResolver. It takes the value of the application context-path.
 

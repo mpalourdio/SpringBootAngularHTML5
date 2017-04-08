@@ -15,7 +15,7 @@ http error if no RewriteRule is provided by the http server that serve the appli
 
 Handling the ``base-href`` dynamically can be tricky too. Here it's done once and for all by the ResourceResolver.
 
-This prject includes too a custom http interceptor. It's useful to show a loader during long http requests for example.
+This prject includes too a custom [http interceptor](front/src/app/http-interceptor.service.ts). It's useful to show a loader during long http requests for example.
 
 To test the project, run [Application](src/main/java/com/mpalourdio/html5/Application.java), and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context).
 

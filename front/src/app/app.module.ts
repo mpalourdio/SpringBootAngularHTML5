@@ -9,13 +9,15 @@ import { FirstComponent } from './first/first.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HttpInterceptorService, HttpInterceptorServiceFactory } from './http-interceptor.service';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         FirstComponent,
         SecondComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        RedirectComponent
     ],
     imports: [
         BrowserModule,

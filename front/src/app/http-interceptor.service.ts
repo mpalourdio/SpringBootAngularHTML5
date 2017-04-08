@@ -41,8 +41,8 @@ export class HttpInterceptorService extends Http {
             .map(result => {
                 if (result.headers.has(CUSTOM_HEADER_NAME)) {
                     this.handleCustomHeader();
-                    return result;
                 }
+
                 return result;
             })
             .catch((error) => {

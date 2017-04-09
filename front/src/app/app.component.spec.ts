@@ -14,12 +14,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
 
 describe('AppComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             imports: [RouterTestingModule, HttpInterceptorModule],
         }).compileComponents();
-    }));
+    });
 
     it('should create the app', async(() => {
         const fixture = TestBed.createComponent(AppComponent);

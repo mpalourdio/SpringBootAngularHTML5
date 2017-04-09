@@ -11,7 +11,6 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import { HttpServiceService } from './http-service.service';
 import { HttpModule } from '@angular/http';
-import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
 import { HttpInterceptorServiceFactoryProvider } from './http-interceptor-module/http-interceptor.service';
 
 describe('HttpServiceService', () => {

@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { SecondComponent } from './second/second.component';
 import { FirstComponent } from './first/first.component';
 import { AppRoutingModule } from './app.routing.module';
-import { HttpInterceptorModule } from './interceptor-module/http-interceptor.module';
+import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
 
 @NgModule({
     declarations: [

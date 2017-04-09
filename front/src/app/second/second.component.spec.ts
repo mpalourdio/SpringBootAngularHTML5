@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondComponent } from './second.component';
 import { HttpServiceService } from '../http-service.service';
 import { HttpModule } from '@angular/http';
-import { HttpInterceptorServiceFactoryProvider } from '../interceptor-module/http-interceptor.service';
+import { HttpInterceptorServiceFactoryProvider } from '../http-interceptor-module/http-interceptor.service';
 
 /*
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR

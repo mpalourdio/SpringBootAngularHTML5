@@ -11,7 +11,7 @@ import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpInterceptorModule } from './interceptor-module/http-interceptor.module';
+import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {

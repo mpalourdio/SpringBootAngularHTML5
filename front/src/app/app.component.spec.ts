@@ -7,19 +7,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
 
 describe('AppComponent', () => {
-    beforeEach(() => {
+    beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             imports: [RouterTestingModule, HttpInterceptorModule],
         }).compileComponents();
-    });
+    }));
 
     it('should create the app', () => {
         const fixture = TestBed.createComponent(AppComponent);

@@ -9,7 +9,7 @@
 
 import { Component } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'app-second',

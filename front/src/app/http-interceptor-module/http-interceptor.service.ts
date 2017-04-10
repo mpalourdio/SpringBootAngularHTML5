@@ -75,9 +75,8 @@ export function HttpInterceptorServiceFactory(backend: XHRBackend, defaultOption
     return new HttpInterceptorService(backend, defaultOptions);
 }
 
-export let HttpInterceptorServiceFactoryProvider =
-    {
-        provide: HttpInterceptorService,
-        useFactory: HttpInterceptorServiceFactory,
-        deps: [XHRBackend, RequestOptions]
-    };
+export let HttpInterceptorServiceFactoryProvider = {
+    provide: HttpInterceptorService,
+    useFactory: HttpInterceptorServiceFactory,
+    deps: [XHRBackend, RequestOptions]
+};

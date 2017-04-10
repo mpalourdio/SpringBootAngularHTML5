@@ -9,7 +9,7 @@
 
 import { Component, OnDestroy } from '@angular/core';
 import { HttpInterceptorService } from '../http-interceptor.service';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'spinner',

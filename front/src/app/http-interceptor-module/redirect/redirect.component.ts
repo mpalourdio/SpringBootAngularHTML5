@@ -34,7 +34,7 @@ export class RedirectComponent implements OnDestroy {
 
     private redirect() {
         console.log('custom header detected');
-        window.location.href = 'http://redirect.me'; //feels dirty...
+        window.location.href = 'http://redirect.me'; // feels dirty...
     }
 
     private showModal(): void {

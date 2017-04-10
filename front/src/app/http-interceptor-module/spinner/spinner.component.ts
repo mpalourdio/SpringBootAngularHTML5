@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs/Rx';
     styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnDestroy {
-    public isSpinnerVisible;
+    public isSpinnerVisible: boolean;
     private subscription: Subscription;
 
     constructor(private http: HttpInterceptorService) {

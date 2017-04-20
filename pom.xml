@@ -104,7 +104,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>copy-dist-index</id>
+                        <id>copy-front-dist</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -115,29 +115,6 @@
                                 <resource>
                                     <directory>front/dist</directory>
                                     <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-dist-assets</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <nonFilteredFileExtensions>
-                                <nonFilteredFileExtension>oet</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>svg</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>woff</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
-                            </nonFilteredFileExtensions>
-                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>front/dist</directory>
-                                    <filtering>true</filtering>
                                 </resource>
                             </resources>
                         </configuration>

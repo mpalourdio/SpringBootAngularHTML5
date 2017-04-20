@@ -114,10 +114,7 @@
                             <resources>
                                 <resource>
                                     <directory>front/dist</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>index.html</include>
-                                    </includes>
+                                    <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>

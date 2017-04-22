@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { SecondComponent } from './second/second.component';
 import { FirstComponent } from './first/first.component';
 import { AppRoutingModule } from './app.routing.module';
-import { HttpInterceptorModule } from './http-interceptor-module/http-interceptor.module';
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 
 @NgModule({
     declarations: [
@@ -29,7 +29,7 @@ import { HttpInterceptorModule } from './http-interceptor-module/http-intercepto
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        HttpInterceptorModule,
+        NgHttpLoaderModule,
     ],
     bootstrap: [AppComponent]
 })

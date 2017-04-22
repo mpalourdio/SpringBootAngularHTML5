@@ -53,15 +53,5 @@ export class SecondComponent {
                 error => this.errorMessage = <any>error
             );
     }
-
-    customHeader() {
-        this.successQueryResults = [];
-        this.slowQueryResults = [];
-        this.httpService.runCustomHeaderQuery()
-            .subscribe(
-                results => this.successQueryResults = results,
-                error => this.errorMessage = <any>error
-            );
-    }
 }
 

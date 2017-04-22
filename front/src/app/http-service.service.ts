@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { HttpInterceptorService } from './http-interceptor-module/http-interceptor.service';
+import { HttpInterceptorService } from 'ng-http-loader/http-interceptor.service';
 
 @Injectable()
 export class HttpServiceService {

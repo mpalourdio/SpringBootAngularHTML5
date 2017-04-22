@@ -9,7 +9,6 @@
 
 package com.mpalourdio.html5.api;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,15 +37,5 @@ public class ApiController {
         results.add("Hey, I am the slow response");
         Thread.sleep(3000);
         return new ResponseEntity<>(results, HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/customheader")
-    public ResponseEntity<List<String>> iSendACustomHeader() {
-        final HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("custom-header", "1");
-        final List<String> results = new ArrayList<>();
-        results.add("Request with custom header");
-
-        return new ResponseEntity<>(results, httpHeaders, HttpStatus.OK);
     }
 }

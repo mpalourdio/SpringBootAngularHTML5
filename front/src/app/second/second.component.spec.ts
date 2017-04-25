@@ -1,10 +1,3 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SecondComponent } from './second.component';
-import { HttpServiceService } from '../http-service.service';
-import { HttpModule } from '@angular/http';
-import { HttpInterceptorServiceFactoryProvider } from '../http-interceptor-module/http-interceptor.service';
-
 /*
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -13,6 +6,13 @@ import { HttpInterceptorServiceFactoryProvider } from '../http-interceptor-modul
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SecondComponent } from './second.component';
+import { HttpServiceService } from '../http-service.service';
+import { HttpModule } from '@angular/http';
+import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
 
 describe('SecondComponent', () => {
     let component: SecondComponent;

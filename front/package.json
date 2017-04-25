@@ -25,7 +25,7 @@
     "font-awesome": "^4.7.0",
     "ng-http-loader": "~0.0.5",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.9"
   },
   "devDependencies": {
     "@angular/cli": "1.0.1",

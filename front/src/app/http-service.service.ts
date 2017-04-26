@@ -27,12 +27,6 @@ export class HttpServiceService {
             .catch(this.handleError);
     }
 
-    runCustomHeaderQuery(): Observable<String[]> {
-        return this.http.get('api/customheader')
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
     runSlowQuery(): Observable<String[]> {
         return this.http.get('api/slowservice')
             .map(this.extractData)

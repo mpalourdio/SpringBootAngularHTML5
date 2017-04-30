@@ -28,7 +28,7 @@ describe('FirstComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should create a component instance', () => {
         expect(component).toBeTruthy();
     });
 });

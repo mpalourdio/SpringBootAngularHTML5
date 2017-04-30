@@ -21,7 +21,7 @@ describe('HttpServiceService', () => {
         });
     });
 
-    it('should ...', inject([HttpServiceService], (service: HttpServiceService) => {
+    it('should create a service instance', inject([HttpServiceService], (service: HttpServiceService) => {
         expect(service).toBeTruthy();
     }));
 });

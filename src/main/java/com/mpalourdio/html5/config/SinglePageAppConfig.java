@@ -27,7 +27,6 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
     private static final String API_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
-    private static final String RESOURCES_LOCATION = "classpath:/static/";
     private static final String CONTEXT_PATH_PLACEHOLDER = "#context-path#";
     private static final String FRONT_CONTROLLER_ENCODING = "UTF-8";
 

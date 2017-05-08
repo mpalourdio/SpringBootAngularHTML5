@@ -18,6 +18,7 @@ import { Observable } from 'rxjs/Rx';
     providers: [HttpServiceService]
 })
 export class SecondComponent {
+    upperCased: String[];
     successQueryResults: String[];
     slowQueryResults: String[];
     errorMessage: any;
@@ -25,28 +26,35 @@ export class SecondComponent {
     constructor(private httpService: HttpServiceService) {
     }
 
-    callServices() {
+    private resetFields() {
         this.successQueryResults = [];
         this.slowQueryResults = [];
+        this.upperCased = [];
         this.errorMessage = [];
+    }
+
+    callServices() {
+        this.resetFields();
 
         Observable.forkJoin([
             this.httpService.runSuccessQuery(),
-            this.httpService.runSlowQuery()
+            this.httpService.runSlowQuery(),
+            this.httpService.manualObservable()
         ])
             .subscribe(
                 results => {
                     console.log(results);
                     this.successQueryResults = results[0];
                     this.slowQueryResults = results[1];
+                    this.upperCased = results[2];
                 },
                 error => this.errorMessage = <any>error
             );
     }
 
     singleServiceCall() {
-        this.successQueryResults = [];
-        this.slowQueryResults = [];
+        this.resetFields();
+
         this.httpService.runSuccessQuery()
             .subscribe(
                 results => this.successQueryResults = results,

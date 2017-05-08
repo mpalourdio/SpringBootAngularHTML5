@@ -33,6 +33,13 @@ export class HttpServiceService {
             .catch(this.handleError);
     }
 
+    manualObservable(): Observable<String[]> {
+        return Observable.of(['a', 'b', 'c'])
+            .map(r => r.map(a => a.toUpperCase()))
+            .do(r => console.log(r))
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         return res.json() || {};
     }

@@ -1,0 +1,9 @@
+<input
+    type="file"
+    [attr.name]="name"
+    [multiple]="multiple"
+    (change)="fileChange($event)"
+>
+<button (click)="upload($event)">upload</button>
+<br>
+<a href="api/download" *ngIf="downloadLinkVisible">download files</a>

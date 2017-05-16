@@ -9,19 +9,25 @@
 
 package com.mpalourdio.html5.api;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RestController
 @RequestMapping(path = "/api")
 public class ApiController {
+
+    private InputStream inputStream;
+    private String fileName;
+    private String contentType;
 
     @GetMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
@@ -37,5 +43,22 @@ public class ApiController {
         results.add("Hey, I am the slow response");
         Thread.sleep(3000);
         return new ResponseEntity<>(results, HttpStatus.OK);
+    }
+
+    @PostMapping("/upload")
+    public void handleFileUpload(@RequestParam("files") final List<MultipartFile> files) throws IOException {
+        //VERY ugly, make things stateful...Just for quick tests
+        inputStream = files.get(0).getInputStream();
+        contentType = files.get(0).getContentType();
+        fileName = files.get(0).getOriginalFilename();
+    }
+
+    @GetMapping("/download")
+    public ResponseEntity<InputStreamResource> download() throws IOException {
+        final HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentDispositionFormData("attachment", fileName);
+        responseHeaders.set("Content-Type", contentType);
+
+        return new ResponseEntity<>(new InputStreamResource(inputStream), responseHeaders, HttpStatus.OK);
     }
 }

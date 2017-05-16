@@ -10,6 +10,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FirstComponent } from './first.component';
+import { UploadComponent } from '../upload/upload.component';
+import { HttpModule } from '@angular/http';
 
 describe('FirstComponent', () => {
     let component: FirstComponent;
@@ -17,7 +19,8 @@ describe('FirstComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FirstComponent]
+            declarations: [FirstComponent, UploadComponent],
+            imports: [HttpModule],
         })
             .compileComponents();
     }));

@@ -38,7 +38,7 @@ export class UploadComponent implements OnInit {
 
         this.http.post(this.url, formData)
             .do(() => this.downloadLinkVisible = true)
-            .subscribe((data) =>  {
+            .subscribe((data) => {
                 console.log(data);
             });
     }

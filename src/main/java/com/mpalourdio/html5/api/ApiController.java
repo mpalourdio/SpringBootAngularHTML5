@@ -9,7 +9,7 @@
 
 package com.mpalourdio.html5.api;
 
-import org.springframework.core.io.InputStreamResource;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import java.util.List;
 @RequestMapping(path = "/api")
 public class ApiController {
 
-    private InputStream inputStream;
+    private byte[] inputStream;
     private String fileName;
     private String contentType;
 
@@ -48,17 +47,17 @@ public class ApiController {
     @PostMapping("/upload")
     public void handleFileUpload(@RequestParam("files") final List<MultipartFile> files) throws IOException {
         //VERY ugly, make things stateful...Just for quick tests
-        inputStream = files.get(0).getInputStream();
+        inputStream = IOUtils.toByteArray(files.get(0).getInputStream());
         contentType = files.get(0).getContentType();
         fileName = files.get(0).getOriginalFilename();
     }
 
     @GetMapping("/download")
-    public ResponseEntity<InputStreamResource> download() throws IOException {
+    public ResponseEntity<byte[]> download() throws IOException {
         final HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setContentDispositionFormData("attachment", fileName);
         responseHeaders.set("Content-Type", contentType);
 
-        return new ResponseEntity<>(new InputStreamResource(inputStream), responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(inputStream, responseHeaders, HttpStatus.OK);
     }
 }

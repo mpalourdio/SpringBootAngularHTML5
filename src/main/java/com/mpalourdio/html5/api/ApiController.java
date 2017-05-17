@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping(path = "/api")
 public class ApiController {
 
-    private byte[] inputStream;
+    private byte[] fileContent;
     private String fileName;
     private String contentType;
 
@@ -47,7 +47,7 @@ public class ApiController {
     @PostMapping("/upload")
     public void handleFileUpload(@RequestParam("files") final List<MultipartFile> files) throws IOException {
         //VERY ugly, make things stateful...Just for quick tests
-        inputStream = IOUtils.toByteArray(files.get(0).getInputStream());
+        fileContent = IOUtils.toByteArray(files.get(0).getInputStream());
         contentType = files.get(0).getContentType();
         fileName = files.get(0).getOriginalFilename();
     }
@@ -58,6 +58,6 @@ public class ApiController {
         responseHeaders.setContentDispositionFormData("attachment", fileName);
         responseHeaders.set("Content-Type", contentType);
 
-        return new ResponseEntity<>(inputStream, responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(fileContent, responseHeaders, HttpStatus.OK);
     }
 }

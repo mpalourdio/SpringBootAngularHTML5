@@ -10,6 +10,8 @@
 package com.mpalourdio.html5.api;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ public class ApiController {
     private byte[] fileContent;
     private String fileName;
     private String contentType;
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @GetMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
@@ -45,11 +48,15 @@ public class ApiController {
     }
 
     @PostMapping("/upload")
-    public void handleFileUpload(@RequestParam("files") final List<MultipartFile> files) throws IOException {
+    public String handleFileUpload(@RequestParam("files") final MultipartFile files) throws IOException {
         //VERY ugly, make things stateful...Just for quick tests
-        fileContent = IOUtils.toByteArray(files.get(0).getInputStream());
-        contentType = files.get(0).getContentType();
-        fileName = files.get(0).getOriginalFilename();
+        fileContent = IOUtils.toByteArray(files.getInputStream());
+        contentType = files.getContentType();
+        fileName = files.getOriginalFilename();
+
+        LOG.info(fileName + " sent");
+
+        return fileName;
     }
 
     @GetMapping("/download")

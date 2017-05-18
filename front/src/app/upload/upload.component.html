@@ -1,9 +1,22 @@
 <input
     type="file"
+    [attr.id]="name"
     [attr.name]="name"
     [multiple]="multiple"
-    (change)="fileChange($event)"
+    (change)="onFileChange($event)"
+    #inputFile
 >
+<button (click)="inputFile.click()">Choose Files</button>
 <button (click)="upload($event)">upload</button>
 <br>
 <a href="api/download" *ngIf="downloadLinkVisible">download files</a>
+
+<div id="dropfile"
+     (drop)="onDrop($event)"
+     (dragenter)="onDragenter($event)"
+     (dragleave)="onDragleave($event)"
+     (dragover)="onDragover($event)"
+>Drop an image from your computer
+</div>
+
+<p *ngFor="let fileItem of fileItemList; let i = index">{{i +1}}) {{fileItem.name}} <button (click)="removeFileItemFromList(fileItem)">delete</button></p>

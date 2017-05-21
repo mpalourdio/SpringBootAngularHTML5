@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileItem } from './file-item';
-import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { UploadService } from './upload.service';
 @Component({
     selector: 'upload',
     templateUrl: './upload.component.html',
@@ -32,14 +31,13 @@ export class UploadComponent implements OnInit {
 
     errors: Response[];
 
-    constructor(private http: Http) {
+    constructor(private uploadService: UploadService) {
     }
 
     ngOnInit() {
     }
 
     onFileChange(event: EventTarget): void {
-        this.downloadLinkVisible = false;
         const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
         const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
         this.populateFileItemList(target.files);
@@ -50,7 +48,7 @@ export class UploadComponent implements OnInit {
         this.resetComponentStateBeforeUpload();
         if (this.fileItemList.length > 0) {
             this.fileItemList.forEach(fileItem => {
-                this.doUpload(this.url, fileItem).subscribe(
+                this.uploadService.doUpload(this.url, fileItem).subscribe(
                     f => {
                         this.removeFileItemFromList(f);
                         if (!this.downloadLinkVisible) {
@@ -61,24 +59,6 @@ export class UploadComponent implements OnInit {
                 );
             });
         }
-    }
-
-    doUpload(url: string, fileItem: FileItem): Observable<FileItem> {
-        const formData = new FormData();
-        formData.append('files', fileItem.file);
-
-        return this.http.post(url, formData)
-            .map(r => fileItem)
-            .catch(this.handleError);
-    }
-
-    private handleError(error: Response | any) {
-        return Observable.throw(error);
-    }
-
-    private resetComponentStateBeforeUpload() {
-        this.errors = [];
-        this.downloadLinkVisible = false;
     }
 
     onDragenter(event: any): void {
@@ -137,5 +117,11 @@ export class UploadComponent implements OnInit {
 
     private isFileExtensionValid(fileExtension: string) {
         return !!fileExtension && fileExtension === this.accept;
+    }
+
+
+    private resetComponentStateBeforeUpload() {
+        this.errors = [];
+        this.downloadLinkVisible = false;
     }
 }

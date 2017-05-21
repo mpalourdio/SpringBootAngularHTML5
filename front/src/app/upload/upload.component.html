@@ -12,7 +12,7 @@
 <br>
 <p *ngFor="let error of errors"> {{error.statusText}}</p>
 <br>
-<a href="api/download" *ngIf="downloadLinkVisible">Download last upload file</a>
+<a href="api/download" *ngIf="downloadLinkVisible">Download last uploaded file</a>
 
 <div id="dropfile"
      (drop)="onDrop($event)"

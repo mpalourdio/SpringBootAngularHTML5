@@ -9,19 +9,19 @@
 
 import { inject, TestBed } from '@angular/core/testing';
 
-import { HttpServiceService } from './http-service.service';
 import { HttpModule } from '@angular/http';
 import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
+import { HttpService } from './http.service';
 
 describe('HttpServiceService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
-            providers: [HttpServiceService, HttpInterceptorServiceFactoryProvider]
+            providers: [HttpService, HttpInterceptorServiceFactoryProvider]
         });
     });
 
-    it('should create a service instance', inject([HttpServiceService], (service: HttpServiceService) => {
+    it('should create a service instance', inject([HttpService], (service: HttpService) => {
         expect(service).toBeTruthy();
     }));
 });

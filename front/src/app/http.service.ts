@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 import { HttpInterceptorService } from 'ng-http-loader/http-interceptor.service';
 
 @Injectable()
-export class HttpServiceService {
+export class HttpService {
 
     constructor(private http: HttpInterceptorService) {
     }

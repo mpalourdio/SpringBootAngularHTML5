@@ -8,8 +8,8 @@
  */
 
 import { Component } from '@angular/core';
-import { HttpServiceService } from '../http-service.service';
 import { Observable } from 'rxjs/Rx';
+import { HttpService } from '../http.service';
 
 @Component({
     selector: 'app-second',
@@ -22,7 +22,7 @@ export class SecondComponent {
     slowQueryResults: String[];
     errorMessage: any;
 
-    constructor(private httpService: HttpServiceService) {
+    constructor(private httpService: HttpService) {
     }
 
     private resetFields() {

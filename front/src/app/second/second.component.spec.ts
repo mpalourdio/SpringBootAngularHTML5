@@ -10,9 +10,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SecondComponent } from './second.component';
-import { HttpServiceService } from '../http-service.service';
 import { HttpModule } from '@angular/http';
 import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
+import { HttpService } from '../http.service';
 
 describe('SecondComponent', () => {
     let component: SecondComponent;
@@ -21,7 +21,7 @@ describe('SecondComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [SecondComponent],
-            providers: [HttpServiceService, HttpInterceptorServiceFactoryProvider],
+            providers: [HttpService, HttpInterceptorServiceFactoryProvider],
             imports: [HttpModule],
         })
             .compileComponents();

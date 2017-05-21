@@ -47,5 +47,4 @@ export class HttpServiceService {
     private handleError(error: Response | any) {
         return Observable.throw(error);
     }
-
 }

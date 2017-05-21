@@ -18,6 +18,7 @@ import { FirstComponent } from './first/first.component';
 import { AppRoutingModule } from './app.routing.module';
 import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { UploadComponent } from './upload/upload.component';
+import { HttpServiceService } from './http-service.service';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,9 @@ import { UploadComponent } from './upload/upload.component';
         HttpModule,
         AppRoutingModule,
         NgHttpLoaderModule,
+    ],
+    providers: [
+        HttpServiceService,
     ],
     bootstrap: [AppComponent]
 })

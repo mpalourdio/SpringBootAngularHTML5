@@ -14,8 +14,7 @@ import { Observable } from 'rxjs/Rx';
 @Component({
     selector: 'app-second',
     templateUrl: './second.component.html',
-    styleUrls: ['./second.component.css'],
-    providers: [HttpServiceService]
+    styleUrls: ['./second.component.css']
 })
 export class SecondComponent {
     upperCased: String[];

@@ -2,14 +2,17 @@
     type="file"
     [attr.id]="name"
     [attr.name]="name"
+    [attr.accept]="accept ? accept : null"
     [multiple]="multiple"
     (change)="onFileChange($event)"
     #inputFile
 >
-<button (click)="inputFile.click()">Choose Files</button>
-<button (click)="upload($event)">upload</button>
+<button (click)="inputFile.click()">{{chooseButtonLabel}}</button>
+<button (click)="upload()" *ngIf="fileItemList.length > 0">{{uploadButtonLabel}}</button>
 <br>
-<a href="api/download" *ngIf="downloadLinkVisible">download files</a>
+<p *ngFor="let error of errors"> {{error.statusText}}</p>
+<br>
+<a href="api/download" *ngIf="downloadLinkVisible">Download last upload file</a>
 
 <div id="dropfile"
      (drop)="onDrop($event)"
@@ -19,4 +22,7 @@
 >Drop an image from your computer
 </div>
 
-<p *ngFor="let fileItem of fileItemList; let i = index">{{i +1}}) {{fileItem.name}} <button (click)="removeFileItemFromList(fileItem)">delete</button></p>
+<p *ngFor="let fileItem of fileItemList; let i = index">
+    {{i +1}}) {{fileItem.name}}
+    <button (click)="removeFileItemFromList(fileItem)">X</button>
+</p>

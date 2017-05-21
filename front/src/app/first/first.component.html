@@ -6,5 +6,12 @@ Spring will forward the requested url to index.html, and angular will do the job
 <br>
 <br>
 <br>
-<upload [name]="'files'" [url]="'api/upload'" [multiple]="'multiple'"></upload>
+<upload
+    [name]="'files'"
+    [url]="'api/upload'"
+    [multiple]="true"
+    [accept]="'.pdf'"
+    [chooseButtonLabel]="'Choose files to upload or D&D them below'"
+    [uploadButtonLabel]="'Upload files'"
+></upload>
 

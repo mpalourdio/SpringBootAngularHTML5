@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { FileItem } from './file-item';
 import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 @Component({
     selector: 'upload',
     templateUrl: './upload.component.html',
@@ -21,6 +21,17 @@ export class UploadComponent implements OnInit {
     @Input()
     url: string;
 
+    @Input()
+    accept: string;
+
+    @Input()
+    chooseButtonLabel = 'Choose files';
+
+    @Input()
+    uploadButtonLabel = 'Upload';
+
+    errors: Response[];
+
     constructor(private http: Http) {
     }
 
@@ -36,13 +47,38 @@ export class UploadComponent implements OnInit {
     }
 
     upload(): void {
+        this.resetComponentStateBeforeUpload();
         if (this.fileItemList.length > 0) {
             this.fileItemList.forEach(fileItem => {
-                this.doUpload(fileItem).subscribe((f: FileItem) => {
-                    this.removeFileItemFromList(f);
-                });
+                this.doUpload(this.url, fileItem).subscribe(
+                    f => {
+                        this.removeFileItemFromList(f);
+                        if (!this.downloadLinkVisible) {
+                            this.downloadLinkVisible = true;
+                        }
+                    },
+                    error => this.errors.push(error)
+                );
             });
         }
+    }
+
+    doUpload(url: string, fileItem: FileItem): Observable<FileItem> {
+        const formData = new FormData();
+        formData.append('files', fileItem.file);
+
+        return this.http.post(url, formData)
+            .map(r => fileItem)
+            .catch(this.handleError);
+    }
+
+    private handleError(error: Response | any) {
+        return Observable.throw(error);
+    }
+
+    private resetComponentStateBeforeUpload() {
+        this.errors = [];
+        this.downloadLinkVisible = false;
     }
 
     onDragenter(event: any): void {
@@ -76,22 +112,16 @@ export class UploadComponent implements OnInit {
         event.stopPropagation();
     }
 
-    private doUpload(fileItem: FileItem): Observable<FileItem> {
-        const formData = new FormData();
-        formData.append('files', fileItem.file);
-
-        return this.http.post(this.url, formData)
-            .do(() => this.downloadLinkVisible = true)
-            .map(r => fileItem);
-
-    }
-
     private populateFileItemList(fileList: FileList): void {
         Array.from(fileList).forEach(file => {
             const fileItem: FileItem = new FileItem();
             fileItem.file = file;
             fileItem.name = file.name;
-            this.fileItemList.push(fileItem);
+
+            const fileExtension = this.getFileExtension(fileItem.name);
+            if (this.isFileExtensionValid(fileExtension)) {
+                this.fileItemList.push(fileItem);
+            }
         });
     }
 
@@ -99,5 +129,13 @@ export class UploadComponent implements OnInit {
         if (this.fileItemList.indexOf(fileItem) >= 0) {
             this.fileItemList.splice(this.fileItemList.indexOf(fileItem), 1);
         }
+    }
+
+    private getFileExtension(filename: string) {
+        return '.' + filename.split('.').pop();
+    }
+
+    private isFileExtensionValid(fileExtension: string) {
+        return !!fileExtension && fileExtension === this.accept;
     }
 }

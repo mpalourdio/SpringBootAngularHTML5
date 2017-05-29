@@ -15,6 +15,9 @@ export class UploadComponent implements OnInit {
     multiple: boolean;
 
     @Input()
+    dragAndDrop: boolean;
+
+    @Input()
     name: string;
 
     @Input()

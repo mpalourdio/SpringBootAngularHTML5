@@ -33,7 +33,7 @@ export class FirstComponent implements OnInit {
     }
 
     isInList() {
-        if (this.datalistselection) {
+        if (!!this.datalistselection) {
             const inList = this.datalist.some((a: any) => {
                 return a.name === this.datalistselection;
             });

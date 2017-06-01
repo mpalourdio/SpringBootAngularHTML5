@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -66,5 +67,82 @@ public class ApiController {
         responseHeaders.set("Content-Type", contentType);
 
         return new ResponseEntity<>(fileContent, responseHeaders, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/datalist")
+    public List<DataListOptions> gegetOptions() {
+        List<DataListOptions> result = new LinkedList<>();
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("kiwi", "option1"));
+        result.add(new DataListOptions("Raspberry", "option2"));
+        result.add(new DataListOptions("Cherry", "option3"));
+        result.add(new DataListOptions("kiwi", "option1"));
+
+        return result;
+    }
+
+    public static class DataListOptions {
+
+        public String name;
+        public String value;
+
+        public DataListOptions() {
+        }
+
+        public DataListOptions(final String name, final String value) {
+            this.name = name;
+            this.value = value;
+        }
     }
 }

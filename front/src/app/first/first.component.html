@@ -16,3 +16,32 @@ Spring will forward the requested url to index.html, and angular will do the job
     [uploadButtonLabel]="'Upload files'"
 ></upload>
 
+
+<div class="form-group">
+    <label for="testDataInput" id="testDataInputLabel">Favorite fruit ?</label>
+    <datalist id="list">
+        <select class="form-control"
+                name="testDataInput"
+                aria-labelledby="testDataInputLabel"
+                *ngIf="datalistselection && datalistselection.length > 2"
+        >
+            <option
+                *ngFor="let data of datalist"
+                [value]="data.name"
+                [attr.name]="'name' + i"
+            >
+        </select>
+    </datalist>
+    <small id="testDataInputfallbackLabel" class="form-text">help text</small>
+    <input [ngModel]="datalistselection"
+           (ngModelChange)="datalistselectionChange($event, input)"
+           (focusout)="isInList()"
+           id="testDataInput"
+           class="form-control"
+           name="fruit" list="list"
+           aria-labelledby="testDataInputfallbackLabel"
+    >
+</div>
+
+Your fav.fruit is : {{datalistselection}}
+

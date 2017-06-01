@@ -7,12 +7,36 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
     selector: 'app-first',
     templateUrl: './first.component.html',
     styleUrls: ['./first.component.css']
 })
-export class FirstComponent {
+export class FirstComponent implements OnInit {
+    datalist: string[] = [];
+    datalistselection: string;
+
+    constructor(private http: HttpService) {
+    }
+
+    ngOnInit(): void {
+        this.http.datalist().subscribe(
+            d => this.datalist = d
+        );
+    }
+
+    datalistselectionChange(event: string) {
+        this.datalistselection = event;
+    }
+
+    isInList() {
+        const inList = this.datalist.some((a: any) => {
+            return a.name === this.datalistselection;
+        });
+
+        this.datalistselection = inList ? this.datalistselection : null;
+    }
 }

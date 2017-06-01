@@ -33,10 +33,12 @@ export class FirstComponent implements OnInit {
     }
 
     isInList() {
-        const inList = this.datalist.some((a: any) => {
-            return a.name === this.datalistselection;
-        });
+        if (this.datalistselection) {
+            const inList = this.datalist.some((a: any) => {
+                return a.name === this.datalistselection;
+            });
 
-        this.datalistselection = inList ? this.datalistselection : null;
+            this.datalistselection = inList ? this.datalistselection : null;
+        }
     }
 }

@@ -14,6 +14,8 @@ import { UploadComponent } from '../upload/upload.component';
 import { HttpModule } from '@angular/http';
 import { UploadService } from '../upload/upload.service';
 import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
+import { FormsModule } from '@angular/forms';
+import { HttpService } from '../http.service';
 
 
 describe('FirstComponent', () => {
@@ -23,8 +25,8 @@ describe('FirstComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent, UploadComponent],
-            imports: [HttpModule],
-            providers: [UploadService, HttpInterceptorServiceFactoryProvider]
+            imports: [HttpModule, FormsModule],
+            providers: [UploadService, HttpInterceptorServiceFactoryProvider, HttpService]
         })
             .compileComponents();
     }));

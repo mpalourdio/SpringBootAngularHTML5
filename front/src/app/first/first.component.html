@@ -26,7 +26,7 @@ Spring will forward the requested url to index.html, and angular will do the job
                 *ngIf="datalistselection && datalistselection.length > 2"
         >
             <option
-                *ngFor="let data of datalist"
+                *ngFor="let data of datalist; let i = index"
                 [value]="data.name"
                 [attr.name]="'name' + i"
             >

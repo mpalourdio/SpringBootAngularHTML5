@@ -17,6 +17,7 @@ import { HttpInterceptorService } from 'ng-http-loader/http-interceptor.service'
 
 @Injectable()
 export class HttpService {
+    success: Observable<any>;
 
     constructor(private http: HttpInterceptorService) {
     }
@@ -31,6 +32,15 @@ export class HttpService {
         return this.http.get('api/slowservice')
             .map(this.extractData)
             .catch(this.handleError);
+    }
+
+    runImmutableQuery(): Observable<String[]> {
+        this.success = this.http.get('api/service1')
+            .map(this.extractData)
+            .catch(this.handleError)
+            .publishLast()
+            .refCount();
+        return this.success;
     }
 
     manualObservable(): Observable<String[]> {

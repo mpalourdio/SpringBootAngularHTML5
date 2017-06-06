@@ -60,5 +60,25 @@ export class SecondComponent {
                 error => this.errorMessage = <any>error
             );
     }
+
+    multipleSubscribe() {
+        this.resetFields();
+        const runSuccessQuery = this.httpService.runImmutableQuery();
+
+        runSuccessQuery
+            .subscribe(
+                results => this.successQueryResults = ['fake result'],
+                error => this.errorMessage = <any>error
+            );
+
+        setTimeout(() => {
+            runSuccessQuery
+                .subscribe(
+                    results => this.successQueryResults = results,
+                    error => this.errorMessage = <any>error
+                );
+        }, 2000);
+
+    }
 }
 

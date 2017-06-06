@@ -17,6 +17,8 @@ import { HttpService } from '../http.service';
     styleUrls: ['./second.component.css']
 })
 export class SecondComponent {
+
+    runImmutableQuery: Observable<String[]>;
     upperCased: String[];
     successQueryResults: String[];
     slowQueryResults: String[];
@@ -63,16 +65,18 @@ export class SecondComponent {
 
     multipleSubscribe() {
         this.resetFields();
-        const runSuccessQuery = this.httpService.runImmutableQuery();
+        if (!this.runImmutableQuery) {
+            this.runImmutableQuery = this.httpService.runImmutableQuery();
+        }
 
-        runSuccessQuery
+        this.runImmutableQuery
             .subscribe(
                 results => this.successQueryResults = ['fake result'],
                 error => this.errorMessage = <any>error
             );
 
         setTimeout(() => {
-            runSuccessQuery
+            this.runImmutableQuery
                 .subscribe(
                     results => this.successQueryResults = results,
                     error => this.errorMessage = <any>error
@@ -80,7 +84,7 @@ export class SecondComponent {
         }, 2000);
 
         setTimeout(() => {
-            runSuccessQuery
+            this.runImmutableQuery
                 .subscribe(
                     results => this.successQueryResults = ['fake result2'],
                     error => this.errorMessage = <any>error
@@ -88,7 +92,7 @@ export class SecondComponent {
         }, 4000);
 
         setTimeout(() => {
-            runSuccessQuery
+            this.runImmutableQuery
                 .subscribe(
                     results => this.successQueryResults = results,
                     error => this.errorMessage = <any>error

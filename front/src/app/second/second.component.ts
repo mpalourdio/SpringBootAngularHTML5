@@ -79,6 +79,21 @@ export class SecondComponent {
                 );
         }, 2000);
 
+        setTimeout(() => {
+            runSuccessQuery
+                .subscribe(
+                    results => this.successQueryResults = ['fake result2'],
+                    error => this.errorMessage = <any>error
+                );
+        }, 4000);
+
+        setTimeout(() => {
+            runSuccessQuery
+                .subscribe(
+                    results => this.successQueryResults = results,
+                    error => this.errorMessage = <any>error
+                );
+        }, 6000);
     }
 }
 

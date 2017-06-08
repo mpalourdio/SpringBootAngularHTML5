@@ -21,7 +21,7 @@ This project includes too a custom [http interceptor](https://github.com/mpalour
 
 To test the fully built project, run [SpringBootAngularHTML5Application](src/main/java/com/mpalourdio/html5/SpringBootAngularHTML5Application.java) after an ``mvn clean install``, and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context/path).
 
-If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. Http requests will be correctyl proxyfied to your backend.
+If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. Http requests will be correctly proxyfied to your backend.
 
 The front-end part has been scaffolded with [angular-cli](https://github.com/angular/angular-cli).
 

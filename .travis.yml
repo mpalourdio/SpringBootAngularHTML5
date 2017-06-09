@@ -1,17 +1,18 @@
 dist: trusty
 
+env:
+  global:
+    - NODE_VERSION="6.10.1"
+
 matrix:
   include:
     - language: java
       jdk: openjdk8
-      env:
-        - FRONT=false
-        - NODE_VERSION="6.10.1"
+      env: FRONT=false
+
     - language: node_js
       node_js: $NODE_VERSION
-      env:
-        - FRONT=true
-        - NODE_VERSION="6.10.1"
+      env: FRONT=true
 
 before_install:
   - nvm install $NODE_VERSION

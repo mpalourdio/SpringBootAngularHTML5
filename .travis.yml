@@ -1,18 +1,15 @@
-language: node_js
-node_js:
-  - 6.10.1
-
-before_install:
-  - sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn
-  - wget http://it.apache.contactlab.it/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
-  - tar zxvf apache-maven-3.5.0-bin.tar.gz
-  - chmod +x apache-maven-3.5.0/bin/mvn
-  - export M2_HOME=$PWD/apache-maven-3.5.0
-  - export PATH=$PWD/apache-maven-3.5.0/bin:${PATH}
-
-install:
-  - mvn clean install
-  - cd front
+dist: trusty
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - 6.10.1
+      before_install:
+        - sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+        - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        - sudo apt-get update -qq
+        - sudo apt-get install -y -qq yarn
+        - cd front
+    - language: java
+      jdk:
+        - openjdk8

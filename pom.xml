@@ -93,7 +93,7 @@
                         <id>exec-ngcli-build</id>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <executable>ng</executable>
+                            <executable>front/node_modules/.bin/ng</executable>
                             <arguments>
                                 <argument>build</argument>
                                 <argument>--prod</argument>

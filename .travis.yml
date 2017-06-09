@@ -1,6 +1,9 @@
 dist: trusty
 matrix:
   include:
+    - language: java
+      jdk:
+        - openjdk8
     - language: node_js
       node_js:
         - 6.10.1
@@ -10,6 +13,4 @@ matrix:
         - sudo apt-get update -qq
         - sudo apt-get install -y -qq yarn
         - cd front
-    - language: java
-      jdk:
-        - openjdk8
+

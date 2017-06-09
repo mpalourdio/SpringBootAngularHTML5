@@ -97,6 +97,8 @@
                             <arguments>
                                 <argument>build</argument>
                                 <argument>--prod</argument>
+                                <argument>--progress</argument>
+                                <argument>false</argument>
                                 <argument>--base-href=#context-path#</argument>
                             </arguments>
                         </configuration>

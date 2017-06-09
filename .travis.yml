@@ -1,19 +1,19 @@
 dist: trusty
+
 env:
    NODE_VERSION="6.10.1"
 
-before_install:
-        - nvm install $NODE_VERSION
-        - sudo npm install -g yarn
 matrix:
   include:
     - language: java
       jdk: openjdk8
       before_install:
+        - nvm install $NODE_VERSION
         - sudo npm install -g @angular/cli
     - language: node_js
       node_js:
         - $NODE_VERSION
       before_install:
+        - sudo npm install -g yarn
         - cd front
 

@@ -34,7 +34,7 @@ Spring will forward the requested url to index.html, and angular will do the job
     </datalist>
     <small id="testDataInputfallbackLabel" class="form-text">help text</small>
     <input [ngModel]="datalistselection"
-           (ngModelChange)="datalistselectionChange($event, input)"
+           (ngModelChange)="datalistselectionChange($event)"
            (focusout)="isInList()"
            id="testDataInput"
            class="form-control"

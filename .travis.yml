@@ -1,8 +1,8 @@
+dist: trusty
 matrix:
   include:
     - language: java
-      jdk:
-        - openjdk8
+      jdk: openjdk8
     - language: node_js
       node_js:
         - 6.10.1

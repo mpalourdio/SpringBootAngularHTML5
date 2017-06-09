@@ -28,7 +28,7 @@ export class FirstComponent implements OnInit {
         );
     }
 
-    datalistselectionChange(event: string) {
+    datalistSelectionChange(event: string) {
         this.datalistselection = event;
     }
 

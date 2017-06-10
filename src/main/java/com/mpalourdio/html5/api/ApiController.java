@@ -72,6 +72,7 @@ public class ApiController {
     @GetMapping(path = "/datalist")
     public List<DataListOptions> gegetOptions() {
         final List<DataListOptions> result = new LinkedList<>();
+
         Integer i = 0;
         while (i < 30) {
             result.add(new DataListOptions("kiwi", "option1"));

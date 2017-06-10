@@ -71,63 +71,14 @@ public class ApiController {
 
     @GetMapping(path = "/datalist")
     public List<DataListOptions> gegetOptions() {
-        List<DataListOptions> result = new LinkedList<>();
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("kiwi", "option1"));
-        result.add(new DataListOptions("Raspberry", "option2"));
-        result.add(new DataListOptions("Cherry", "option3"));
-        result.add(new DataListOptions("kiwi", "option1"));
+        final List<DataListOptions> result = new LinkedList<>();
+        Integer i = 0;
+        while (i < 30) {
+            result.add(new DataListOptions("kiwi", "option1"));
+            result.add(new DataListOptions("Raspberry", "option2"));
+            result.add(new DataListOptions("Cherry", "option3"));
+            i++;
+        }
 
         return result;
     }

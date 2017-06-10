@@ -78,7 +78,7 @@
                 <executions>
                     <execution>
                         <id>exec-yarn-install</id>
-                        <phase>prepare-package</phase>
+                        <phase>generate-sources</phase>
                         <configuration>
                             <executable>yarn</executable>
                             <arguments>
@@ -91,7 +91,7 @@
                     </execution>
                     <execution>
                         <id>exec-ngcli-build</id>
-                        <phase>prepare-package</phase>
+                        <phase>generate-sources</phase>
                         <configuration>
                             <executable>front/node_modules/.bin/ng</executable>
                             <arguments>
@@ -118,7 +118,7 @@
                 <executions>
                     <execution>
                         <id>copy-front-dist</id>
-                        <phase>prepare-package</phase>
+                        <phase>process-classes</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>

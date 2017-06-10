@@ -74,7 +74,7 @@ public class ApiController {
         final List<DataListOptions> result = new LinkedList<>();
 
         Integer i = 0;
-        while (i < 30) {
+        while (i < 10) {
             result.add(new DataListOptions("kiwi", "option1"));
             result.add(new DataListOptions("Raspberry", "option2"));
             result.add(new DataListOptions("Cherry", "option3"));

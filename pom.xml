@@ -82,7 +82,7 @@
                         <configuration>
                             <executable>yarn</executable>
                             <arguments>
-                                <argument>install</argument>
+                                <argument>--pure-lockfile</argument>
                             </arguments>
                         </configuration>
                         <goals>

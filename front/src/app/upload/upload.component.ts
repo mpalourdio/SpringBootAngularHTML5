@@ -21,6 +21,9 @@ export class UploadComponent implements OnInit {
     name: string;
 
     @Input()
+    dropZoneText = 'Drop files here';
+
+    @Input()
     url: string;
 
     @Input()

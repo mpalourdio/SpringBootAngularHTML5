@@ -21,7 +21,7 @@
      (dragleave)="onDragleave($event)"
      (dragover)="onDragover($event)"
 >
-    Drop files here
+    {{dropZoneText}}
 </div>
 
 <p *ngFor="let fileItem of fileItemList; let i = index">

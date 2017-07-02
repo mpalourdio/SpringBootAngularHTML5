@@ -25,6 +25,6 @@
 </div>
 
 <p *ngFor="let fileItem of fileItemList; let i = index">
-    {{i +1}}) {{fileItem.name}}
+    {{i + 1}}) {{fileItem.name}}
     <button (click)="removeFileItemFromList(fileItem)">X</button>
 </p>

@@ -6,4 +6,7 @@
     text-align: center;
 }
 
-#files { width:0; height:0; }
+#files {
+    width: 0;
+    height: 0;
+}

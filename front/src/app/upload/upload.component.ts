@@ -9,6 +9,7 @@ import { UploadService } from './upload.service';
 export class UploadComponent implements OnInit {
 
     downloadLinkVisible: boolean;
+
     fileItemList: FileItem[] = [];
 
     @Input()
@@ -16,6 +17,9 @@ export class UploadComponent implements OnInit {
 
     @Input()
     dragAndDrop: boolean;
+
+    @Input()
+    id: string;
 
     @Input()
     name: string;

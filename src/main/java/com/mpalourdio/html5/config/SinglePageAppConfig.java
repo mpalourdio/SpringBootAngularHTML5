@@ -15,14 +15,14 @@ import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.TransformedResource;
 
 import java.io.IOException;
 
 @Configuration
-public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
+public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private static final String API_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
@@ -34,7 +34,7 @@ public class SinglePageAppConfig extends WebMvcConfigurerAdapter {
     private final ResourceProperties resourceProperties;
 
     public SinglePageAppConfig(
-            @Value("${server.contextPath}") final String contextPath,
+            @Value("${server.servlet.context-path}") final String contextPath,
             final ResourceProperties resourceProperties
     ) {
         this.contextPath = contextPath;

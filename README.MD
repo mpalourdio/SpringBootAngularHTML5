@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/mpalourdio/SpringBootAngularHTML5.svg?branch=master)](https://travis-ci.org/mpalourdio/SpringBootAngularHTML5)
 
-Spring Boot 1.5.x and Angular 4.x with HTML 5 router
+nb: Older Spring Boot and Angular versions are available in [branches](https://github.com/mpalourdio/SpringBootAngularHTML5/branches).
+
+Spring Boot 2.x and Angular 4.x with HTML 5 router
 ====================================================
 
 This project provides an example of an Angular single page application, served by ``Tomcat``,
@@ -24,4 +26,3 @@ To test the fully built project, run [SpringBootAngularHTML5Application](src/mai
 If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. Http requests will be correctly proxyfied to your backend.
 
 The front-end part has been scaffolded with [angular-cli](https://github.com/angular/angular-cli).
-

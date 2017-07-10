@@ -32,7 +32,19 @@
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <commons-io.version>2.5</commons-io.version>
+
+        <build.nofront>true</build.nofront>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>front</id>
+            <properties>
+                <build.nofront>false</build.nofront>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -89,6 +101,7 @@
                             <arguments>
                                 <argument>--pure-lockfile</argument>
                             </arguments>
+                            <skip>${build.nofront}</skip>
                         </configuration>
                         <goals>
                             <goal>exec</goal>
@@ -106,6 +119,7 @@
                                 <argument>false</argument>
                                 <argument>--base-href=#context-path#</argument>
                             </arguments>
+                            <skip>${build.nofront}</skip>
                         </configuration>
                         <goals>
                             <goal>exec</goal>

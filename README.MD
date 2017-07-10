@@ -21,7 +21,7 @@ Handling the ``base-href`` dynamically can be tricky too. Here it's done once an
 
 This project includes too a custom [http interceptor](https://github.com/mpalourdio/ng-http-loader). It's useful to show a [loader](https://github.com/tobiasahlin/SpinKit) during long http requests for example.
 
-To test the fully built project, run [SpringBootAngularHTML5Application](src/main/java/com/mpalourdio/html5/SpringBootAngularHTML5Application.java) after an ``mvn clean install``, and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context/path).
+To test the fully built project, run [SpringBootAngularHTML5Application](src/main/java/com/mpalourdio/html5/SpringBootAngularHTML5Application.java) after an ``./mvnw clean install -Pfront``, and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context/path).
 
 If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. Http requests will be correctly proxyfied to your backend.
 

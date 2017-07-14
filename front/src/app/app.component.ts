@@ -16,5 +16,5 @@ import { Spinkit } from 'ng-http-loader/spinkits';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    public Spinkit = Spinkit;
+    public spinkit = Spinkit;
 }

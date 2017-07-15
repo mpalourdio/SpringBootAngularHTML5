@@ -11,11 +11,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FirstComponent } from './first.component';
 import { UploadComponent } from '../upload/upload.component';
-import { HttpModule } from '@angular/http';
 import { UploadService } from '../upload/upload.service';
-import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 describe('FirstComponent', () => {
@@ -25,8 +24,8 @@ describe('FirstComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent, UploadComponent],
-            imports: [HttpModule, FormsModule],
-            providers: [UploadService, HttpInterceptorServiceFactoryProvider, HttpService]
+            imports: [HttpClientModule, FormsModule],
+            providers: [UploadService, HttpService]
         })
             .compileComponents();
     }));

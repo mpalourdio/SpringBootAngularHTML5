@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UploadComponent } from './upload.component';
-import { HttpModule } from '@angular/http';
 import { UploadService } from './upload.service';
-import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UploadComponent', () => {
     let component: UploadComponent;
@@ -12,8 +11,8 @@ describe('UploadComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [UploadComponent],
-            imports: [HttpModule],
-            providers: [UploadService, HttpInterceptorServiceFactoryProvider]
+            imports: [HttpClientModule],
+            providers: [UploadService]
         })
             .compileComponents();
     }));

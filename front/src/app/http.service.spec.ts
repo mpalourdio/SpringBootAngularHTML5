@@ -8,16 +8,14 @@
  */
 
 import { inject, TestBed } from '@angular/core/testing';
-
-import { HttpModule } from '@angular/http';
-import { HttpInterceptorServiceFactoryProvider } from 'ng-http-loader/http-interceptor.service';
 import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HttpServiceService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpModule],
-            providers: [HttpService, HttpInterceptorServiceFactoryProvider]
+            imports: [HttpClientModule],
+            providers: [HttpService]
         });
     });
 

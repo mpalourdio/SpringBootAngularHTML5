@@ -10,8 +10,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { SecondComponent } from './second/second.component';
 import { FirstComponent } from './first/first.component';
@@ -20,6 +18,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { UploadComponent } from './upload/upload.component';
 import { HttpService } from './http.service';
 import { UploadService } from 'app/upload/upload.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -31,13 +30,13 @@ import { UploadService } from 'app/upload/upload.service';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         AppRoutingModule,
         NgHttpLoaderModule,
     ],
     providers: [
         HttpService,
-        UploadService,
+        UploadService
     ],
     bootstrap: [AppComponent]
 })

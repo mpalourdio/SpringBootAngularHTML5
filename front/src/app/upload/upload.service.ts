@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptorService } from 'ng-http-loader/http-interceptor.service';
 import { FileItem } from './file-item';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UploadService {
 
-    constructor(private http: HttpInterceptorService) {
+    constructor(private http: HttpClient) {
     }
 
     doUpload(url: string, fileItem: FileItem): Observable<FileItem> {
@@ -14,10 +14,8 @@ export class UploadService {
         formData.append('files', fileItem.file);
 
         return this.http.post(url, formData)
-            .map(r => fileItem)
             .catch(this.handleError);
     }
-
 
     private handleError(error: Response | any) {
         return Observable.throw(error);

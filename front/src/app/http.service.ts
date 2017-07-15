@@ -10,16 +10,16 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { HttpInterceptorService } from 'ng-http-loader/http-interceptor.service';
 
 @Injectable()
 export class HttpService {
     success: Observable<any>;
 
-    constructor(private http: HttpInterceptorService) {
+    constructor(private http: HttpClient) {
     }
 
     runSuccessQuery(): Observable<String[]> {
@@ -53,12 +53,12 @@ export class HttpService {
     datalist(): Observable<any> {
         return this.http
             .get('api/datalist')
-            .map(r => r.json())
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
     private extractData(res: Response) {
-        return res.json() || {};
+        return res || {};
     }
 
     private handleError(error: Response | any) {

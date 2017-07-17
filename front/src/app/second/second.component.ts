@@ -8,8 +8,9 @@
  */
 
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../http.service';
+import 'rxjs/add/observable/forkJoin';
 
 @Component({
     selector: 'app-second',

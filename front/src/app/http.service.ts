@@ -8,12 +8,13 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/publishLast';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class HttpService {
@@ -57,11 +58,11 @@ export class HttpService {
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
+    private extractData(res: any) {
         return res || {};
     }
 
-    private handleError(error: Response | any) {
+    private handleError(error: HttpErrorResponse | any) {
         return Observable.throw(error);
     }
 }

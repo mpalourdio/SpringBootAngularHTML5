@@ -14,7 +14,7 @@ import { UploadComponent } from '../upload/upload.component';
 import { UploadService } from '../upload/upload.service';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../http.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 describe('FirstComponent', () => {
@@ -24,7 +24,7 @@ describe('FirstComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent, UploadComponent],
-            imports: [HttpClientModule, FormsModule],
+            imports: [HttpClientTestingModule, FormsModule],
             providers: [UploadService, HttpService]
         })
             .compileComponents();

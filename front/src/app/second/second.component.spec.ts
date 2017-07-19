@@ -11,7 +11,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SecondComponent } from './second.component';
 import { HttpService } from '../http.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SecondComponent', () => {
     let component: SecondComponent;
@@ -21,7 +21,7 @@ describe('SecondComponent', () => {
         TestBed.configureTestingModule({
             declarations: [SecondComponent],
             providers: [HttpService],
-            imports: [HttpClientModule],
+            imports: [HttpClientTestingModule],
         })
             .compileComponents();
     }));

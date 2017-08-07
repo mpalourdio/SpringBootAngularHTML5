@@ -1,9 +1,5 @@
 dist: trusty
 
-env:
-  global:
-    - NODE_VERSION="6.10.1"
-
 matrix:
   include:
     - language: java
@@ -11,9 +7,8 @@ matrix:
       env: FRONT=false
 
     - language: node_js
-      node_js: $NODE_VERSION
+      node_js: lts/*
       env: FRONT=true
 
 before_install:
-  - nvm install $NODE_VERSION
   - if [[ $FRONT = 'true' ]]; then cd front; fi

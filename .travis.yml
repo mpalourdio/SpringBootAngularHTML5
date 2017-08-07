@@ -7,9 +7,11 @@ matrix:
       env: FRONT=false
 
     - language: node_js
-      node_js:
-        - lts/*
-        - node
+      node_js: lts/*
+      env: FRONT=true
+
+    - language: node_js
+      node_js: node
       env: FRONT=true
 
 before_install:

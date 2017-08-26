@@ -9,6 +9,7 @@
 
 import { Component } from '@angular/core';
 import { Spinkit } from 'ng-http-loader/spinkits';
+import { PendingInterceptorService } from 'ng-http-loader/pending-interceptor.service';
 
 @Component({
     selector: 'app-root',
@@ -17,4 +18,12 @@ import { Spinkit } from 'ng-http-loader/spinkits';
 })
 export class AppComponent {
     public spinkit = Spinkit;
+
+    constructor(pendingInterceptorService: PendingInterceptorService) {
+        pendingInterceptorService.pendingRequestsStatus.subscribe(pending => {
+            if (!pending) {
+                console.log('No http requests pending anymore');
+            }
+        });
+    }
 }

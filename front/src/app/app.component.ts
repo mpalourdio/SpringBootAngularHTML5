@@ -22,7 +22,7 @@ export class AppComponent {
     constructor(pendingInterceptorService: PendingInterceptorService) {
         pendingInterceptorService.pendingRequestsStatus.subscribe(pending => {
             if (!pending) {
-                console.log('No http requests pending anymore');
+                console.log('No tracked http requests pending anymore');
             }
         });
     }

@@ -34,7 +34,7 @@ public class ApiController {
 
     @GetMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
-        final List<String> results = new ArrayList<>();
+        List<String> results = new ArrayList<>();
         results.add("Hey, I am a response from ApiController");
 
         return new ResponseEntity<>(results, HttpStatus.OK);
@@ -42,14 +42,14 @@ public class ApiController {
 
     @GetMapping(path = "/slowservice")
     public ResponseEntity<List<String>> slowService() throws InterruptedException {
-        final List<String> results = new ArrayList<>();
+        List<String> results = new ArrayList<>();
         results.add("Hey, I am the slow response");
         Thread.sleep(3000);
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
     @PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("files") final MultipartFile files) throws IOException {
+    public String handleFileUpload(@RequestParam("files") MultipartFile files) throws IOException {
         //VERY ugly, make things stateful...Just for quick tests
         fileContent = IOUtils.toByteArray(files.getInputStream());
         contentType = files.getContentType();
@@ -62,7 +62,7 @@ public class ApiController {
 
     @GetMapping("/download")
     public ResponseEntity<byte[]> download() throws IOException {
-        final HttpHeaders responseHeaders = new HttpHeaders();
+        HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setContentDispositionFormData("attachment", fileName);
         responseHeaders.set("Content-Type", contentType);
 
@@ -71,7 +71,7 @@ public class ApiController {
 
     @GetMapping(path = "/datalist")
     public List<DataListOptions> gegetOptions() {
-        final List<DataListOptions> result = new LinkedList<>();
+        List<DataListOptions> result = new LinkedList<>();
 
         Integer i = 0;
         while (i < 10) {
@@ -92,7 +92,7 @@ public class ApiController {
         public DataListOptions() {
         }
 
-        public DataListOptions(final String name, final String value) {
+        public DataListOptions(String name, String value) {
             this.name = name;
             this.value = value;
         }

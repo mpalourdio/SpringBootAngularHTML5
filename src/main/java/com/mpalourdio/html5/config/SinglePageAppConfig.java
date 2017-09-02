@@ -34,15 +34,15 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private final ResourceProperties resourceProperties;
 
     public SinglePageAppConfig(
-            @Value("${server.servlet.context-path}") final String contextPath,
-            final ResourceProperties resourceProperties
+            @Value("${server.servlet.context-path}") String contextPath,
+            ResourceProperties resourceProperties
     ) {
         this.contextPath = contextPath;
         this.resourceProperties = resourceProperties;
     }
 
     @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
                 .addResourceLocations(resourceProperties.getStaticLocations())
                 .setCachePeriod(resourceProperties.getCachePeriod())
@@ -52,14 +52,14 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
-        private TransformedResource transformedResource(final Resource resource) throws IOException {
+        private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
             fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
             return new TransformedResource(resource, fileContent.getBytes());
         }
 
         @Override
-        protected Resource getResource(final String resourcePath, final Resource location) throws IOException {
+        protected Resource getResource(String resourcePath, Resource location) throws IOException {
             Resource resource = location.createRelative(resourcePath);
             if (resource.exists() && resource.isReadable()) {
                 //if the asked resource is index.html, we serve it with the base-href rewritten

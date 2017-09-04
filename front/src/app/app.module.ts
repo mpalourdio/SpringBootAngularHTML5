@@ -36,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     providers: [
         HttpService,
-        UploadService
+        UploadService,
     ],
     bootstrap: [AppComponent]
 })

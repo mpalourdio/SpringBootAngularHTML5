@@ -118,6 +118,7 @@
                                 <argument>--progress</argument>
                                 <argument>false</argument>
                                 <argument>--base-href=#context-path#</argument>
+                                <argument>--build-optimizer</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>
                         </configuration>

@@ -75,7 +75,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
                 return null;
             }
 
-            //we just refreshed a page, no ?
+            //we have just refreshed a page, no ?
             resource = location.createRelative(FRONT_CONTROLLER);
             if (resource.exists() && resource.isReadable()) {
                 return transformedResource(resource);

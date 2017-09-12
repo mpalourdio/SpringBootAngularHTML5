@@ -131,7 +131,7 @@
                 <executions>
                     <execution>
                         <id>copy-front-dist</id>
-                        <phase>process-classes</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>

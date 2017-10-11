@@ -30,7 +30,7 @@ public class ApiController {
     private byte[] fileContent;
     private String fileName;
     private String contentType;
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
@@ -55,7 +55,7 @@ public class ApiController {
         contentType = files.getContentType();
         fileName = files.getOriginalFilename();
 
-        LOG.info(fileName + " sent");
+        logger.info(fileName + " sent");
 
         return fileName;
     }

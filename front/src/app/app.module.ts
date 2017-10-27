@@ -18,7 +18,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { UploadComponent } from './upload/upload.component';
 import { HttpService } from './http.service';
 import { UploadService } from 'app/upload/upload.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        HttpClientXsrfModule,
         AppRoutingModule,
         NgHttpLoaderModule,
     ],

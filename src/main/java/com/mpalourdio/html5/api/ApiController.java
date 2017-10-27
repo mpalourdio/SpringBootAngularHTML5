@@ -32,7 +32,7 @@ public class ApiController {
     private String contentType;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @GetMapping(path = "/service1")
+    @PostMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
         List<String> results = new ArrayList<>();
         results.add("Hey, I am a response from ApiController");
@@ -40,6 +40,7 @@ public class ApiController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"x-requested-with"})
     @GetMapping(path = "/slowservice")
     public ResponseEntity<List<String>> slowService() throws InterruptedException {
         List<String> results = new ArrayList<>();

@@ -9,7 +9,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -24,13 +24,23 @@ export class HttpService {
     }
 
     runSuccessQuery(): Observable<String[]> {
-        return this.http.get('api/service1')
+        return this.http.post(
+            'api/service1',
+            null
+        )
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     runSlowQuery(): Observable<String[]> {
-        return this.http.get('api/slowservice')
+        const headers: HttpHeaders = new HttpHeaders();
+        const httpHeaders = headers.append('x-requested-with', 'XmlHttpRequest');
+
+        return this.http.get('http://localhost:10000/my-context/path/api/slowservice',
+            {
+                'headers': httpHeaders
+            }
+        )
             .map(this.extractData)
             .catch(this.handleError);
     }

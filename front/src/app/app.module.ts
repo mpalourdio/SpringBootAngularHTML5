@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { UploadComponent } from './upload/upload.component';
 import { HttpService } from './http.service';
-import { UploadService } from 'app/upload/upload.service';
+import { UploadService } from './upload/upload.service';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 @NgModule({

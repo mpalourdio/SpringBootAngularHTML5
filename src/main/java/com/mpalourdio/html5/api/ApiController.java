@@ -40,7 +40,7 @@ public class ApiController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"x-requested-with"})
+    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"x-requested-with"}, methods = RequestMethod.GET)
     @GetMapping(path = "/slowservice")
     public ResponseEntity<List<String>> slowService() throws InterruptedException {
         List<String> results = new ArrayList<>();

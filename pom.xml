@@ -7,9 +7,9 @@
     <version>2.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Spring Boot - Angular 4 - HTML5 Router</name>
+    <name>Spring Boot - Angular 5 - HTML5 Router</name>
     <url>https://github.com/mpalourdio/SpringBootAngularHTML5</url>
-    <description>Spring Boot and Angular 4 project with HTML5 router</description>
+    <description>Spring Boot and Angular 5 project with HTML5 router</description>
 
     <scm>
         <developerConnection>scm:git:git@github.com:mpalourdio/SpringBootAngularHTML5.git</developerConnection>

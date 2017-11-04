@@ -2,7 +2,7 @@
 
 NB: Older Spring Boot and Angular versions are available in [branches](https://github.com/mpalourdio/SpringBootAngularHTML5/branches).
 
-Spring Boot 2.x and Angular 4.x with HTML 5 router
+Spring Boot 2.x and Angular 5.x with HTML 5 router
 ====================================================
 
 This project provides an example of an Angular single page application, served by ``Tomcat``,

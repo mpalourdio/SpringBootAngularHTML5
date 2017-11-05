@@ -14,14 +14,10 @@
     "lib": [
       "es2017",
       "dom"
-    ],
-    "paths": {
-      "@angular/*": [
-        "../node_modules/@angular/*"
-      ],
-      "rxjs/*": [
-        "../node_modules/rxjs/*"
-      ]
-    }
-  }
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/ng-http-loader/*.ts"
+  ]
 }

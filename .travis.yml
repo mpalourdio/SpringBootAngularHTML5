@@ -3,6 +3,7 @@ matrix:
     - language: java
       jdk: openjdk8
       env: FRONT=false
+
     - language: java
       jdk: oraclejdk9
       env: FRONT=false

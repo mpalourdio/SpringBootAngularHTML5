@@ -9,7 +9,7 @@
 
 import { Component } from '@angular/core';
 import { Spinkit } from 'ng-http-loader/spinkits';
-import { PendingInterceptorService } from 'ng-http-loader/pending-interceptor.service';
+import { PendingInterceptorService } from 'ng-http-loader/services/pending-interceptor.service';
 
 @Component({
     selector: 'app-root',

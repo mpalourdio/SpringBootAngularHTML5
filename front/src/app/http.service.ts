@@ -10,11 +10,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/publishLast';
+import { catchError, map, publishLast, refCount, tap } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
+
 
 @Injectable()
 export class HttpService {
@@ -27,9 +25,10 @@ export class HttpService {
         return this.http.post(
             'api/service1',
             null
-        )
-            .map(this.extractData)
-            .catch(this.handleError);
+        ).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
     }
 
     runSlowQuery(): Observable<String[]> {
@@ -40,32 +39,41 @@ export class HttpService {
             {
                 'headers': httpHeaders
             }
-        )
-            .map(this.extractData)
-            .catch(this.handleError);
+        ).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
     }
 
     runImmutableQuery(): Observable<String[]> {
-        this.success = this.http.get('api/service1')
-            .map(this.extractData)
-            .catch(this.handleError)
-            .publishLast()
-            .refCount();
+        this.success = this.http.post(
+            'api/service1',
+            null
+        ).pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+                publishLast(),
+                refCount()
+            );
         return this.success;
     }
 
     manualObservable(): Observable<String[]> {
         return Observable.of(['a', 'b', 'c'])
-            .map(r => r.map(a => a.toUpperCase()))
-            .do(r => console.log(r))
-            .catch(this.handleError);
+            .pipe(
+                map(r => r.map(a => a.toUpperCase())),
+                tap(r => console.log(r)),
+                catchError(this.handleError),
+            );
     }
 
     datalist(): Observable<any> {
         return this.http
             .get('api/datalist')
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            );
     }
 
     private extractData(res: any) {

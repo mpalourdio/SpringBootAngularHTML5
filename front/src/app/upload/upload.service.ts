@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FileItem } from './file-item';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UploadService {

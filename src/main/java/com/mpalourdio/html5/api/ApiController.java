@@ -18,6 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -71,9 +74,11 @@ public class ApiController {
     }
 
     @GetMapping(path = "/datalist")
-    public List<DataListOptions> gegetOptions() {
-        List<DataListOptions> result = new LinkedList<>();
+    public List<DataListOptions> getOptions(HttpServletResponse response, HttpServletRequest request) {
+        generateCookie(response, request);
 
+        List<DataListOptions> result = new LinkedList<>();
+        
         Integer i = 0;
         while (i < 10) {
             result.add(new DataListOptions("kiwi", "option1"));
@@ -83,6 +88,13 @@ public class ApiController {
         }
 
         return result;
+    }
+
+    private void generateCookie(HttpServletResponse response, HttpServletRequest request) {
+        Cookie cookie = new Cookie("foo", "bar");
+        cookie.setPath(request.getContextPath());
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
     }
 
     public static class DataListOptions {

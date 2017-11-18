@@ -9,6 +9,10 @@
 
 package com.mpalourdio.html5.api;
 
+import com.blueconic.browscap.Capabilities;
+import com.blueconic.browscap.ParseException;
+import com.blueconic.browscap.UserAgentParser;
+import com.blueconic.browscap.UserAgentService;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,18 +26,22 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/api")
 public class ApiController {
 
+    private final UserAgentParser parser;
     private byte[] fileContent;
     private String fileName;
     private String contentType;
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
+
+    public ApiController() throws IOException, ParseException {
+        parser = new UserAgentService().loadParser();
+    }
 
     @PostMapping(path = "/service1")
     public ResponseEntity<List<String>> consumeMePlease() {
@@ -78,7 +86,7 @@ public class ApiController {
         generateCookie(response, request);
 
         List<DataListOptions> result = new LinkedList<>();
-        
+
         Integer i = 0;
         while (i < 10) {
             result.add(new DataListOptions("kiwi", "option1"));
@@ -88,6 +96,11 @@ public class ApiController {
         }
 
         return result;
+    }
+
+    @GetMapping(path = "/useragent")
+    public Capabilities getOptions(HttpServletRequest request) throws IOException, ParseException {
+        return parser.parse(request.getHeader("user-agent"));
     }
 
     private void generateCookie(HttpServletResponse response, HttpServletRequest request) {

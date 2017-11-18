@@ -22,6 +22,7 @@ export class SecondComponent {
     runImmutableQuery: Observable<String[]>;
     upperCased: String[];
     successQueryResults: String[];
+    userAgentResults: String[];
     slowQueryResults: String[];
     errorMessage: any;
 
@@ -33,6 +34,7 @@ export class SecondComponent {
         this.slowQueryResults = [];
         this.upperCased = [];
         this.errorMessage = [];
+        this.userAgentResults = [];
     }
 
     callServices() {
@@ -50,6 +52,16 @@ export class SecondComponent {
                     this.slowQueryResults = results[1];
                     this.upperCased = results[2];
                 },
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    parseUserAgent() {
+        this.resetFields();
+
+        this.httpService.runUserAgent()
+            .subscribe(
+                results => this.userAgentResults = results,
                 error => this.errorMessage = <any>error
             );
     }

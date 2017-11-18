@@ -3,10 +3,12 @@
 <button (click)="callServices()">Click me to call ALL backend services</button><br>
 <button (click)="singleServiceCall()">Click me to call a single backend services</button><br>
 <button (click)="multipleSubscribe()">Click me to call multiple subscribe</button><br>
+<button (click)="parseUserAgent()">Parse user-agent</button><br>
 <pre>
 {{successQueryResults | json}}
 {{slowQueryResults | json}}
 {{upperCased | json}}
+{{userAgentResults | json}}
 </pre>
 <pre>
 errors (if any) : {{errorMessage | json}}

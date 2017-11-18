@@ -21,6 +21,13 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
+    runUserAgent() {
+        return this.http.get('api/useragent').pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
+    }
+
     runSuccessQuery(): Observable<String[]> {
         return this.http.post(
             'api/service1',
@@ -50,11 +57,11 @@ export class HttpService {
             'api/service1',
             null
         ).pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-                publishLast(),
-                refCount()
-            );
+            map(this.extractData),
+            catchError(this.handleError),
+            publishLast(),
+            refCount()
+        );
         return this.success;
     }
 

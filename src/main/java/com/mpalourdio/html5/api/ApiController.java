@@ -26,7 +26,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -99,7 +101,7 @@ public class ApiController {
     }
 
     @GetMapping(path = "/useragent")
-    public Capabilities getOptions(HttpServletRequest request) throws IOException, ParseException {
+    public Capabilities getOptions(HttpServletRequest request) {
         return parser.parse(request.getHeader("user-agent"));
     }
 

@@ -45,7 +45,6 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
                 .addResourceLocations(resourceProperties.getStaticLocations())
-                .setCachePeriod(resourceProperties.getCachePeriod())
                 .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
     }

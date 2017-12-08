@@ -9,7 +9,7 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[{package.json,.angular-cli.json,tslint.json,tsconfig.json,karma.conf.js}]
+[{package.json,.angular-cli.json,tslint.json,karma.conf.js,tsconfig*.json}]
 indent_style = space
 indent_size = 2
 

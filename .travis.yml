@@ -13,7 +13,7 @@ matrix:
       env: FRONT=false
 
     - language: node_js
-      node_js: 6.12.0
+      node_js: 6.12.2
       env: FRONT=true
 
     - language: node_js

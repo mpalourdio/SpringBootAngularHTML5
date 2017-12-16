@@ -75,7 +75,7 @@ public class ApiController {
     }
 
     @GetMapping("/download")
-    public ResponseEntity<byte[]> download() throws IOException {
+    public ResponseEntity<byte[]> download() {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setContentDispositionFormData("attachment", fileName);
         responseHeaders.set("Content-Type", contentType);

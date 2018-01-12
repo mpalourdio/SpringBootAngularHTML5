@@ -1,3 +1,4 @@
+sudo: required
 matrix:
   include:
     - language: java

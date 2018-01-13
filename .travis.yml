@@ -14,7 +14,7 @@ matrix:
       env: FRONT=false
 
     - language: node_js
-      node_js: 6.12.2
+      node_js: 6.12.3
       env: FRONT=true
 
     - language: node_js

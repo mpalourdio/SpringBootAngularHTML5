@@ -35,6 +35,7 @@
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.7</checkstyle.version>
         <maven-checkstyle-plugin.configLocation>https://raw.githubusercontent.com/mpalourdio/configuration/master/checkstyle.xml</maven-checkstyle-plugin.configLocation>
+        <spring-boot-properties-migrator.version>2.0.0.BUILD-SNAPSHO</spring-boot-properties-migrator.version>
     </properties>
 
     <profiles>
@@ -60,6 +61,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-properties-migrator</artifactId>
+            <version>${spring-boot-properties-migrator.version}T</version>
         </dependency>
         <dependency>
             <groupId>com.blueconic</groupId>

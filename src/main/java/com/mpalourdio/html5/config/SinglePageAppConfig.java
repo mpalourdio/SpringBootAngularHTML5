@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.TransformedResource;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -52,11 +53,9 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
-        public static final String DIRECTORY_SEPARATOR = "/";
-
         private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + DIRECTORY_SEPARATOR);
+            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + File.separator);
             return new TransformedResource(resource, fileContent.getBytes());
         }
 
@@ -73,7 +72,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
             }
 
             //do not serve a Resource on an reserved URI
-            if ((DIRECTORY_SEPARATOR + resourcePath).startsWith(API_PATH)) {
+            if ((File.separator + resourcePath).startsWith(API_PATH)) {
                 return null;
             }
 

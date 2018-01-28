@@ -20,6 +20,7 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.TransformedResource;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class SinglePageAppConfig implements WebMvcConfigurer {
@@ -28,7 +29,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
     private static final String CONTEXT_PATH_PLACEHOLDER = "#context-path#";
-    private static final String FRONT_CONTROLLER_ENCODING = "UTF-8";
+    private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
 
     private final String contextPath;
     private final ResourceProperties resourceProperties;

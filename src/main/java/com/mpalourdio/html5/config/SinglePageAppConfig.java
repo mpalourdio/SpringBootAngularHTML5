@@ -56,7 +56,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
         private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
+            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + URL_SEPARATOR);
             return new TransformedResource(resource, fileContent.getBytes());
         }
 

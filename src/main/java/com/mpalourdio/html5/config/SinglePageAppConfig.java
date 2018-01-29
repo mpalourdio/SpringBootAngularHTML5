@@ -52,6 +52,8 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
+        public static final String URL_SEPARATOR = "/";
+
         private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
             fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + "/");
@@ -71,7 +73,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
             }
 
             //do not serve a Resource on an reserved URI
-            if (("/" + resourcePath).startsWith(API_PATH)) {
+            if ((URL_SEPARATOR + resourcePath).startsWith(API_PATH)) {
                 return null;
             }
 

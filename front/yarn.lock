@@ -4343,9 +4343,9 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-ng-http-loader@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-0.7.1.tgz#71e4574c3488968a3cd338175ede5f59eae17b32"
+ng-http-loader@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-0.8.0.tgz#a382ca495c739b46806188cbcb5532233c675b5c"
 
 no-case@^2.2.0:
   version "2.3.2"

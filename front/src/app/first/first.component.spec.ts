@@ -15,6 +15,7 @@ import { UploadService } from '../upload/upload.service';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../http.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
 
 
 describe('FirstComponent', () => {
@@ -25,7 +26,7 @@ describe('FirstComponent', () => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent, UploadComponent],
             imports: [HttpClientTestingModule, FormsModule],
-            providers: [UploadService, HttpService]
+            providers: [UploadService, HttpService, SpinnerVisibilityService]
         })
             .compileComponents();
     }));

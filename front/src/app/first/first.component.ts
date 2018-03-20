@@ -44,10 +44,10 @@ export class FirstComponent implements OnInit {
     }
 
     toggleSpinner() {
-        this.visibilityService.visibilitySubject.next(true);
+        this.visibilityService.show();
 
         setTimeout(() => {
-            this.visibilityService.visibilitySubject.next(false);
+            this.visibilityService.hide();
         }, 2000);
     }
 }

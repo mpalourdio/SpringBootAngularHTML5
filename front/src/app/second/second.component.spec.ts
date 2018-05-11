@@ -7,11 +7,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SecondComponent } from './second.component';
-import { HttpService } from '../http.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpService } from '../http.service';
+import { SecondComponent } from './second.component';
 
 describe('SecondComponent', () => {
     let component: SecondComponent;

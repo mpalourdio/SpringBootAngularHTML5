@@ -7,18 +7,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { SecondComponent } from './second/second.component';
-import { FirstComponent } from './first/first.component';
-import { AppRoutingModule } from './app.routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
-import { UploadComponent } from './upload/upload.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
+import { FirstComponent } from './first/first.component';
 import { HttpService } from './http.service';
+import { SecondComponent } from './second/second.component';
+import { UploadComponent } from './upload/upload.component';
 import { UploadService } from './upload/upload.service';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { FileItem } from './file-item';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/catch';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { FileItem } from './file-item';
 
 @Injectable()
 export class UploadService {
@@ -14,11 +14,11 @@ export class UploadService {
         const formData = new FormData();
         formData.append('files', fileItem.file);
 
-        return this.http.post(url, formData)
-            .catch(this.handleError);
+        return this.http.post<FileItem>(url, formData)
+            .pipe(catchError(this.handleError));
     }
 
-    private handleError(error: Response | any) {
-        return Observable.throw(error);
+    private handleError(error: Response | any): Observable<never> {
+        return throwError(error);
     }
 }

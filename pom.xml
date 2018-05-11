@@ -123,14 +123,9 @@
                         <id>exec-ngcli-build</id>
                         <phase>prepare-package</phase>
                         <configuration>
-                            <executable>front/node_modules/.bin/ng</executable>
+                            <executable>yarn</executable>
                             <arguments>
-                                <argument>build</argument>
-                                <argument>--prod</argument>
-                                <argument>--progress</argument>
-                                <argument>false</argument>
-                                <argument>--base-href=#context-path#</argument>
-                                <argument>--build-optimizer</argument>
+                                <argument>buildprod</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>
                         </configuration>
@@ -157,7 +152,7 @@
                             <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist</directory>
+                                    <directory>front/dist/front</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

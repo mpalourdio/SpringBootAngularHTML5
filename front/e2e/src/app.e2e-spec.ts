@@ -7,8 +7,8 @@ describe('front App', () => {
     page = new FrontPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should do things', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Favorite fruit ?');
   });
 });

@@ -1,8 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UploadComponent } from './upload.component';
 import { UploadService } from './upload.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UploadComponent', () => {
     let component: UploadComponent;

@@ -7,15 +7,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FirstComponent } from './first.component';
+import { FormsModule } from '@angular/forms';
+import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
+import { HttpService } from '../http.service';
 import { UploadComponent } from '../upload/upload.component';
 import { UploadService } from '../upload/upload.service';
-import { FormsModule } from '@angular/forms';
-import { HttpService } from '../http.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
+import { FirstComponent } from './first.component';
 
 
 describe('FirstComponent', () => {

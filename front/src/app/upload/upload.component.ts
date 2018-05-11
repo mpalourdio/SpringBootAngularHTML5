@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileItem } from './file-item';
 import { UploadService } from './upload.service';
+
 @Component({
     selector: 'upload',
     templateUrl: './upload.component.html',

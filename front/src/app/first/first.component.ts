@@ -8,8 +8,8 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
 import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
+import { HttpService } from '../http.service';
 
 @Component({
     selector: 'app-first',

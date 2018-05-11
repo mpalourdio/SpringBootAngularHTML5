@@ -7,12 +7,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, publishLast, refCount, tap } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
-
 
 @Injectable()
 export class HttpService {
@@ -21,7 +19,7 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    runUserAgent() {
+    runUserAgent(): Observable<any> {
         return this.http.get('api/useragent').pipe(
             map(this.extractData),
             catchError(this.handleError)
@@ -66,7 +64,7 @@ export class HttpService {
     }
 
     manualObservable(): Observable<String[]> {
-        return Observable.of(['a', 'b', 'c'])
+        return of(['a', 'b', 'c'])
             .pipe(
                 map(r => r.map(a => a.toUpperCase())),
                 tap(r => console.log(r)),
@@ -87,7 +85,7 @@ export class HttpService {
         return res || {};
     }
 
-    private handleError(error: HttpErrorResponse | any) {
-        return Observable.throw(error);
+    private handleError(error: HttpErrorResponse | any): Observable<never> {
+        return throwError(error);
     }
 }

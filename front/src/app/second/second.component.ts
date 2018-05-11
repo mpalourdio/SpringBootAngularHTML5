@@ -8,9 +8,8 @@
  */
 
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { forkJoin, Observable } from 'rxjs';
 import { HttpService } from '../http.service';
-import 'rxjs/add/observable/forkJoin';
 
 @Component({
     selector: 'app-second',
@@ -40,7 +39,7 @@ export class SecondComponent {
     callServices() {
         this.resetFields();
 
-        Observable.forkJoin([
+        forkJoin([
             this.httpService.runSuccessQuery(),
             this.httpService.runSlowQuery(),
             this.httpService.manualObservable()

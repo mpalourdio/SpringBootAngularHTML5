@@ -14,10 +14,6 @@ matrix:
       env: FRONT=false
 
     - language: node_js
-      node_js: 6.14.1
-      env: FRONT=true
-
-    - language: node_js
       node_js: lts/*
       env: FRONT=true
 

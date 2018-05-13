@@ -9,6 +9,7 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-loader-services.module';
 import { HttpService } from '../http.service';
 import { SecondComponent } from './second.component';
 
@@ -20,7 +21,7 @@ describe('SecondComponent', () => {
         TestBed.configureTestingModule({
             declarations: [SecondComponent],
             providers: [HttpService],
-            imports: [HttpClientTestingModule],
+            imports: [NgHttpLoaderServicesModule, HttpClientTestingModule],
         })
             .compileComponents();
     }));

@@ -16,7 +16,6 @@ import { UploadComponent } from '../upload/upload.component';
 import { UploadService } from '../upload/upload.service';
 import { FirstComponent } from './first.component';
 
-
 describe('FirstComponent', () => {
     let component: FirstComponent;
     let fixture: ComponentFixture<FirstComponent>;

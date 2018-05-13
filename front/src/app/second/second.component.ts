@@ -8,6 +8,7 @@
  */
 
 import { Component } from '@angular/core';
+import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
 import { forkJoin, Observable } from 'rxjs';
 import { HttpService } from '../http.service';
 
@@ -25,7 +26,7 @@ export class SecondComponent {
     slowQueryResults: String[];
     errorMessage: any;
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
 
     private resetFields() {
@@ -110,6 +111,19 @@ export class SecondComponent {
                     error => this.errorMessage = <any>error
                 );
         }, 6000);
+    }
+
+    forceShow() {
+        this.resetFields();
+        this.spinner.show();
+
+        this.httpService.runUserAgent()
+            .subscribe(
+                results => this.userAgentResults = results,
+                error => this.errorMessage = <any>error
+            );
+
+        setTimeout(() => this.spinner.hide(), 5000);
     }
 }
 

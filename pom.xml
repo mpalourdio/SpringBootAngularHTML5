@@ -33,7 +33,7 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.9</checkstyle.version>
+        <checkstyle.version>8.10</checkstyle.version>
         <maven-checkstyle-plugin.configLocation>https://raw.githubusercontent.com/mpalourdio/configuration/master/checkstyle.xml</maven-checkstyle-plugin.configLocation>
         <spring-boot-properties-migrator.version>2.0.1.RELEASE</spring-boot-properties-migrator.version>
     </properties>

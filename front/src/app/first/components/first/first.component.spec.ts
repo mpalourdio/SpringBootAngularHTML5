@@ -9,25 +9,28 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-loader-services.module';
-import { HttpService } from '../http.service';
-import { SecondComponent } from './second.component';
+import { HttpService } from '../../../http.service';
+import { UploadComponent } from '../../../second/components/upload/upload.component';
+import { UploadService } from '../../../second/components/upload/upload.service';
+import { FirstComponent } from './first.component';
 
-describe('SecondComponent', () => {
-    let component: SecondComponent;
-    let fixture: ComponentFixture<SecondComponent>;
+describe('FirstComponent', () => {
+    let component: FirstComponent;
+    let fixture: ComponentFixture<FirstComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [SecondComponent],
-            providers: [HttpService],
-            imports: [NgHttpLoaderServicesModule, HttpClientTestingModule],
+            declarations: [FirstComponent, UploadComponent],
+            imports: [HttpClientTestingModule, FormsModule, NgHttpLoaderServicesModule],
+            providers: [UploadService, HttpService]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(SecondComponent);
+        fixture = TestBed.createComponent(FirstComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

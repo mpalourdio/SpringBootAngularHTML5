@@ -7,27 +7,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-    {
-        path: '',
-        loadChildren: './first/first.module#FirstModule'
-    },
-    {
-        path: 'iam/a/very/long/url',
-        loadChildren: './second/second.module#SecondModule'
-    },
-    {
-        path: '**',
-        redirectTo: ''
-    }
-];
+import { FormsModule } from '@angular/forms';
+import { UploadComponent } from '../second/components/upload/upload.component';
+import { FirstComponent } from './components/first/first.component';
+import { FirstRoutingModule } from './first-routing.module';
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    imports: [
+        CommonModule,
+        FormsModule,
+        FirstRoutingModule,
+    ],
+    declarations: [
+        FirstComponent,
+        UploadComponent,
+    ]
 })
-export class AppRoutingModule {
+export class FirstModule {
 }

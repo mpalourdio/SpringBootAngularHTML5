@@ -9,25 +9,17 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FirstComponent } from './components/first/first.component';
 
 const routes: Routes = [
     {
         path: '',
-        loadChildren: './first/first.module#FirstModule'
-    },
-    {
-        path: 'iam/a/very/long/url',
-        loadChildren: './second/second.module#SecondModule'
-    },
-    {
-        path: '**',
-        redirectTo: ''
+        component: FirstComponent
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class FirstRoutingModule { }

@@ -10,7 +10,7 @@
 import { Component } from '@angular/core';
 import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
 import { forkJoin, Observable } from 'rxjs';
-import { HttpService } from '../http.service';
+import { HttpService } from '../../../http.service';
 
 @Component({
     selector: 'app-second',

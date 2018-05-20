@@ -63,15 +63,13 @@ public class ApiController {
     }
 
     @PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("files") MultipartFile files) throws IOException {
+    public void handleFileUpload(@RequestParam("files") MultipartFile files) throws IOException {
         //VERY ugly, make things stateful...Just for quick tests
         fileContent = IOUtils.toByteArray(files.getInputStream());
         contentType = files.getContentType();
         fileName = files.getOriginalFilename();
 
         logger.info(fileName + " sent");
-
-        return fileName;
     }
 
     @GetMapping("/download")

@@ -8,7 +8,7 @@
  */
 
 import { Component } from '@angular/core';
-import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
+import { SpinnerVisibilityService } from 'ng-http-loader';
 import { forkJoin, Observable } from 'rxjs';
 import { HttpService } from '../../../http.service';
 

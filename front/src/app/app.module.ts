@@ -10,7 +10,7 @@
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HttpService } from './http.service';

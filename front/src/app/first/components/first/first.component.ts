@@ -8,7 +8,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { SpinnerVisibilityService } from 'ng-http-loader/services/spinner-visibility.service';
+import { SpinnerVisibilityService } from 'ng-http-loader';
 import { HttpService } from '../../../http.service';
 
 @Component({

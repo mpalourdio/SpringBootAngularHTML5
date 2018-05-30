@@ -1,2 +1,6 @@
 <router-outlet></router-outlet>
-<spinner [spinner]="spinkit.skWave"></spinner>
+<spinner
+    [spinner]="spinkit.skWave"
+    [debounceDelay]="150"
+    [minDuration]="1000">
+</spinner>

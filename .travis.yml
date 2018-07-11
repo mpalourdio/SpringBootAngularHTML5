@@ -10,7 +10,19 @@ matrix:
       env: FRONT=false
 
     - language: java
+      jdk: openjdk9
+      env: FRONT=false
+
+    - language: java
       jdk: oraclejdk9
+      env: FRONT=false
+
+    - language: java
+      jdk: openjdk10
+      env: FRONT=false
+
+    - language: java
+      jdk: oraclejdk10
       env: FRONT=false
 
     - language: node_js
@@ -22,7 +34,10 @@ matrix:
       env: FRONT=true
 
   allow_failures:
+    - jdk: openjdk9
     - jdk: oraclejdk9
+    - jdk: openjdk10
+    - jdk: oraclejdk10
 
 before_install:
   - if [[ $FRONT = 'true' ]]; then cd front; fi

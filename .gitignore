@@ -1,7 +1,6 @@
 target
 front/node_modules/
 front/dist
-front/bower_components/
 front/coverage/
 front/.sass-cache/
 front/.tmp/

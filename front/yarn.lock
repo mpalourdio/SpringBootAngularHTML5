@@ -4247,9 +4247,9 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-ng-http-loader@^2.0.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-2.3.0.tgz#5c395da9ca338e8c971387964987f93c348a7fd0"
+ng-http-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-3.0.0.tgz#f079ad319de5d67b2b1ff0b3a696921065d45ff7"
   dependencies:
     tslib "^1.9.0"
 

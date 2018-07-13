@@ -19,7 +19,7 @@ export class AppComponent {
     public spinkit = Spinkit;
 
     constructor(private pendingInterceptorService: PendingInterceptorService) {
-        pendingInterceptorService.pendingRequestsStatus.subscribe(pending => {
+        pendingInterceptorService.pendingRequestsStatus$.subscribe(pending => {
             if (!pending) {
                 console.log('No tracked http requests pending anymore');
             }

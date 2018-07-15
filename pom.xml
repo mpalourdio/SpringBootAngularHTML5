@@ -163,7 +163,7 @@
                             <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist</directory>
+                                    <directory>front/dist/front</directory>
                                     <filtering>false</filtering>
                                     <excludes>
                                         <exclude>index.html</exclude>
@@ -183,7 +183,7 @@
                             <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist</directory>
+                                    <directory>front/dist/front</directory>
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>index.html</include>

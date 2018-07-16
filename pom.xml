@@ -154,7 +154,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>copy-no-index</id>
+                        <id>exec-copy-noindex</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -163,18 +163,19 @@
                             <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist/front</directory>
+                                    <directory>front/dist/static</directory>
                                     <filtering>false</filtering>
                                     <excludes>
                                         <exclude>index.html</exclude>
                                         <exclude>assets/*.*</exclude>
+                                        <exclude>favicon.ico</exclude>
                                     </excludes>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy-index</id>
+                        <id>exec-copy-index</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -183,11 +184,12 @@
                             <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist/front</directory>
+                                    <directory>front/dist/static</directory>
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>index.html</include>
                                         <include>assets/*.*</include>
+                                        <exclude>favicon.ico</exclude>
                                     </includes>
                                 </resource>
                             </resources>

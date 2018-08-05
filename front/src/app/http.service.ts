@@ -36,7 +36,7 @@ export class HttpService {
         );
     }
 
-    runSlowQuery(): Observable<String[]> {
+    runSlowQuery(): Promise<any> {
         const headers: HttpHeaders = new HttpHeaders();
         const httpHeaders = headers.append('x-requested-with', 'XmlHttpRequest');
 
@@ -47,7 +47,7 @@ export class HttpService {
         ).pipe(
             map(this.extractData),
             catchError(this.handleError)
-        );
+        ).toPromise();
     }
 
     runImmutableQuery(): Observable<String[]> {

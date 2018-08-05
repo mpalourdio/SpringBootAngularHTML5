@@ -117,13 +117,7 @@ export class SecondComponent {
         this.resetFields();
         this.spinner.show();
 
-        this.httpService.runUserAgent()
-            .subscribe(
-                results => this.userAgentResults = results,
-                error => this.errorMessage = <any>error
-            );
-
-        setTimeout(() => this.spinner.hide(), 5000);
+        this.httpService.runSlowQuery().then(() =>  this.spinner.hide());
     }
 }
 

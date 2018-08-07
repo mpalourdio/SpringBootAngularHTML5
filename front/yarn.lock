@@ -149,12 +149,6 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/http@^6.1.0":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-6.1.1.tgz#9ae2c36c15c793ab82830ecb8e1e69c10ae8dade"
-  dependencies:
-    tslib "^1.9.0"
-
 "@angular/language-service@^6.1.0":
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-6.1.1.tgz#131a320be957a02dcf710d9242bd8e43b7c24c3c"

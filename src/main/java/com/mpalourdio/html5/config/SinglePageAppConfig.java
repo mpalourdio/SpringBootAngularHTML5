@@ -52,12 +52,16 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
-        public static final String URL_SEPARATOR = "/";
+        private static final String URL_SEPARATOR = "/";
 
         private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            fileContent = fileContent.replace(BASE_HREF_PLACEHOLDER, contextPath + URL_SEPARATOR);
+            fileContent = fileContent.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
             return new TransformedResource(resource, fileContent.getBytes());
+        }
+
+        private String buildBaseHref() {
+            return contextPath + URL_SEPARATOR;
         }
 
         @Override

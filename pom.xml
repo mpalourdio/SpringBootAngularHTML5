@@ -189,7 +189,7 @@
                                     <includes>
                                         <include>index.html</include>
                                         <include>assets/*.*</include>
-                                        <exclude>favicon.ico</exclude>
+                                        <include>favicon.ico</include>
                                     </includes>
                                 </resource>
                             </resources>

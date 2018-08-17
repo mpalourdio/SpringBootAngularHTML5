@@ -28,7 +28,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private static final String API_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
-    private static final String CONTEXT_PATH_PLACEHOLDER = "#context-path#";
+    private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
     private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
 
     private final String contextPath;
@@ -56,7 +56,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
         private TransformedResource transformedResource(Resource resource) throws IOException {
             String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            fileContent = fileContent.replace(CONTEXT_PATH_PLACEHOLDER, contextPath + URL_SEPARATOR);
+            fileContent = fileContent.replace(BASE_HREF_PLACEHOLDER, contextPath + URL_SEPARATOR);
             return new TransformedResource(resource, fileContent.getBytes());
         }
 

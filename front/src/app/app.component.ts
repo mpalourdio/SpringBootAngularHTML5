@@ -13,7 +13,7 @@ import { PendingInterceptorService, Spinkit } from 'ng-http-loader';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
     public spinkit = Spinkit;

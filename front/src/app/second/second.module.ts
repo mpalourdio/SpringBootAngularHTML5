@@ -9,7 +9,6 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgHttpLoaderModule } from 'ng-http-loader';
 import { SecondComponent } from './components/second/second.component';
 import { SecondRoutingModule } from './second-routing.module';
 
@@ -17,7 +16,6 @@ import { SecondRoutingModule } from './second-routing.module';
     imports: [
         CommonModule,
         SecondRoutingModule,
-        NgHttpLoaderModule,
     ],
     declarations: [
         SecondComponent,

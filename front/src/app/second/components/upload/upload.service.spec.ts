@@ -15,7 +15,7 @@ describe('UploadService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [UploadService,]
+            providers: [UploadService]
         });
     });
 

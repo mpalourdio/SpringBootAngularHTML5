@@ -13,14 +13,12 @@ import { FormsModule } from '@angular/forms';
 import { UploadComponent } from '../second/components/upload/upload.component';
 import { FirstComponent } from './components/first/first.component';
 import { FirstRoutingModule } from './first-routing.module';
-import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         FirstRoutingModule,
-        NgHttpLoaderModule,
     ],
     declarations: [
         FirstComponent,

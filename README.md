@@ -19,10 +19,10 @@ http error if no RewriteRule is provided by the http server that serve the appli
 
 Handling the ``base-href`` dynamically can be tricky too. Here it's done once and for all by the ResourceResolver.
 
-This project includes too a custom [http interceptor](https://github.com/mpalourdio/ng-http-loader). It's useful to show a [loader](https://github.com/tobiasahlin/SpinKit) during long http requests for example.
+This project includes a custom [http interceptor](https://github.com/mpalourdio/ng-http-loader). It's useful to show a [loader](https://github.com/tobiasahlin/SpinKit) during long HTTP requests for example.
 
 To test the fully built project, run [SpringBootAngularHTML5Application](src/main/java/com/mpalourdio/html5/SpringBootAngularHTML5Application.java) after an ``./mvnw clean install -Pfront``, and point your browser to [http://localhost:10000/my-context/path](http://localhost:10000/my-context/path).
 
-If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. Http requests will be correctly proxyfied to your backend.
+If you want to play with the front part, go to the [front folder](front) and run ``yarn start`` or ``npm start``. HTTP requests will be correctly proxyfied to your backend.
 
 The front-end part has been scaffolded with [angular-cli](https://github.com/angular/angular-cli).

@@ -10,7 +10,7 @@ configured with the ``html5 router``.
 
 The [SinglePageAppConfig](src/main/java/com/mpalourdio/html5/config/SinglePageAppConfig.java) makes the magic here.
 
-The ``base-href`` in configured by the ResourceResolver. It's generated from the value of the application [context-path](src/main/resources/application.properties#L11) at runtime when served by tomcat.
+The ``base-href`` in configured by the ResourceResolver. It's generated from the value of the application's [context-path](src/main/resources/application.properties#L11) at runtime when served by tomcat.
 
 It's useful if you want to serve an Angular application with the ``html5 router``, and avoid the dashed URL.
 

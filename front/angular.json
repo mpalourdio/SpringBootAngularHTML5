@@ -84,7 +84,7 @@
             "preserveSymlinks": true,
             "watch": false,
             "styles": [
-              "styles.css"
+              "styles.scss"
             ],
             "scripts": [],
             "assets": [

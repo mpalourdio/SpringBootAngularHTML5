@@ -154,7 +154,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>exec-copy-noindex-noassests</id>
+                        <id>exec-copy-noindex-nofavicon-noassets</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -175,7 +175,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>exec-copy-index-assets</id>
+                        <id>exec-copy-index-favicon-assets</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>

@@ -24,8 +24,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "preserveSymlinks": true,
             "assets": [
-              "src/favicon.ico",
-              "src/static/assets",
+              "src/static",
               {
                 "glob": "**/*.eot",
                 "input": "./node_modules/font-awesome/fonts",
@@ -98,8 +97,7 @@
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/static"
             ]
           }
         },

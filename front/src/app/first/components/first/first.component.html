@@ -51,3 +51,11 @@ Your fav.fruit is : {{datalistselection}}
 <br>
 <span (click)="toggleSpinner()" style="cursor: pointer">Click me to show the spinner</span>
 
+<br>
+<!-- https://angular.io/guide/user-input#get-user-input-from-a-template-reference-variable>
+application : <input #searchField (keyup)="0" /><br>
+<p>{{searchField.value}}</p>
+-->
+<hr>
+Filter the applications list : <input type="text" name="searchField" id="searchField" [(ngModel)]="searchField"/><br>
+<app-child [application]="searchField"></app-child>

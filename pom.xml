@@ -136,7 +136,7 @@
                         <configuration>
                             <executable>yarn</executable>
                             <arguments>
-                                <argument>buildprod</argument>
+                                <argument>build:prod</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>
                         </configuration>

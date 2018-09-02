@@ -6,7 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "buildprod": "ng build --prod && gzipper ./dist",
+    "gzip": "gzipper ./dist",
+    "build:prod": "yarn build --prod && yarn gzip",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

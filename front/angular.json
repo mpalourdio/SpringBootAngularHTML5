@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "front"
+  "defaultProject": "front",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

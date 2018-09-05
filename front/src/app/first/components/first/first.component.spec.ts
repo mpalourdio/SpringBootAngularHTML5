@@ -8,13 +8,11 @@
  */
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { HttpService } from '../../../http.service';
 import { UploadComponent } from '../../../second/components/upload/upload.component';
 import { UploadService } from '../../../second/components/upload/upload.service';
-import { ChildComponent } from '../child/child.component';
 import { FirstComponent } from './first.component';
 
 describe('FirstComponent', () => {
@@ -23,7 +21,7 @@ describe('FirstComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FirstComponent, UploadComponent, ChildComponent],
+            declarations: [FirstComponent, UploadComponent],
             imports: [HttpClientTestingModule, FormsModule],
             providers: [UploadService, HttpService]
         })
@@ -39,27 +37,4 @@ describe('FirstComponent', () => {
     it('should create a component instance', () => {
         expect(component).toBeTruthy();
     });
-
-
-    it('should filter the array of the child element', fakeAsync(() => {
-        const childValue = 'm';
-        dispatchInputEventOnElement('#searchField', childValue);
-
-        const tableCell = fixture
-            .debugElement
-            .query(By.css('#mytable'))
-            .nativeElement;
-
-        expect(tableCell.rows[0].cells[0].innerHTML).toBe('mega');
-    }));
-
-    function dispatchInputEventOnElement(selector: string, value: string) {
-
-        const input = fixture.debugElement.query(By.css(selector)).nativeElement;
-        input.value = value;
-
-        input.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        tick();
-    }
 });

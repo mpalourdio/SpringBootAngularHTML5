@@ -19,7 +19,6 @@ import { HttpService } from '../../../http.service';
 export class FirstComponent implements OnInit {
     datalist: string[] = [];
     datalistselection: string;
-    searchField: string;
 
     constructor(private http: HttpService, private visibilityService: SpinnerVisibilityService) {
     }

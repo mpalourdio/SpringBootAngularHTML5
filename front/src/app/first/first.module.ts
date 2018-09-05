@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UploadComponent } from '../second/components/upload/upload.component';
-import { ChildComponent } from './components/child/child.component';
 import { FirstComponent } from './components/first/first.component';
 import { FirstRoutingModule } from './first-routing.module';
 
@@ -23,7 +22,6 @@ import { FirstRoutingModule } from './first-routing.module';
     ],
     declarations: [
         FirstComponent,
-        ChildComponent,
         UploadComponent,
     ]
 })

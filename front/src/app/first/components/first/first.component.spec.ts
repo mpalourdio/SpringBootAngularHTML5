@@ -49,7 +49,6 @@ describe('FirstComponent', () => {
             .debugElement
             .query(By.css('#mytable'))
             .nativeElement;
-        console.log(tableCell.rows[0].cells[0].innerHTML);
 
         expect(tableCell.rows[0].cells[0].innerHTML).toBe('mega');
     }));

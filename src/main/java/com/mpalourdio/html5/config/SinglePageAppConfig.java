@@ -10,7 +10,7 @@
 package com.mpalourdio.html5.config;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.TransformedResource;
 
+import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -31,14 +32,15 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
     private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
 
-    private final String contextPath;
+    private final ServletContext servletContext;
     private final ResourceProperties resourceProperties;
 
+    @Autowired
     public SinglePageAppConfig(
-            @Value("${server.servlet.context-path}") String contextPath,
+            ServletContext servletContext,
             ResourceProperties resourceProperties
     ) {
-        this.contextPath = contextPath;
+        this.servletContext = servletContext;
         this.resourceProperties = resourceProperties;
     }
 
@@ -61,7 +63,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         }
 
         private String buildBaseHref() {
-            return contextPath + URL_SEPARATOR;
+            return servletContext.getContextPath() + URL_SEPARATOR;
         }
 
         @Override

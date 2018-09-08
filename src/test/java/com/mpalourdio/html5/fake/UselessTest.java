@@ -1,4 +1,4 @@
-package com.mpalourdio.html5.config;
+package com.mpalourdio.html5.fake;
 
 import org.junit.Assert;
 import org.junit.Test;

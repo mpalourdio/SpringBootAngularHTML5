@@ -10,7 +10,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UploadComponent } from '../second/components/upload/upload.component';
 import { FirstComponent } from './components/first/first.component';
 import { FirstRoutingModule } from './first-routing.module';
 
@@ -22,7 +21,6 @@ import { FirstRoutingModule } from './first-routing.module';
     ],
     declarations: [
         FirstComponent,
-        UploadComponent,
     ]
 })
 export class FirstModule {

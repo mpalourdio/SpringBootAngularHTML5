@@ -29,11 +29,6 @@
                 "glob": "**/*.eot",
                 "input": "./node_modules/font-awesome/fonts",
                 "output": "/static/assets/font-awesome/fonts"
-              },
-              {
-                "glob": "page_white_visualstudio.png",
-                "input": "./node_modules/serve-index/public/icons",
-                "output": "/static/assets/icons"
               }
             ],
             "styles": [

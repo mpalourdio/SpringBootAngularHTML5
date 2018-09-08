@@ -11,8 +11,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../../../http.service';
-import { UploadComponent } from '../../../second/components/upload/upload.component';
-import { UploadService } from '../../../second/components/upload/upload.service';
 import { FirstComponent } from './first.component';
 
 describe('FirstComponent', () => {
@@ -21,9 +19,9 @@ describe('FirstComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FirstComponent, UploadComponent],
+            declarations: [FirstComponent],
             imports: [HttpClientTestingModule, FormsModule],
-            providers: [UploadService, HttpService]
+            providers: [HttpService]
         })
             .compileComponents();
     }));

@@ -1,52 +1,5 @@
-<a routerLink="/iam/a/very/long/url">I am a very long fragmented uri - click me</a><br/>
+<a routerLink="/iam/a/very/long/url">I am a very long url - click me</a><br/>
 <i class=" fa fa-angle-down"></i>
 Spring will forward the requested url to index.html, and angular will do the job.<br/><br/>
-<img src="static/assets/icons/page_white_visualstudio.png">
-<a href="static/assets/font-awesome/fonts/fontawesome-webfont.eot">dl a font from node_modules</a><br/>
-<a href="static/assets/test.txt">dl a project asset</a>
-<br>
-<br>
-<br>
-<upload
-    [dragAndDrop]="true"
-    [name]="'files'"
-    [url]="'api/upload'"
-    [multiple]="true"
-    [accept]="'.pdf'"
-    [chooseButtonLabel]="'Choose files to upload or D&D them below'"
-    [uploadButtonLabel]="'Upload files'"
-></upload>
-
-
-<div class="form-group">
-    <label for="testDataInput" id="testDataInputLabel">Favorite fruit ?</label>
-    <datalist id="list">
-        <select class="form-control"
-                name="testDataInput"
-                aria-labelledby="testDataInputLabel"
-                *ngIf="datalistselection && datalistselection.length > 2"
-        >
-            <option
-                *ngFor="let data of datalist; let i = index"
-                [value]="data.name"
-                [attr.name]="'name' + i"
-            >
-        </select>
-    </datalist>
-    <small id="testDataInputfallbackLabel" class="form-text">help text</small>
-    <input [ngModel]="datalistselection"
-           (ngModelChange)="datalistSelectionChange($event)"
-           (focusout)="isInList()"
-           id="testDataInput"
-           class="form-control"
-           name="fruit" list="list"
-           aria-labelledby="testDataInputfallbackLabel"
-           autocomplete="off"
-    >
-</div>
-
-Your fav.fruit is : {{datalistselection}}
-<br>
-<br>
-<br>
-<span (click)="toggleSpinner()" style="cursor: pointer">Click me to show the spinner</span>
+<a href="static/assets/font-awesome/fonts/fontawesome-webfont.eot">Download a file from node_modules</a><br/>
+<a href="static/assets/test.txt">Download a project asset</a>

@@ -9,7 +9,7 @@
 
 import { Component } from '@angular/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { HttpService } from '../../../http.service';
 
 @Component({
@@ -19,105 +19,60 @@ import { HttpService } from '../../../http.service';
 })
 export class SecondComponent {
 
-    runImmutableQuery: Observable<String[]>;
-    upperCased: String[];
-    successQueryResults: String[];
-    userAgentResults: String[];
-    slowQueryResults: String[];
-    errorMessage: any;
+    public fastQueryResult: String[];
+    public slowQueryResult: String[];
+    public errorMessage: any;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
 
-    private resetFields() {
-        this.successQueryResults = [];
-        this.slowQueryResults = [];
-        this.upperCased = [];
-        this.errorMessage = [];
-        this.userAgentResults = [];
+    private resetFields(): void {
+        this.fastQueryResult = undefined;
+        this.slowQueryResult = undefined;
+        this.errorMessage = undefined;
     }
 
-    callServices() {
+    public callAllQueries(): void {
         this.resetFields();
 
         forkJoin([
-            this.httpService.runSuccessQuery(),
+            this.httpService.runFastQuery(),
             this.httpService.runSlowQuery(),
-            this.httpService.manualObservable()
         ])
             .subscribe(
                 results => {
                     console.log(results);
-                    this.successQueryResults = results[0];
-                    this.slowQueryResults = results[1];
-                    this.upperCased = results[2];
+                    this.fastQueryResult = results[0];
+                    this.slowQueryResult = results[1];
                 },
                 error => this.errorMessage = <any>error
             );
     }
 
-    parseUserAgent() {
+    public fastQuery(): void {
         this.resetFields();
 
-        this.httpService.runUserAgent()
+        this.httpService.runFastQuery()
             .subscribe(
-                results => this.userAgentResults = results,
+                results => this.fastQueryResult = results,
                 error => this.errorMessage = <any>error
             );
     }
 
-    singleServiceCall() {
+    public slowQuery(): void {
         this.resetFields();
 
-        this.httpService.runSuccessQuery()
+        this.httpService.runSlowQuery()
             .subscribe(
-                results => this.successQueryResults = results,
+                results => this.slowQueryResult = results,
                 error => this.errorMessage = <any>error
             );
     }
 
-    multipleSubscribe() {
-        this.resetFields();
-        if (!this.runImmutableQuery) {
-            this.runImmutableQuery = this.httpService.runImmutableQuery();
-        }
-
-        this.runImmutableQuery
-            .subscribe(
-                results => this.successQueryResults = ['fake result'],
-                error => this.errorMessage = <any>error
-            );
-
-        setTimeout(() => {
-            this.runImmutableQuery
-                .subscribe(
-                    results => this.successQueryResults = results,
-                    error => this.errorMessage = <any>error
-                );
-        }, 2000);
-
-        setTimeout(() => {
-            this.runImmutableQuery
-                .subscribe(
-                    results => this.successQueryResults = ['fake result2'],
-                    error => this.errorMessage = <any>error
-                );
-        }, 4000);
-
-        setTimeout(() => {
-            this.runImmutableQuery
-                .subscribe(
-                    results => this.successQueryResults = results,
-                    error => this.errorMessage = <any>error
-                );
-        }, 6000);
-    }
-
-    forceShow() {
+    public forceSpinner(): void {
         this.resetFields();
         this.spinner.show();
-
-        this.httpService.runSlowQuery().then(() =>  this.spinner.hide());
+        this.httpService.runSlowQuery().subscribe(() => this.spinner.hide());
     }
 }
 

@@ -13,7 +13,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { HttpService } from './http.service';
 
 @NgModule({
     declarations: [
@@ -25,9 +24,6 @@ import { HttpService } from './http.service';
         HttpClientXsrfModule,
         AppRoutingModule,
         NgHttpLoaderModule,
-    ],
-    providers: [
-        HttpService,
     ],
     bootstrap: [AppComponent]
 })

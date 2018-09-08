@@ -7,47 +7,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
-import { SpinnerVisibilityService } from 'ng-http-loader';
-import { HttpService } from '../../../http.service';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-first',
     templateUrl: './first.component.html',
     styleUrls: ['./first.component.scss']
 })
-export class FirstComponent implements OnInit {
-    datalist: string[] = [];
-    datalistselection: string;
-
-    constructor(private http: HttpService, private visibilityService: SpinnerVisibilityService) {
-    }
-
-    ngOnInit(): void {
-        this.http.datalist().subscribe(
-            d => this.datalist = d
-        );
-    }
-
-    datalistSelectionChange(event: string) {
-        this.datalistselection = event;
-    }
-
-    isInList() {
-        if (!!this.datalistselection) {
-            const inList = this.datalist.some((a: any) => {
-                return a.name === this.datalistselection;
-            });
-
-            this.datalistselection = inList ? this.datalistselection : null;
-        }
-    }
-
-    toggleSpinner() {
-        this.visibilityService.show();
-
-        setTimeout(() => {
-            this.visibilityService.hide();
-        }, 2000);
-    }
+export class FirstComponent {
 }

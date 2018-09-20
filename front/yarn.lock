@@ -4011,9 +4011,9 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-ng-http-loader@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-3.0.0.tgz#f079ad319de5d67b2b1ff0b3a696921065d45ff7"
+ng-http-loader@^3.1.0-beta.3:
+  version "3.1.0-beta.3"
+  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-3.1.0-beta.3.tgz#bd5fe9177b653a9be0b2cc0e02405a47da8cb163"
   dependencies:
     tslib "^1.9.0"
 

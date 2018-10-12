@@ -50,4 +50,6 @@ matrix:
     - jdk: oraclejdk11
 
 before_install:
+  - if [[ $FRONT = 'true' ]]; then curl -o- -L https://yarnpkg.com/install.sh | bash -s; fi
+  - if [[ $FRONT = 'true' ]]; then PATH=$HOME/.yarn/bin:$PATH; fi
   - if [[ $FRONT = 'true' ]]; then cd front; fi

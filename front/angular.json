@@ -55,7 +55,14 @@
               "buildOptimizer": true,
               "baseHref": "#base-href#",
               "deployUrl": "static/",
-              "progress": false
+              "progress": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },

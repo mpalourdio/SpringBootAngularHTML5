@@ -9,7 +9,7 @@
 
     <name>Spring Boot - Angular - HTML5 Router</name>
     <url>https://github.com/mpalourdio/SpringBootAngularHTML5</url>
-    <description>Spring Boot and Angular 5 project with HTML5 router</description>
+    <description>Spring Boot and Angular project with HTML5 router</description>
 
     <scm>
         <developerConnection>scm:git:git@github.com:mpalourdio/SpringBootAngularHTML5.git</developerConnection>

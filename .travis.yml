@@ -1,4 +1,5 @@
 matrix:
+  fast_finish: true
   include:
     - language: java
       jdk: openjdk8

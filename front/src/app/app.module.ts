@@ -23,7 +23,7 @@ import { AppRoutingModule } from './app.routing.module';
         HttpClientModule,
         HttpClientXsrfModule,
         AppRoutingModule,
-        NgHttpLoaderModule,
+        NgHttpLoaderModule.forRoot(),
     ],
     bootstrap: [AppComponent]
 })

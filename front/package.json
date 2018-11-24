@@ -24,7 +24,7 @@
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "ng-http-loader": "^3.2.0",
+    "ng-http-loader": "^4.0.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },

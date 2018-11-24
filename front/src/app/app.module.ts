@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgHttpLoaderModule } from 'ng-http-loader';
@@ -21,7 +21,6 @@ import { AppRoutingModule } from './app.routing.module';
     imports: [
         BrowserModule,
         HttpClientModule,
-        HttpClientXsrfModule,
         AppRoutingModule,
         NgHttpLoaderModule.forRoot(),
     ],

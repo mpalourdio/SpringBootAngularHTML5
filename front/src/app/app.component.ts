@@ -8,7 +8,7 @@
  */
 
 import { Component } from '@angular/core';
-import { PendingInterceptorService, Spinkit } from 'ng-http-loader';
+import { PendingInterceptorService } from 'ng-http-loader';
 
 @Component({
     selector: 'app-root',
@@ -16,7 +16,6 @@ import { PendingInterceptorService, Spinkit } from 'ng-http-loader';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    public spinkit = Spinkit;
 
     constructor(private pendingInterceptorService: PendingInterceptorService) {
         pendingInterceptorService.pendingRequestsStatus$.subscribe(pending => {

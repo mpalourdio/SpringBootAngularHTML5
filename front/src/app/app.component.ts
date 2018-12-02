@@ -8,7 +8,7 @@
  */
 
 import { Component } from '@angular/core';
-import { PendingInterceptorService } from 'ng-http-loader';
+import { PendingRequestsInterceptor } from 'ng-http-loader';
 
 @Component({
     selector: 'app-root',
@@ -17,10 +17,10 @@ import { PendingInterceptorService } from 'ng-http-loader';
 })
 export class AppComponent {
 
-    constructor(private pendingInterceptorService: PendingInterceptorService) {
-        pendingInterceptorService.pendingRequestsStatus$.subscribe(pending => {
+    constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {
+        pendingRequestsInterceptor.pendingRequestsStatus$.subscribe(pending => {
             if (!pending) {
-                console.log('No tracked http requests pending anymore');
+                console.log('No HTTP requests pending anymore');
             }
         });
     }

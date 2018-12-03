@@ -72,7 +72,10 @@ export class SecondComponent {
     public forceSpinner(): void {
         this.resetFields();
         this.spinner.show();
-        this.httpService.runSlowQuery().subscribe(() => this.spinner.hide());
+        this.httpService.runSlowQuery().subscribe(
+            () => this.spinner.hide(),
+            () => this.spinner.hide()
+        );
     }
 }
 

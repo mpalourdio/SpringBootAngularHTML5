@@ -7,20 +7,31 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Component } from '@angular/core';
-import { PendingRequestsInterceptor } from 'ng-http-loader';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loader';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+
+    @ViewChild('ngHttpLoader')
+    public ngHttpLoader: NgHttpLoaderComponent;
 
     constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {
         pendingRequestsInterceptor.pendingRequestsStatus$.subscribe(pending => {
             if (!pending) {
                 console.log('No HTTP requests pending anymore');
+            }
+        });
+    }
+
+    ngAfterViewInit(): void {
+        this.ngHttpLoader.isVisible$.subscribe(v => {
+            if (!v) {
+                console.log('No HTTP requests pending anymore (from ngAfterViewInit)');
             }
         });
     }

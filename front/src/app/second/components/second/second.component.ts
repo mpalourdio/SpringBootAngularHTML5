@@ -69,6 +69,16 @@ export class SecondComponent {
             );
     }
 
+    public reactiveQuery(): void {
+        this.resetFields();
+
+        this.httpService.runReactiveQuery()
+            .subscribe(
+                results => this.slowQueryResult = results,
+                error => this.errorMessage = <any>error
+            );
+    }
+
     public forceSpinner(): void {
         this.resetFields();
         this.spinner.show();

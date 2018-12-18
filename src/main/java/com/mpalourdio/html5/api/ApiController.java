@@ -10,7 +10,6 @@
 package com.mpalourdio.html5.api;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -37,18 +36,18 @@ public class ApiController {
         List<String> results = new ArrayList<>();
         results.add("Hey, I am the fast response");
 
-        return new ResponseEntity<>(results, HttpStatus.OK);
+        return ResponseEntity.ok(results);
     }
 
     @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "x-requested-with")
     @GetMapping(path = "/slow-but-reactive")
-    public Mono<List> get() {
+    public Mono<ResponseEntity<List<String>>> slowButReactive() {
 
         return webClient
                 .get()
                 .uri("/slow")
-                .retrieve()
-                .bodyToMono(List.class);
+                .exchange()
+                .flatMap(r -> r.toEntityList(String.class));
     }
 
     @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "x-requested-with")
@@ -58,6 +57,6 @@ public class ApiController {
         List<String> results = new ArrayList<>();
         results.add("Hey, I am the slow cross-origin response (if performed from port 4200)");
 
-        return new ResponseEntity<>(results, HttpStatus.OK);
+        return ResponseEntity.ok(results);
     }
 }

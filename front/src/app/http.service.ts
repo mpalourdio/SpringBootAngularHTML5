@@ -31,7 +31,7 @@ export class HttpService {
     }
 
     public runSlowQuery(): Observable<String[]> {
-        return this.http.get('http://localhost:10000/my-context/path/api/slow-but-reactive',
+        return this.http.get('http://localhost:10000/my-context/path/api/slow',
             {
                 'headers': {
                     'x-requested-with': 'XmlHttpRequest'
@@ -41,6 +41,15 @@ export class HttpService {
             map(this.extractData),
             catchError(this.handleError)
         );
+    }
+
+    public runReactiveQuery(): Observable<String[]> {
+        return this.http
+            .get('api/slow-but-reactive')
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError)
+            );
     }
 
     private extractData(res: any) {

@@ -39,7 +39,6 @@ public class ApiController {
         return ResponseEntity.ok(results);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "x-requested-with")
     @GetMapping(path = "/slow-but-reactive")
     public Mono<ResponseEntity<List<String>>> slowButReactive() {
 

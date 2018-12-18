@@ -10,6 +10,7 @@
 package com.mpalourdio.html5.api;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -46,7 +47,8 @@ public class ApiController {
                 .get()
                 .uri("/slow")
                 .exchange()
-                .flatMap(r -> r.toEntityList(String.class));
+                .flatMap(r -> r.toEntity(new ParameterizedTypeReference<List<String>>() {
+                }));
     }
 
     @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "x-requested-with")

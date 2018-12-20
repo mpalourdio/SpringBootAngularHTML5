@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
-    private static final String API_PATH = "/api";
+    public static final String API_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
     private static final String BASE_HREF_PLACEHOLDER = "#base-href#";

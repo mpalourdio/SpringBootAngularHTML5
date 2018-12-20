@@ -9,6 +9,7 @@
 
 package com.mpalourdio.html5.api;
 
+import com.mpalourdio.html5.config.SinglePageAppConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = SinglePageAppConfig.API_PATH)
 public class ApiController {
 
     private final WebClient webClient;
@@ -29,7 +30,7 @@ public class ApiController {
             @Value("${server.port}") String serverPort,
             @Value("${server.servlet.context-path}") String contexPath
     ) {
-        webClient = WebClient.create("http://localhost:" + serverPort + contexPath + "/api");
+        webClient = WebClient.create("http://localhost:" + serverPort + contexPath + SinglePageAppConfig.API_PATH);
     }
 
     @PostMapping(path = "/fast")

@@ -6,7 +6,7 @@ Spring Boot 2.x and Angular 7.x with HTML 5 router
 ====================================================
 
 This project provides an example of an Angular single page application, served by ``Tomcat``,
-configured with the ``html5 router``.
+configured with the ``html5 router``. Some endpoints have Spring Webflux integration too.
 
 The [SinglePageAppConfig](src/main/java/com/mpalourdio/html5/config/SinglePageAppConfig.java) makes the magic here.
 

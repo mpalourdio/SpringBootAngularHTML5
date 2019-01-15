@@ -1,11 +1,11 @@
 import { browser, element, by } from 'protractor';
 
 export class FrontPage {
-  navigateTo() {
+  public navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  public getParagraphText() {
     return element(by.css('#testDataInputLabel')).getText();
   }
 }

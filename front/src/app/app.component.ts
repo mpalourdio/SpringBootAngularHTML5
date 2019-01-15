@@ -28,7 +28,7 @@ export class AppComponent implements AfterViewInit {
         });
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.ngHttpLoader.isVisible$.subscribe(v => {
             if (!v) {
                 console.log('No HTTP requests pending anymore (from ngAfterViewInit)');

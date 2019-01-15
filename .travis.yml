@@ -1,3 +1,5 @@
+dist: xenial
+
 matrix:
   fast_finish: true
   include:
@@ -6,15 +8,7 @@ matrix:
       env: FRONT=false
 
     - language: java
-      jdk: oraclejdk8
-      env: FRONT=false
-
-    - language: java
       jdk: openjdk9
-      env: FRONT=false
-
-    - language: java
-      jdk: oraclejdk9
       env: FRONT=false
 
     - language: java
@@ -25,24 +19,26 @@ matrix:
       jdk: openjdk11
       env: FRONT=false
 
-    - language: java
-      jdk: oraclejdk11
-      env: FRONT=false
-
     - language: node_js
       node_js: lts/*
       env: FRONT=true
+      addons:
+        apt:
+          packages:
+            - chromium-browser
 
     - language: node_js
       node_js: node
       env: FRONT=true
+      addons:
+        apt:
+          packages:
+            - chromium-browser
 
   allow_failures:
     - jdk: openjdk9
-    - jdk: oraclejdk9
     - jdk: openjdk10
     - jdk: openjdk11
-    - jdk: oraclejdk11
 
 before_install:
   - if [[ $FRONT = 'true' ]]; then curl -o- -L https://yarnpkg.com/install.sh | bash -s; fi

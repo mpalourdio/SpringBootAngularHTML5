@@ -1,5 +1,3 @@
-dist: xenial
-
 matrix:
   fast_finish: true
   include:
@@ -34,18 +32,10 @@ matrix:
     - language: node_js
       node_js: lts/*
       env: FRONT=true
-      addons:
-        apt:
-          packages:
-            - chromium-browser
 
     - language: node_js
       node_js: node
       env: FRONT=true
-      addons:
-        apt:
-          packages:
-            - chromium-browser
 
   allow_failures:
     - jdk: openjdk9

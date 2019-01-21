@@ -19,8 +19,8 @@ import { HttpService } from '../../../http.service';
 })
 export class SecondComponent {
 
-    public fastQueryResult: String[];
-    public slowQueryResult: String[];
+    public fastQueryResult: string[];
+    public slowQueryResult: string[];
     public errorMessage: any;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {

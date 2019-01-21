@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loader';
 
 @Component({
@@ -15,13 +15,16 @@ import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loade
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild('ngHttpLoader')
     public ngHttpLoader: NgHttpLoaderComponent;
 
     constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {
-        pendingRequestsInterceptor.pendingRequestsStatus$.subscribe(pending => {
+    }
+
+    public ngOnInit(): void {
+        this.pendingRequestsInterceptor.pendingRequestsStatus$.subscribe(pending => {
             if (!pending) {
                 console.log('No HTTP requests pending anymore');
             }

@@ -36,7 +36,7 @@
 
         <!-- plugins -->
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.15</checkstyle.version>
+        <checkstyle.version>8.16</checkstyle.version>
         <maven-checkstyle-plugin.configLocation>https://raw.githubusercontent.com/mpalourdio/configuration/master/checkstyle.xml</maven-checkstyle-plugin.configLocation>
     </properties>
 

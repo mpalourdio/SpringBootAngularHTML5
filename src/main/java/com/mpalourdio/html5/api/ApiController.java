@@ -43,13 +43,13 @@ public class ApiController {
 
     @GetMapping(path = "/slow-but-reactive")
     public Mono<ResponseEntity<List<String>>> slowButReactive() {
-
         return webClient
                 .get()
                 .uri("/slow")
                 .exchange()
                 .flatMap(r -> r.toEntity(new ParameterizedTypeReference<List<String>>() {
-                }));
+                }))
+                .onErrorReturn(ResponseEntity.ok(new ArrayList<>()));
     }
 
     @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "x-requested-with")

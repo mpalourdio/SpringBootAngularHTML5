@@ -25,11 +25,13 @@ import java.util.List;
 public class ApiController {
 
     private final WebClient webClient;
+    private final String serverPort;
 
     public ApiController(
             @Value("${server.port}") String serverPort,
             @Value("${server.servlet.context-path}") String contexPath
     ) {
+        this.serverPort = serverPort;
         webClient = WebClient.create("http://localhost:" + serverPort + contexPath + SinglePageAppConfig.API_PATH);
     }
 
@@ -57,7 +59,7 @@ public class ApiController {
     public ResponseEntity<List<String>> slow() throws InterruptedException {
         Thread.sleep(3000);
         List<String> results = new ArrayList<>();
-        results.add("Hey, I am the slow cross-origin response (if performed from port 4200)");
+        results.add("Hey, I am the slow cross-origin response (if performed from a port different from " + serverPort + ")");
 
         return ResponseEntity.ok(results);
     }

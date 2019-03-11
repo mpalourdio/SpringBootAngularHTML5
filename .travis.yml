@@ -19,6 +19,10 @@ matrix:
       jdk: openjdk11
       env: FRONT=false
 
+    - language: java
+      jdk: openjdk-ea
+      env: FRONT=false
+
     - language: node_js
       node_js: lts/*
       env: FRONT=true
@@ -39,6 +43,7 @@ matrix:
     - jdk: openjdk9
     - jdk: openjdk10
     - jdk: openjdk11
+    - jdk: openjdk-ea
 
 before_install:
   - if [[ $FRONT = 'true' ]]; then curl -o- -L https://yarnpkg.com/install.sh | bash -s; fi

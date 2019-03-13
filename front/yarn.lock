@@ -2876,12 +2876,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-gzipper@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gzipper/-/gzipper-2.1.0.tgz#39d9700e07c604d6aec059aa5ec129f610b1215d"
-  integrity sha512-agmc3g71aa1j0sR9Pywr5mPIexQPzRcsZlUqj4hTtAtbIs1IU4Dmsz9Mz1A5WUuEzdAEP6EUxNNiya2W+4BFyA==
-  dependencies:
-    commander "^2.19.0"
+gzipper@1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/gzipper/-/gzipper-1.4.2.tgz#91b8d17ef04d14056827faeb0fe0c3ea164704f7"
+  integrity sha512-HEz5IqjtD2cIaJQ+biObUZK+4s+5bEMNO2Olf4Gxac1RrOpSmbB/lEi+9GlL7RX/vLVGfXX8Nhy2pxT9OiGh2g==
 
 handle-thing@^2.0.0:
   version "2.0.0"

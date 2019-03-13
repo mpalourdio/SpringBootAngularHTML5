@@ -2876,10 +2876,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-gzipper@^1.4.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/gzipper/-/gzipper-1.5.1.tgz#e3b1c91bd4140858c855d74c3e23728fac6c4b05"
-  integrity sha512-W580lefS7iKmUe50XG6t4d9BH0r1HPZGV9WNCVf/eKE7szjgKG9dVj+YBL+JtXrYrP20drlVAKx0nCr2HItv4Q==
+gzipper@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gzipper/-/gzipper-2.1.0.tgz#39d9700e07c604d6aec059aa5ec129f610b1215d"
+  integrity sha512-agmc3g71aa1j0sR9Pywr5mPIexQPzRcsZlUqj4hTtAtbIs1IU4Dmsz9Mz1A5WUuEzdAEP6EUxNNiya2W+4BFyA==
   dependencies:
     commander "^2.19.0"
 

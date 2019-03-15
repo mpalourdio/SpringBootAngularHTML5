@@ -1,15 +1,13 @@
 package com.mpalourdio.html5.fake;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class UselessTest {
 
     @Test
     public void testOneEqualsOne() {
-        Assert.assertEquals(1,1);
+        assertEquals(1, 1);
     }
 }

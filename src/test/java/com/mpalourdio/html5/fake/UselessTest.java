@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UselessTest {
+class UselessTest {
 
     @Test
-    public void testOneEqualsOne() {
+    void testOneEqualsOne() {
         assertEquals(1, 1);
     }
 }

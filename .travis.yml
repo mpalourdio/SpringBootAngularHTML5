@@ -20,6 +20,10 @@ matrix:
       env: FRONT=false
 
     - language: java
+      jdk: openjdk12
+      env: FRONT=false
+
+    - language: java
       jdk: openjdk-ea
       env: FRONT=false
 
@@ -43,6 +47,7 @@ matrix:
     - jdk: openjdk9
     - jdk: openjdk10
     - jdk: openjdk11
+    - jdk: openjdk12
     - jdk: openjdk-ea
 
 before_install:

@@ -11,7 +11,6 @@ package com.mpalourdio.html5.api;
 
 import com.mpalourdio.html5.config.SinglePageAppConfig;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +26,13 @@ import java.util.List;
 public class ApiController {
 
     private final WebClient webClient;
-    private final String serverPort;
+    private final ServerProperties serverProperties;
 
-    public ApiController(
-            @Value("${server.port}") String serverPort,
-            ServerProperties serverProperties
-    ) {
-        this.serverPort = serverPort;
+    public ApiController(ServerProperties serverProperties) {
+        this.serverProperties = serverProperties;
+
         webClient = WebClient.create("http://localhost:"
-                + serverPort
+                + serverProperties.getPort()
                 + StringUtils.stripToEmpty(serverProperties.getServlet().getContextPath())
                 + SinglePageAppConfig.API_PATH);
     }
@@ -64,7 +61,7 @@ public class ApiController {
     public ResponseEntity<List<String>> slow() throws InterruptedException {
         Thread.sleep(3000);
         List<String> results = new ArrayList<>();
-        results.add("Hey, I am the slow cross-origin response (if performed from a port different from " + serverPort + ")");
+        results.add("Hey, I am the slow cross-origin response (if performed from a port different from " + serverProperties.getPort() + ")");
 
         return ResponseEntity.ok(results);
     }

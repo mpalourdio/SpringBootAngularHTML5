@@ -10,8 +10,10 @@
 package com.mpalourdio.html5.config;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Configuration
+@EnableConfigurationProperties(ServerProperties.class)
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
     public static final String API_PATH = "/api";
@@ -31,14 +34,14 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
     private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
 
-    private final String contextPath;
     private final ResourceProperties resourceProperties;
+    private final ServerProperties serverProperties;
 
     public SinglePageAppConfig(
-            @Value("${server.servlet.context-path}") String contextPath,
+            ServerProperties serverProperties,
             ResourceProperties resourceProperties
     ) {
-        this.contextPath = contextPath;
+        this.serverProperties = serverProperties;
         this.resourceProperties = resourceProperties;
     }
 
@@ -61,7 +64,11 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         }
 
         private String buildBaseHref() {
-            return contextPath + URL_SEPARATOR;
+            String contextPath = StringUtils.stripToNull(serverProperties.getServlet().getContextPath());
+
+            return contextPath == null || contextPath.equals(URL_SEPARATOR)
+                    ? URL_SEPARATOR
+                    : contextPath + URL_SEPARATOR;
         }
 
         @Override

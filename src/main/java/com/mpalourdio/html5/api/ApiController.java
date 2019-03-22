@@ -61,7 +61,8 @@ public class ApiController {
     public ResponseEntity<List<String>> slow() throws InterruptedException {
         Thread.sleep(3000);
         List<String> results = new ArrayList<>();
-        results.add("Hey, I am the slow cross-origin response (if performed from a port different from " + serverProperties.getPort() + ")");
+        results.add("Hey, I am the slow cross-origin response "
+                + "(if performed from a port different from " + serverProperties.getPort() + ")");
 
         return ResponseEntity.ok(results);
     }

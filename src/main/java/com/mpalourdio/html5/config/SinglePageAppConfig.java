@@ -75,20 +75,20 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         protected Resource getResource(String resourcePath, Resource location) throws IOException {
             Resource resource = location.createRelative(resourcePath);
             if (resource.exists() && resource.isReadable()) {
-                //if the asked resource is index.html, we serve it with the base-href rewritten
+                //if the asked resource is index.html itself, we serve it with the base-href rewritten
                 if (resourcePath.contains(FRONT_CONTROLLER)) {
                     return transformedResource(resource);
                 }
-
+                //here we serve js, css, etc.
                 return resource;
             }
 
-            //do not serve a Resource on an reserved URI
+            //do not serve a Resource on an ignored path
             if ((URL_SEPARATOR + resourcePath).startsWith(IGNORED_PATH)) {
                 return null;
             }
 
-            //we have just refreshed a page, no ?
+            //we are in the case of an angular route here, we rewrite to index.html
             resource = location.createRelative(FRONT_CONTROLLER);
             if (resource.exists() && resource.isReadable()) {
                 return transformedResource(resource);

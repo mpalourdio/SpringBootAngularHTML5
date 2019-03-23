@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
 @EnableConfigurationProperties(ServerProperties.class)
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
-    public static final String API_PATH = "/api";
+    public static final String IGNORED_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
     private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
@@ -49,7 +49,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
                 .addResourceLocations(resourceProperties.getStaticLocations())
-                .resourceChain(true)
+                .resourceChain(false)
                 .addResolver(new SinglePageAppResourceResolver());
     }
 
@@ -84,7 +84,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
             }
 
             //do not serve a Resource on an reserved URI
-            if ((URL_SEPARATOR + resourcePath).startsWith(API_PATH)) {
+            if ((URL_SEPARATOR + resourcePath).startsWith(IGNORED_PATH)) {
                 return null;
             }
 

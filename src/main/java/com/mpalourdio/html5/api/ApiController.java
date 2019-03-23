@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = SinglePageAppConfig.API_PATH)
+@RequestMapping(path = SinglePageAppConfig.IGNORED_PATH)
 public class ApiController {
 
     private final WebClient webClient;
@@ -34,7 +34,7 @@ public class ApiController {
         webClient = WebClient.create("http://localhost:"
                 + serverProperties.getPort()
                 + StringUtils.stripToEmpty(serverProperties.getServlet().getContextPath())
-                + SinglePageAppConfig.API_PATH);
+                + SinglePageAppConfig.IGNORED_PATH);
     }
 
     @PostMapping(path = "/fast")

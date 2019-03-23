@@ -49,7 +49,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
                 .addResourceLocations(resourceProperties.getStaticLocations())
-                .resourceChain(false)
+                .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
     }
 

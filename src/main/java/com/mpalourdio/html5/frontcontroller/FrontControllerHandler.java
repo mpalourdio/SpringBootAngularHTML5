@@ -18,6 +18,7 @@ import org.springframework.web.servlet.resource.TransformedResource;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 @Service
 public class FrontControllerHandler {
@@ -33,11 +34,20 @@ public class FrontControllerHandler {
         this.serverProperties = serverProperties;
     }
 
-    public TransformedResource buildFrontControllerResource(Resource resource) throws IOException {
-        String fileContent = FileUtils.readFileToString(resource.getFile(), FRONT_CONTROLLER_ENCODING);
-        fileContent = fileContent.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
+    public TransformedResource buildFrontControllerResource(Resource resource) {
+        Objects.requireNonNull(resource, "resource cannot be null");
 
-        return new TransformedResource(resource, fileContent.getBytes(FRONT_CONTROLLER_ENCODING));
+        try {
+            String fileToRead = FileUtils.readFileToString(resource.getFile(), FRONT_CONTROLLER_ENCODING);
+            if (!fileToRead.contains(BASE_HREF_PLACEHOLDER)) {
+                throw new FrontControllerException(FRONT_CONTROLLER + " does not contain " + BASE_HREF_PLACEHOLDER);
+            }
+
+            String fileContent = fileToRead.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
+            return new TransformedResource(resource, fileContent.getBytes(FRONT_CONTROLLER_ENCODING));
+        } catch (IOException e) {
+            throw new FrontControllerException("Unable to perform index.html tranformation", e);
+        }
     }
 
     private String buildBaseHref() {

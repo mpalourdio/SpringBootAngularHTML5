@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.URL_SEPARATOR;
 import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.FRONT_CONTROLLER;
+import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.URL_SEPARATOR;
 
 @Configuration
 public class SinglePageAppConfig implements WebMvcConfigurer {
@@ -61,21 +61,10 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         SinglePageAppResourceResolver() {
             frontControllerResource = Arrays
                     .stream(staticLocations)
-                    .map(path -> {
-                        Resource resource = applicationContext.getResource(path + FRONT_CONTROLLER);
-                        Resource indexHtmlResource = null;
-                        if (resourceExistsAndIsReadable(resource)) {
-                            try {
-                                indexHtmlResource = frontControllerHandler.buildFrontControllerResource(resource);
-                            } catch (IOException e) {
-                                throw new FrontControllerException("Unable to perform index.html tranformation", e);
-                            }
-                        }
-
-                        return indexHtmlResource;
-                    })
-                    .filter(Objects::nonNull)
+                    .map(path -> applicationContext.getResource(path + FRONT_CONTROLLER))
+                    .filter(this::resourceExistsAndIsReadable)
                     .findFirst()
+                    .map(frontControllerHandler::buildFrontControllerResource)
                     .orElseThrow(() -> new FrontControllerException("Unable to locate index.html"));
         }
 
@@ -105,6 +94,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         }
 
         private boolean resourceExistsAndIsReadable(Resource resource) {
+            Objects.requireNonNull(resource, "resource cannot be null");
             return resource.exists() && resource.isReadable();
         }
     }

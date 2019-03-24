@@ -9,75 +9,83 @@
 
 package com.mpalourdio.html5.config;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.mpalourdio.html5.frontcontroller.FrontControllerException;
+import com.mpalourdio.html5.frontcontroller.FrontControllerUtils;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
-import org.springframework.web.servlet.resource.TransformedResource;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Objects;
+
+import static com.mpalourdio.html5.frontcontroller.FrontControllerUtils.URL_SEPARATOR;
 
 @Configuration
-@EnableConfigurationProperties(ServerProperties.class)
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
     public static final String IGNORED_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
     private static final String FRONT_CONTROLLER = "index.html";
-    private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
-    private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
 
-    private final ResourceProperties resourceProperties;
-    private final ServerProperties serverProperties;
+    private final FrontControllerUtils frontControllerUtils;
+    private final ApplicationContext applicationContext;
+    private final String[] staticLocations;
 
     public SinglePageAppConfig(
-            ServerProperties serverProperties,
-            ResourceProperties resourceProperties
+            ResourceProperties resourceProperties,
+            FrontControllerUtils frontControllerUtils,
+            ApplicationContext applicationContext
     ) {
-        this.serverProperties = serverProperties;
-        this.resourceProperties = resourceProperties;
+        this.frontControllerUtils = frontControllerUtils;
+        this.applicationContext = applicationContext;
+        staticLocations = resourceProperties.getStaticLocations();
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(PATH_PATTERNS)
-                .addResourceLocations(resourceProperties.getStaticLocations())
+                .addResourceLocations(staticLocations)
                 .resourceChain(true)
                 .addResolver(new SinglePageAppResourceResolver());
     }
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
-        private static final String URL_SEPARATOR = "/";
+        private final Resource frontControllerResource;
 
-        private TransformedResource transformedResource(Resource resource) throws IOException {
-            String fileContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            fileContent = fileContent.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
-            return new TransformedResource(resource, fileContent.getBytes());
-        }
+        SinglePageAppResourceResolver() {
+            frontControllerResource = Arrays
+                    .stream(staticLocations)
+                    .map(path -> {
+                        Resource resource = applicationContext.getResource(path + FRONT_CONTROLLER);
+                        Resource indexHtmlResource = null;
+                        if (resourceExistsAndIsReadable(resource)) {
+                            try {
+                                indexHtmlResource = frontControllerUtils.buildFrontControllerResource(resource);
+                            } catch (IOException e) {
+                                throw new FrontControllerException("Unable to perform index.html tranformation", e);
+                            }
+                        }
 
-        private String buildBaseHref() {
-            String contextPath = StringUtils.stripToNull(serverProperties.getServlet().getContextPath());
-
-            return contextPath == null || contextPath.equals(URL_SEPARATOR)
-                    ? URL_SEPARATOR
-                    : contextPath + URL_SEPARATOR;
+                        return indexHtmlResource;
+                    })
+                    .filter(Objects::nonNull)
+                    .findFirst()
+                    .orElseThrow(() -> new FrontControllerException("Unable to locate index.html"));
         }
 
         @Override
         protected Resource getResource(String resourcePath, Resource location) throws IOException {
             Resource resource = location.createRelative(resourcePath);
-            if (resource.exists() && resource.isReadable()) {
+            if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten
                 if (resourcePath.contains(FRONT_CONTROLLER)) {
-                    return transformedResource(resource);
+                    return frontControllerResource;
                 }
                 //here we serve js, css, etc.
                 return resource;
@@ -89,12 +97,15 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
             }
 
             //we are in the case of an angular route here, we rewrite to index.html
-            resource = location.createRelative(FRONT_CONTROLLER);
-            if (resource.exists() && resource.isReadable()) {
-                return transformedResource(resource);
+            if (resourceExistsAndIsReadable(location.createRelative(FRONT_CONTROLLER))) {
+                return frontControllerResource;
             }
 
             return null;
+        }
+
+        private boolean resourceExistsAndIsReadable(Resource resource) {
+            return resource.exists() && resource.isReadable();
         }
     }
 }

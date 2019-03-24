@@ -84,7 +84,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
             Resource resource = location.createRelative(resourcePath);
             if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten
-                if (resourcePath.contains(FRONT_CONTROLLER)) {
+                if (resourcePath.endsWith(FRONT_CONTROLLER)) {
                     return frontControllerResource;
                 }
                 //here we serve js, css, etc.

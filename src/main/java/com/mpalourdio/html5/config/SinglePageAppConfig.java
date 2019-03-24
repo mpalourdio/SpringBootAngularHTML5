@@ -10,7 +10,7 @@
 package com.mpalourdio.html5.config;
 
 import com.mpalourdio.html5.frontcontroller.FrontControllerException;
-import com.mpalourdio.html5.frontcontroller.FrontControllerUtils;
+import com.mpalourdio.html5.frontcontroller.FrontControllerHandler;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -23,25 +23,25 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static com.mpalourdio.html5.frontcontroller.FrontControllerUtils.URL_SEPARATOR;
+import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.URL_SEPARATOR;
+import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.FRONT_CONTROLLER;
 
 @Configuration
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
     public static final String IGNORED_PATH = "/api";
     private static final String PATH_PATTERNS = "/**";
-    private static final String FRONT_CONTROLLER = "index.html";
 
-    private final FrontControllerUtils frontControllerUtils;
+    private final FrontControllerHandler frontControllerHandler;
     private final ApplicationContext applicationContext;
     private final String[] staticLocations;
 
     public SinglePageAppConfig(
             ResourceProperties resourceProperties,
-            FrontControllerUtils frontControllerUtils,
+            FrontControllerHandler frontControllerHandler,
             ApplicationContext applicationContext
     ) {
-        this.frontControllerUtils = frontControllerUtils;
+        this.frontControllerHandler = frontControllerHandler;
         this.applicationContext = applicationContext;
         staticLocations = resourceProperties.getStaticLocations();
     }
@@ -66,7 +66,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
                         Resource indexHtmlResource = null;
                         if (resourceExistsAndIsReadable(resource)) {
                             try {
-                                indexHtmlResource = frontControllerUtils.buildFrontControllerResource(resource);
+                                indexHtmlResource = frontControllerHandler.buildFrontControllerResource(resource);
                             } catch (IOException e) {
                                 throw new FrontControllerException("Unable to perform index.html tranformation", e);
                             }

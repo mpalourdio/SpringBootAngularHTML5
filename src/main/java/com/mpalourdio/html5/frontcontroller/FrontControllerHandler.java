@@ -20,15 +20,16 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Service
-public class FrontControllerUtils {
+public class FrontControllerHandler {
 
     private static final String BASE_HREF_PLACEHOLDER = "#base-href#";
     private static final String FRONT_CONTROLLER_ENCODING = StandardCharsets.UTF_8.name();
     public static final String URL_SEPARATOR = "/";
+    public static final String FRONT_CONTROLLER = "index.html";
 
     private final ServerProperties serverProperties;
 
-    public FrontControllerUtils(ServerProperties serverProperties) {
+    public FrontControllerHandler(ServerProperties serverProperties) {
         this.serverProperties = serverProperties;
     }
 

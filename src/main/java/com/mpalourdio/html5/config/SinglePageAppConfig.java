@@ -9,8 +9,8 @@
 
 package com.mpalourdio.html5.config;
 
-import com.mpalourdio.html5.frontcontroller.FrontControllerException;
 import com.mpalourdio.html5.frontcontroller.FrontControllerHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +26,7 @@ import java.util.Objects;
 import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.FRONT_CONTROLLER;
 import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.URL_SEPARATOR;
 
+@Slf4j
 @Configuration
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
@@ -65,7 +66,12 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
                     .filter(this::resourceExistsAndIsReadable)
                     .findFirst()
                     .map(frontControllerHandler::buildFrontControllerResource)
-                    .orElseThrow(() -> new FrontControllerException("Unable to locate index.html"));
+                    .orElseGet(() -> {
+                        log.warn(FRONT_CONTROLLER + " not found. "
+                                + "Ensure you have built the frontend part if you are not in dev mode.");
+
+                        return null;
+                    });
         }
 
         @Override

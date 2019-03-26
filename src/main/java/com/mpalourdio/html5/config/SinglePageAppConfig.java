@@ -44,7 +44,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     ) {
         this.frontControllerHandler = frontControllerHandler;
         this.applicationContext = applicationContext;
-        staticLocations = resourceProperties.getStaticLocations();
+        this.staticLocations = resourceProperties.getStaticLocations();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         private final Resource frontControllerResource;
 
         SinglePageAppResourceResolver() {
-            frontControllerResource = Arrays
+            this.frontControllerResource = Arrays
                     .stream(staticLocations)
                     .map(path -> applicationContext.getResource(path + FRONT_CONTROLLER))
                     .filter(this::resourceExistsAndIsReadable)

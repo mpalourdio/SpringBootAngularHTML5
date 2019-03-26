@@ -31,7 +31,7 @@ public class ApiController {
     public ApiController(ServerProperties serverProperties) {
         this.serverProperties = serverProperties;
 
-        webClient = WebClient.create("http://localhost:"
+        this.webClient = WebClient.create("http://localhost:"
                 + serverProperties.getPort()
                 + StringUtils.stripToEmpty(serverProperties.getServlet().getContextPath())
                 + SinglePageAppConfig.IGNORED_PATH);

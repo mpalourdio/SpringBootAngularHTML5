@@ -9,7 +9,7 @@
 
 package com.mpalourdio.html5.frontcontroller;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.io.Resource;
@@ -38,7 +38,7 @@ public class FrontControllerHandler {
         Objects.requireNonNull(resource, "resource cannot be null");
 
         try {
-            String fileToRead = FileUtils.readFileToString(resource.getFile(), FRONT_CONTROLLER_ENCODING);
+            String fileToRead = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
             if (!fileToRead.contains(BASE_HREF_PLACEHOLDER)) {
                 throw new FrontControllerException(FRONT_CONTROLLER + " does not contain " + BASE_HREF_PLACEHOLDER);
             }

@@ -46,7 +46,7 @@ public class FrontControllerHandler {
             frontControllerContent = frontControllerContent.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
             return new TransformedResource(resource, frontControllerContent.getBytes(FRONT_CONTROLLER_ENCODING));
         } catch (IOException e) {
-            throw new FrontControllerException("Unable to perform index.html tranformation", e);
+            throw new FrontControllerException("Unable to perform " + FRONT_CONTROLLER + " tranformation", e);
         }
     }
 

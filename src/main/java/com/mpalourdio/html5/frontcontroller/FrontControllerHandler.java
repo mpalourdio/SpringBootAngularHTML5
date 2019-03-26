@@ -38,13 +38,13 @@ public class FrontControllerHandler {
         Objects.requireNonNull(resource, "resource cannot be null");
 
         try {
-            String fileToRead = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
-            if (!fileToRead.contains(BASE_HREF_PLACEHOLDER)) {
+            String frontControllerContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
+            if (!frontControllerContent.contains(BASE_HREF_PLACEHOLDER)) {
                 throw new FrontControllerException(FRONT_CONTROLLER + " does not contain " + BASE_HREF_PLACEHOLDER);
             }
 
-            String fileContent = fileToRead.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
-            return new TransformedResource(resource, fileContent.getBytes(FRONT_CONTROLLER_ENCODING));
+            frontControllerContent = frontControllerContent.replace(BASE_HREF_PLACEHOLDER, buildBaseHref());
+            return new TransformedResource(resource, frontControllerContent.getBytes(FRONT_CONTROLLER_ENCODING));
         } catch (IOException e) {
             throw new FrontControllerException("Unable to perform index.html tranformation", e);
         }

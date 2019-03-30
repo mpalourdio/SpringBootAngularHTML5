@@ -9,13 +9,13 @@
 
 package com.mpalourdio.html5.frontcontroller;
 
-public class FrontControllerException extends RuntimeException {
+class FrontControllerException extends RuntimeException {
 
-    public FrontControllerException(String message) {
+    FrontControllerException(String message) {
         super(message);
     }
 
-    public FrontControllerException(String message, Throwable throwable) {
+    FrontControllerException(String message, Throwable throwable) {
         super(message, throwable);
     }
 }

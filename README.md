@@ -16,7 +16,7 @@ The ``base-href`` in configured by the ResourceResolver. It's generated from the
 It's useful if you want to serve an Angular application with the ``html5 router``, and avoid the dashed URL.
 
 This ``html5 router`` mode makes pretty URL, but has a default : Refreshing pages (or accessing them directly) will give you a 404
-HTTP error if no RewriteRule is provided by the HTTP server that serve the application.
+HTTP error if no RewriteRule is provided by the HTTP server that serves the application.
 
 Handling the ``base-href`` dynamically can be tricky too. Here it's done once and for all by the ResourceResolver.
 

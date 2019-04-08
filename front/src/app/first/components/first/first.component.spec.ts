@@ -10,7 +10,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { HttpService } from '../../../http.service';
 import { FirstComponent } from './first.component';
 
 describe('FirstComponent', () => {
@@ -21,7 +20,6 @@ describe('FirstComponent', () => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent],
             imports: [HttpClientTestingModule, FormsModule],
-            providers: [HttpService]
         })
             .compileComponents();
     }));

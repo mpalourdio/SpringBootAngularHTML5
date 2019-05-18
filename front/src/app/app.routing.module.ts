@@ -13,11 +13,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        loadChildren: './first/first.module#FirstModule'
+        loadChildren : () => import('./first/first.module').then(m => m.FirstModule),
     },
     {
         path: 'iam/a/very/long/url',
-        loadChildren: './second/second.module#SecondModule'
+        loadChildren : () => import('./second/second.module').then(m => m.SecondModule),
+
     },
     {
         path: '**',

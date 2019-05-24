@@ -17,7 +17,7 @@ import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loade
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('ngHttpLoader')
+    @ViewChild('ngHttpLoader', { static: false })
     public ngHttpLoader: NgHttpLoaderComponent;
 
     constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {

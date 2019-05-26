@@ -196,7 +196,7 @@
                             <outputDirectory>${basedir}/target/classes/public/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist</directory>
+                                    <directory>front/dist/package</directory>
                                     <filtering>false</filtering>
                                     <excludes>
                                         <exclude>index.html</exclude>
@@ -216,7 +216,7 @@
                             <outputDirectory>${basedir}/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>front/dist</directory>
+                                    <directory>front/dist/package</directory>
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>index.html</include>

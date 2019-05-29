@@ -33,7 +33,7 @@ export class HttpService {
     public runSlowQuery(): Observable<string[]> {
         return this.http.get('http://localhost:10000/my-context/path/api/slow',
             {
-                'headers': {
+                headers: {
                     'x-requested-with': 'XmlHttpRequest'
                 }
             }

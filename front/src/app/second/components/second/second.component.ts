@@ -45,7 +45,7 @@ export class SecondComponent {
                     this.fastQueryResult = results[0];
                     this.slowQueryResult = results[1];
                 },
-                error => this.errorMessage = <any>error
+                error => this.errorMessage = error as any
             );
     }
 
@@ -55,7 +55,7 @@ export class SecondComponent {
         this.httpService.runFastQuery()
             .subscribe(
                 results => this.fastQueryResult = results,
-                error => this.errorMessage = <any>error
+                error => this.errorMessage = error as any
             );
     }
 
@@ -65,7 +65,7 @@ export class SecondComponent {
         this.httpService.runSlowQuery()
             .subscribe(
                 results => this.slowQueryResult = results,
-                error => this.errorMessage = <any>error
+                error => this.errorMessage = error as any
             );
     }
 
@@ -75,7 +75,7 @@ export class SecondComponent {
         this.httpService.runReactiveQuery()
             .subscribe(
                 results => this.slowQueryResult = results,
-                error => this.errorMessage = <any>error
+                error => this.errorMessage = error as any
             );
     }
 

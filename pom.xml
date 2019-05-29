@@ -193,7 +193,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/classes/static/static</outputDirectory>
+                            <outputDirectory>${basedir}/target/classes/public/static</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>front/dist/package</directory>
@@ -213,7 +213,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+                            <outputDirectory>${basedir}/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>front/dist/package</directory>

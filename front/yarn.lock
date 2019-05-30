@@ -4261,9 +4261,9 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
 ng-http-loader@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-6.0.0.tgz#a942f2b4fd4df4ebc76b074bf2158394d2d40f90"
-  integrity sha512-CmH1u2L2VPYU+znV6dduVZN1j7GEvTpy7iMpy3M8xMWKfSmnd+Uwcv3ao2spF2KLFQN5GNSsXFMDEGXc5FasIA==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ng-http-loader/-/ng-http-loader-6.0.1.tgz#3843a7a4e5df43fc8bb762b9cc804df120b36f9b"
+  integrity sha512-qgjPoGkTl1CKMsUIfSGz7Y+Jm6yN6Wg5Tx5IskdEA1M9OUug/Ockpr5vJxKDLy36gyRRliopHgxEtHO9y+tmPQ==
   dependencies:
     tslib "^1.9.0"
 

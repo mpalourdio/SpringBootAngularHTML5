@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8:alpine-slim
+FROM adoptopenjdk/openjdk11:alpine-slim
 RUN apk update && apk upgrade && apk add bash
 RUN adduser -D -s /bin/bash user
 WORKDIR /home/user

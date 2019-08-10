@@ -25,11 +25,11 @@
     "font-awesome": "^4.7.0",
     "ng-http-loader": "^6.0.0",
     "rxjs": "^6.4.0",
-    "tslib": "^1.9.0",
+    "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.801.1",
+    "@angular-devkit/build-angular": "~0.802.1",
     "@angular/cli": "^8.0.0",
     "@angular/compiler-cli": "^8.0.0",
     "@angular/language-service": "^8.0.0",
@@ -49,7 +49,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.5.3"
   },
   "engines": {
     "node": ">= 8.9.0",

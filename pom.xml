@@ -33,7 +33,7 @@
         <!-- dependencies -->
         <commons-io.version>2.6</commons-io.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version><!--can be removed in Spring Boot 2.2-->
+        <junit-jupiter.version>5.5.2</junit-jupiter.version><!--can be removed in Spring Boot 2.2-->
 
         <!-- plugins -->
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>

@@ -36,8 +36,8 @@
         <junit-jupiter.version>5.5.2</junit-jupiter.version><!--can be removed in Spring Boot 2.2-->
 
         <!-- plugins -->
-        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.22</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
+        <checkstyle.version>8.25</checkstyle.version>
         <maven-checkstyle-plugin.configLocation>https://raw.githubusercontent.com/mpalourdio/configuration/master/checkstyle.xml</maven-checkstyle-plugin.configLocation>
     </properties>
 

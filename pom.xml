@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.9.RELEASE</version>
+        <version>2.2.0.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -33,7 +33,6 @@
         <!-- dependencies -->
         <commons-io.version>2.6</commons-io.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <junit-jupiter.version>5.5.2</junit-jupiter.version><!--can be removed in Spring Boot 2.2-->
 
         <!-- plugins -->
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
@@ -89,15 +88,10 @@
             <scope>test</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

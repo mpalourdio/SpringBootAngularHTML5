@@ -19,7 +19,7 @@ describe('HttpServiceService', () => {
     });
 
     it('should create a service instance', () => {
-        const service: HttpService = TestBed.get(HttpService);
+        const service = TestBed.inject(HttpService);
         expect(service).toBeTruthy();
     });
 });

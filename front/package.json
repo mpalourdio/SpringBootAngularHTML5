@@ -24,7 +24,7 @@
     "@angular/router": "^9.0.0-rc.11",
     "font-awesome": "^4.7.0",
     "ng-http-loader": "^6.0.0",
-    "rxjs": "^6.5.3",
+    "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
@@ -49,6 +49,6 @@
     "protractor": "~5.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
-    "typescript": "~3.6.4"
+    "typescript": "~3.7.4"
   }
 }

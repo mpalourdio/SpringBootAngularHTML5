@@ -56,6 +56,7 @@ matrix:
     - jdk: openjdk10
     - jdk: openjdk12
     - jdk: openjdk13
+    - jdk: openjdk14
     - jdk: openjdk-ea
 
 before_install:

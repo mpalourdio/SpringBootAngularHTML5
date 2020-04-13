@@ -8,23 +8,7 @@ matrix:
       env: FRONT=false
 
     - language: java
-      jdk: openjdk9
-      env: FRONT=false
-
-    - language: java
-      jdk: openjdk10
-      env: FRONT=false
-
-    - language: java
       jdk: openjdk11
-      env: FRONT=false
-
-    - language: java
-      jdk: openjdk12
-      env: FRONT=false
-
-    - language: java
-      jdk: openjdk13
       env: FRONT=false
 
     - language: java
@@ -52,10 +36,6 @@ matrix:
             - chromium-browser
 
   allow_failures:
-    - jdk: openjdk9
-    - jdk: openjdk10
-    - jdk: openjdk12
-    - jdk: openjdk13
     - jdk: openjdk14
     - jdk: openjdk-ea
 

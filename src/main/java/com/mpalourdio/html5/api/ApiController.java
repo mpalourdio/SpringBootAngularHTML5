@@ -21,6 +21,8 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.List.of;
+
 @RestController
 @RequestMapping(path = SinglePageAppConfig.IGNORED_PATH)
 public class ApiController {
@@ -39,10 +41,7 @@ public class ApiController {
 
     @PostMapping(path = "/fast")
     public ResponseEntity<List<String>> fast() {
-        List<String> results = new ArrayList<>();
-        results.add("Hey, I am the fast response");
-
-        return ResponseEntity.ok(results);
+        return ResponseEntity.ok(of("Hey, I am the fast response"));
     }
 
     @GetMapping(path = "/slow-but-reactive")
@@ -60,10 +59,7 @@ public class ApiController {
     @GetMapping(path = "/slow")
     public ResponseEntity<List<String>> slow() throws InterruptedException {
         Thread.sleep(3000);
-        List<String> results = new ArrayList<>();
-        results.add("Hey, I am the slow cross-origin response "
-                + "(if performed from a port different from " + serverProperties.getPort() + ")");
-
-        return ResponseEntity.ok(results);
+        return ResponseEntity.ok(of("Hey, I am the slow cross-origin response "
+                + "(if performed from a port different from " + serverProperties.getPort() + ")"));
     }
 }

@@ -76,7 +76,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
         @Override
         protected Resource getResource(String resourcePath, Resource location) throws IOException {
-            Resource resource = location.createRelative(resourcePath);
+            var resource = location.createRelative(resourcePath);
             if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten
                 if (resourcePath.endsWith(FRONT_CONTROLLER)) {

@@ -38,7 +38,7 @@ public class FrontControllerHandler {
         Objects.requireNonNull(resource, "resource cannot be null");
 
         try {
-            String frontControllerContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
+            var frontControllerContent = IOUtils.toString(resource.getInputStream(), FRONT_CONTROLLER_ENCODING);
             if (!frontControllerContent.contains(BASE_HREF_PLACEHOLDER)) {
                 throw new FrontControllerException(FRONT_CONTROLLER + " does not contain " + BASE_HREF_PLACEHOLDER);
             }
@@ -51,9 +51,9 @@ public class FrontControllerHandler {
     }
 
     private String buildBaseHref() {
-        String contextPath = StringUtils.stripToNull(serverProperties.getServlet().getContextPath());
+        var contextPath = StringUtils.stripToNull(serverProperties.getServlet().getContextPath());
 
-        return contextPath == null || contextPath.equals(URL_SEPARATOR)
+        return null == contextPath || contextPath.equals(URL_SEPARATOR)
                 ? URL_SEPARATOR
                 : contextPath + URL_SEPARATOR;
     }

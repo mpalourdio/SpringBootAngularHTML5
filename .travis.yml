@@ -28,6 +28,10 @@ matrix:
       env: FRONT=false
 
     - language: java
+      jdk: openjdk14
+      env: FRONT=false
+
+    - language: java
       jdk: openjdk-ea
       env: FRONT=false
 

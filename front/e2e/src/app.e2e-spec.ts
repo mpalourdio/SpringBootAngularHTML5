@@ -9,6 +9,6 @@ describe('front App', () => {
 
   it('should do things', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Favorite fruit ?');
+    expect(page.getParagraphText()).toEqual('I am a very long url - click me');
   });
 });

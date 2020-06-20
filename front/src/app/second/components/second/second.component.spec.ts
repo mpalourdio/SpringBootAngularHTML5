@@ -18,7 +18,7 @@ describe('SecondComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [SecondComponent],
-            imports: [HttpClientTestingModule],
+            imports: [HttpClientTestingModule]
         })
             .compileComponents();
     }));

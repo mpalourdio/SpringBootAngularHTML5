@@ -19,7 +19,7 @@ describe('FirstComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [FirstComponent],
-            imports: [HttpClientTestingModule, FormsModule],
+            imports: [HttpClientTestingModule, FormsModule]
         })
             .compileComponents();
     }));

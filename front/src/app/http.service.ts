@@ -52,7 +52,7 @@ export class HttpService {
             );
     }
 
-    private extractData(res: any) {
+    private extractData(res: any): any {
         return res || {};
     }
 

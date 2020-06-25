@@ -1,13 +1,11 @@
 import { browser, element, by } from 'protractor';
 
 export class FrontPage {
-  // tslint:disable-next-line:typedef
-  public navigateTo() {
-    return browser.get('/my-context/path/');
+  public navigateTo(): Promise<unknown> {
+    return browser.get('/my-context/path/') as Promise<unknown>;
   }
 
-  // tslint:disable-next-line:typedef
-  public getParagraphText() {
-    return element(by.css('#clickme')).getText();
+  public getParagraphText(): Promise<unknown> {
+    return element(by.css('#clickme')).getText() as Promise<unknown>;
   }
 }

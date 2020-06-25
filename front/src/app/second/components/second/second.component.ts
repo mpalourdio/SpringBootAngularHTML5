@@ -19,9 +19,9 @@ import { HttpService } from '../../../http.service';
 })
 export class SecondComponent {
 
-    public fastQueryResult: string[];
-    public slowQueryResult: string[];
-    public errorMessage: any;
+    public fastQueryResult!: string[] | undefined;
+    public slowQueryResult!: string[] | undefined;
+    public errorMessage: string | undefined;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
@@ -45,7 +45,7 @@ export class SecondComponent {
                     this.fastQueryResult = results[0];
                     this.slowQueryResult = results[1];
                 },
-                error => this.errorMessage = error as any
+                error => this.errorMessage = error
             );
     }
 
@@ -55,7 +55,7 @@ export class SecondComponent {
         this.httpService.runFastQuery()
             .subscribe(
                 results => this.fastQueryResult = results,
-                error => this.errorMessage = error as any
+                error => this.errorMessage = error
             );
     }
 
@@ -65,7 +65,7 @@ export class SecondComponent {
         this.httpService.runSlowQuery()
             .subscribe(
                 results => this.slowQueryResult = results,
-                error => this.errorMessage = error as any
+                error => this.errorMessage = error
             );
     }
 
@@ -75,7 +75,7 @@ export class SecondComponent {
         this.httpService.runReactiveQuery()
             .subscribe(
                 results => this.slowQueryResult = results,
-                error => this.errorMessage = error as any
+                error => this.errorMessage = error
             );
     }
 

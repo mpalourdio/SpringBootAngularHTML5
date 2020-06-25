@@ -3,7 +3,7 @@
 NB: Older Spring Boot and Angular versions are available in [branches](https://github.com/mpalourdio/SpringBootAngularHTML5/branches).  
 This project is available in **Kotlin** too. Take a look at [this repository](https://github.com/mpalourdio/SpringBootKotlinAngular).
 
-Spring Boot 2.x and Angular 9.x with HTML 5 router
+Spring Boot 2.x and Angular 10.x with HTML 5 router
 ====================================================
 
 This project provides an example of an Angular single page application, served by ``Tomcat``,

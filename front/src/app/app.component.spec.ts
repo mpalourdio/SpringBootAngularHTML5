@@ -7,13 +7,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             imports: [RouterTestingModule, NgHttpLoaderModule]

@@ -7,18 +7,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             declarations: [AppComponent],
             imports: [RouterTestingModule, NgHttpLoaderModule]
         }).compileComponents();
-    }));
+    });
 
     it('should create a component instance', () => {
         const fixture = TestBed.createComponent(AppComponent);

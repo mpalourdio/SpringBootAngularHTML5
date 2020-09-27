@@ -8,20 +8,20 @@
  */
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondComponent } from './second.component';
 
 describe('SecondComponent', () => {
     let component: SecondComponent;
     let fixture: ComponentFixture<SecondComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             declarations: [SecondComponent],
             imports: [HttpClientTestingModule]
         })
             .compileComponents();
-    }));
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SecondComponent);

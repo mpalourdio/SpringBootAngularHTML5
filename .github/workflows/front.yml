@@ -1,4 +1,4 @@
-name: Front
+name: front
 
 on: [ push, pull_request, workflow_dispatch ]
 

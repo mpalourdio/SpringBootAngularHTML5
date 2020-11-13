@@ -11,7 +11,7 @@ package com.mpalourdio.html5.config;
 
 import com.mpalourdio.html5.frontcontroller.FrontControllerHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -38,13 +38,13 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
     private final String[] staticLocations;
 
     public SinglePageAppConfig(
-            ResourceProperties resourceProperties,
+            WebProperties webProperties,
             FrontControllerHandler frontControllerHandler,
             ApplicationContext applicationContext
     ) {
         this.frontControllerHandler = frontControllerHandler;
         this.applicationContext = applicationContext;
-        this.staticLocations = resourceProperties.getStaticLocations();
+        this.staticLocations = webProperties.getResources().getStaticLocations();
     }
 
     @Override

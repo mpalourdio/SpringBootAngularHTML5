@@ -127,20 +127,6 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>exec-yarn-audit</id>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <executable>yarn</executable>
-                            <arguments>
-                                <argument>audit</argument>
-                            </arguments>
-                            <skip>${build.nofront}</skip>
-                        </configuration>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>exec-yarn-install</id>
                         <phase>prepare-package</phase>
                         <configuration>

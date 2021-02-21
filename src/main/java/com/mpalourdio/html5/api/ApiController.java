@@ -12,7 +12,6 @@ package com.mpalourdio.html5.api;
 import com.mpalourdio.html5.config.SinglePageAppConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -49,9 +48,8 @@ public class ApiController {
         return webClient
                 .get()
                 .uri("/slow")
-                .exchange()
-                .flatMap(r -> r.toEntity(new ParameterizedTypeReference<List<String>>() {
-                }))
+                .retrieve()
+                .toEntityList(String.class)
                 .onErrorReturn(ResponseEntity.ok(new ArrayList<>()));
     }
 

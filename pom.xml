@@ -32,7 +32,7 @@
         <build.nofront>true</build.nofront>
 
         <!-- dependencies -->
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 
         <!-- plugins -->

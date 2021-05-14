@@ -8,7 +8,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        node-version: [ 14.x, 15.x ]
+        node-version: [ 14.x ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
           cd front
           yarn
           yarn lint
-          yarn audit
+          yarn audit:prod
           yarn e2e
-          yarn build --prod
+          yarn build
           yarn test

@@ -117,6 +117,8 @@
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <pushChanges>false</pushChanges>
+                    <localCheckout>true</localCheckout>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
             <plugin>

@@ -18,12 +18,12 @@ import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loade
 export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild('ngHttpLoader')
-    public ngHttpLoader!: NgHttpLoaderComponent;
+    ngHttpLoader!: NgHttpLoaderComponent;
 
     constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.pendingRequestsInterceptor.pendingRequestsStatus$.subscribe(pending => {
             if (!pending) {
                 console.log('No HTTP requests pending anymore');
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         });
     }
 
-    public ngAfterViewInit(): void {
+    ngAfterViewInit(): void {
         this.ngHttpLoader.isVisible$.subscribe(v => {
             if (!v) {
                 console.log('No HTTP requests pending anymore (from ngAfterViewInit)');

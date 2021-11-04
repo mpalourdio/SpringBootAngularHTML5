@@ -20,7 +20,7 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    public runFastQuery(): Observable<string[]> {
+    runFastQuery(): Observable<string[]> {
         return this.http.post(
             'api/fast',
             null
@@ -30,7 +30,7 @@ export class HttpService {
         );
     }
 
-    public runSlowQuery(): Observable<string[]> {
+    runSlowQuery(): Observable<string[]> {
         return this.http.get('http://localhost:10000/my-context/path/api/slow',
             {
                 headers: {
@@ -43,7 +43,7 @@ export class HttpService {
         );
     }
 
-    public runReactiveQuery(): Observable<string[]> {
+    runReactiveQuery(): Observable<string[]> {
         return this.http
             .get('api/slow-but-reactive')
             .pipe(

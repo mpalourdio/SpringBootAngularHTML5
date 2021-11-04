@@ -19,9 +19,9 @@ import { HttpService } from '../../../http.service';
 })
 export class SecondComponent {
 
-    public fastQueryResult!: string[] | undefined;
-    public slowQueryResult!: string[] | undefined;
-    public errorMessage: string | undefined;
+    fastQueryResult!: string[] | undefined;
+    slowQueryResult!: string[] | undefined;
+    errorMessage: string | undefined;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
@@ -32,7 +32,7 @@ export class SecondComponent {
         this.errorMessage = undefined;
     }
 
-    public callAllQueries(): void {
+    callAllQueries(): void {
         this.resetFields();
 
         forkJoin([
@@ -49,7 +49,7 @@ export class SecondComponent {
             );
     }
 
-    public fastQuery(): void {
+    fastQuery(): void {
         this.resetFields();
 
         this.httpService.runFastQuery()
@@ -59,7 +59,7 @@ export class SecondComponent {
             );
     }
 
-    public slowQuery(): void {
+    slowQuery(): void {
         this.resetFields();
 
         this.httpService.runSlowQuery()
@@ -69,7 +69,7 @@ export class SecondComponent {
             );
     }
 
-    public reactiveQuery(): void {
+    reactiveQuery(): void {
         this.resetFields();
 
         this.httpService.runReactiveQuery()
@@ -79,7 +79,7 @@ export class SecondComponent {
             );
     }
 
-    public forceSpinner(): void {
+    forceSpinner(): void {
         this.resetFields();
         this.spinner.show();
         this.httpService.runSlowQuery().subscribe(

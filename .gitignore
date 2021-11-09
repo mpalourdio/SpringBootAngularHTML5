@@ -2,6 +2,7 @@ target
 front/node_modules/
 front/dist
 front/coverage/
+front/.angular/cache
 front/.sass-cache/
 front/.tmp/
 .idea/

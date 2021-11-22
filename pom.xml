@@ -188,7 +188,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>exec-copy-noindex-noassets</id>
+                        <id>exec-copy-noindex</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -201,7 +201,6 @@
                                     <filtering>false</filtering>
                                     <excludes>
                                         <exclude>index.html</exclude>
-                                        <exclude>static/**/*.*</exclude>
                                     </excludes>
                                 </resource>
                             </resources>
@@ -221,7 +220,6 @@
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>index.html</include>
-                                        <include>static/**/*.*</include>
                                     </includes>
                                 </resource>
                             </resources>

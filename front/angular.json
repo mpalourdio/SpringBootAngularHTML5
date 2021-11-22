@@ -30,11 +30,12 @@
             "baseHref": "/my-context/path/",
             "preserveSymlinks": true,
             "assets": [
-              "src/static",
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*.eot",
                 "input": "./node_modules/font-awesome/fonts",
-                "output": "/static/assets/font-awesome/fonts"
+                "output": "/assets/font-awesome/fonts"
               }
             ],
             "styles": [
@@ -63,8 +64,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "#base-href#",
-              "deployUrl": "static/",
+              "baseHref": "#base-href#static/",
               "progress": false
             },
             "development": {

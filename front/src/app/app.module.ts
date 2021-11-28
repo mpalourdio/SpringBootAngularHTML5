@@ -13,6 +13,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { BasehrefInterceptorProvider } from './basehref-interceptor.service';
+import { AppBaseHrefWithoutStaticProvider } from './factory/app-base-href-without-static-provider.factory';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,11 @@ import { AppRoutingModule } from './app.routing.module';
         AppRoutingModule,
         NgHttpLoaderModule.forRoot(),
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [
+        AppBaseHrefWithoutStaticProvider,
+        BasehrefInterceptorProvider,
+    ]
 })
 export class AppModule {
 }

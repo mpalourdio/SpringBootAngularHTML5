@@ -9,23 +9,43 @@
 
 package com.mpalourdio.html5.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+    @Bean
+    @Order(1)
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+                .build();
     }
 
-    @Override
-    public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/static/**");
+    /**
+     * Avoid applying Spring Security filters on static resources.
+     * Performance tweak, soon deprecated.
+     *
+     * Mainly avoids WARN when using {@link WebSecurity#ignoring()}
+     *
+     * @see <a href="https://github.com/spring-projects/spring-security/issues/10938#issuecomment-1062359527">GH Thread</a>
+     */
+    @Bean
+    @Order(0)
+    public SecurityFilterChain staticResources(HttpSecurity http) throws Exception {
+        return http
+                .requestMatchers(matchers -> matchers.antMatchers("/static/**"))
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+                .requestCache().disable()
+                .securityContext().disable()
+                .sessionManagement().disable()
+                .build();
     }
 }
 

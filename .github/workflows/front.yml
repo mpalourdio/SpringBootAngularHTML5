@@ -18,12 +18,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn, lint, audit, build, test
+      - name: install, lint, audit, build, test
         run: |
           cd front
-          yarn
-          yarn lint
-          yarn audit:prod
-          yarn e2e
-          yarn build
-          yarn test
+          npm i
+          npm run lint
+          npm run audit:prod
+          npm run e2e
+          npm run build
+          npm test

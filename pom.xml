@@ -145,12 +145,12 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>exec-yarn-install</id>
+                        <id>exec-npm-install</id>
                         <phase>prepare-package</phase>
                         <configuration>
-                            <executable>yarn</executable>
+                            <executable>npm</executable>
                             <arguments>
-                                <argument>--pure-lockfile</argument>
+                                <argument>i</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>
                         </configuration>
@@ -162,8 +162,9 @@
                         <id>exec-ngcli-build</id>
                         <phase>prepare-package</phase>
                         <configuration>
-                            <executable>yarn</executable>
+                            <executable>npm</executable>
                             <arguments>
+                                <argument>run</argument>
                                 <argument>build:prod</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>

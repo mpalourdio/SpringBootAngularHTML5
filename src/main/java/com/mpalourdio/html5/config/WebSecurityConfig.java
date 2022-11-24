@@ -13,39 +13,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestHandler;
+import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler;
 
 @Configuration
 public class WebSecurityConfig {
 
     @Bean
-    @Order(1)
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-                .build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
+        // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
+        CsrfTokenRequestHandler requestHandler = new XorCsrfTokenRequestAttributeHandler()::handle;
+        http.csrf(csrf -> csrf
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .csrfTokenRequestHandler(requestHandler)
+        );
+
+        return http.build();
     }
 
-    /**
-     * Avoid applying Spring Security filters on static resources.
-     * Performance tweak, soon deprecated.
-     *
-     * Mainly avoids WARN when using {@link WebSecurity#ignoring()}
-     *
-     * @see <a href="https://github.com/spring-projects/spring-security/issues/10938#issuecomment-1062359527">GH Thread</a>
-     */
     @Bean
-    @Order(0)
-    public SecurityFilterChain staticResources(HttpSecurity http) throws Exception {
-        return http
-                .requestMatchers(matchers -> matchers.antMatchers("/static/**"))
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
-                .requestCache().disable()
-                .securityContext().disable()
-                .sessionManagement().disable()
-                .build();
+    @Order(-1)
+    SecurityFilterChain staticResources(HttpSecurity http) throws Exception {
+        http.securityMatchers(matches -> matches.requestMatchers("/static/**"))
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
+
+        return http.build();
     }
 }
 

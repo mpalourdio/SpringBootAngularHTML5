@@ -8,7 +8,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        java-version: [ 17.x ]
+        java-version: [ 21.x ]
 
     steps:
       - name: Checkout

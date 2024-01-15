@@ -23,15 +23,28 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        var tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        var delegate = getXorCsrfTokenRequestAttributeHandler();
         // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
         // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
-        CsrfTokenRequestHandler requestHandler = new XorCsrfTokenRequestAttributeHandler()::handle;
-        http.csrf(csrf -> csrf
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .csrfTokenRequestHandler(requestHandler)
-        );
+        CsrfTokenRequestHandler requestHandler = delegate::handle;
+        http
+                // ...
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(tokenRepository)
+                        .csrfTokenRequestHandler(requestHandler)
+                );
 
         return http.build();
+    }
+
+    private static XorCsrfTokenRequestAttributeHandler getXorCsrfTokenRequestAttributeHandler() {
+        var delegate = new XorCsrfTokenRequestAttributeHandler();
+        // By setting the csrfRequestAttributeName to null, the CsrfToken must first be loaded to determine what attribute name to use.
+        // This causes the CsrfToken to be loaded on every request.
+        // Another solution would have been to create a OncePerRequestFilter to handle CrsfFilter.
+        delegate.setCsrfRequestAttributeName(null);
+        return delegate;
     }
 
     @Bean

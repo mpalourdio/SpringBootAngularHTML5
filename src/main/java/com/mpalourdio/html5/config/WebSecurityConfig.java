@@ -29,7 +29,6 @@ public class WebSecurityConfig {
         // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
         CsrfTokenRequestHandler requestHandler = delegate::handle;
         http
-                // ...
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(tokenRepository)
                         .csrfTokenRequestHandler(requestHandler)

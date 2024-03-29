@@ -19,16 +19,16 @@ import { HttpService } from '../../../http.service';
 })
 export class SecondComponent {
 
-    fastQueryResult!: string[] | undefined;
-    slowQueryResult!: string[] | undefined;
+    fastQueryResult!: string[] | object;
+    slowQueryResult!: string[] | object;
     errorMessage: string | undefined;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
 
     private resetFields(): void {
-        this.fastQueryResult = undefined;
-        this.slowQueryResult = undefined;
+        this.fastQueryResult = {};
+        this.slowQueryResult = {};
         this.errorMessage = undefined;
     }
 
@@ -39,13 +39,14 @@ export class SecondComponent {
             this.httpService.runFastQuery(),
             this.httpService.runSlowQuery(),
         ])
-            .subscribe(
-                results => {
-                    console.log(results);
-                    this.fastQueryResult = results[0];
-                    this.slowQueryResult = results[1];
-                },
-                error => this.errorMessage = error
+            .subscribe({
+                    next: results => {
+                        console.log(results);
+                        this.fastQueryResult = results[0];
+                        this.slowQueryResult = results[1];
+                    },
+                    error: error => this.errorMessage = error
+                }
             );
     }
 
@@ -53,9 +54,10 @@ export class SecondComponent {
         this.resetFields();
 
         this.httpService.runFastQuery()
-            .subscribe(
-                results => this.fastQueryResult = results,
-                error => this.errorMessage = error
+            .subscribe({
+                    next: results => this.fastQueryResult = results,
+                    error: error => this.errorMessage = error
+                }
             );
     }
 
@@ -63,9 +65,10 @@ export class SecondComponent {
         this.resetFields();
 
         this.httpService.runSlowQuery()
-            .subscribe(
-                results => this.slowQueryResult = results,
-                error => this.errorMessage = error
+            .subscribe({
+                    next: results => this.slowQueryResult = results,
+                    error: error => this.errorMessage = error
+                }
             );
     }
 
@@ -73,18 +76,20 @@ export class SecondComponent {
         this.resetFields();
 
         this.httpService.runReactiveQuery()
-            .subscribe(
-                results => this.slowQueryResult = results,
-                error => this.errorMessage = error
+            .subscribe({
+                    next: results => this.slowQueryResult = results,
+                    error: error => this.errorMessage = error
+                }
             );
     }
 
     forceSpinner(): void {
         this.resetFields();
         this.spinner.show();
-        this.httpService.runSlowQuery().subscribe(
-            () => this.spinner.hide(),
-            () => this.spinner.hide()
+        this.httpService.runSlowQuery().subscribe({
+                next: () => this.spinner.hide(),
+                error: () => this.spinner.hide()
+            }
         );
     }
 }

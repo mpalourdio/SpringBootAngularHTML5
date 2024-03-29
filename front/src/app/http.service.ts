@@ -20,7 +20,7 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    runFastQuery(): Observable<string[]> {
+    runFastQuery(): Observable<string[] | object> {
         return this.http.post(
             'api/fast',
             null
@@ -30,7 +30,7 @@ export class HttpService {
         );
     }
 
-    runSlowQuery(): Observable<string[]> {
+    runSlowQuery(): Observable<string[] | object> {
         return this.http.get('http://localhost:10000/my-context/path/api/slow',
             {
                 headers: {
@@ -43,7 +43,7 @@ export class HttpService {
         );
     }
 
-    runReactiveQuery(): Observable<string[]> {
+    runReactiveQuery(): Observable<string[] | object> {
         return this.http
             .get('api/slow-but-reactive')
             .pipe(
@@ -52,12 +52,12 @@ export class HttpService {
             );
     }
 
-    private extractData(res: any): any {
+    private extractData(res: unknown): string[] | object {
         return res || {};
     }
 
-    private handleError(error: HttpErrorResponse | any): Observable<never> {
+    private handleError(error: HttpErrorResponse | unknown): Observable<never> {
         console.log(error);
-        return throwError(error);
+        return throwError(() => error);
     }
 }

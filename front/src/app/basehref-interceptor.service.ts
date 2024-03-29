@@ -20,7 +20,7 @@ export class BasehrefInterceptor implements HttpInterceptor {
     constructor(@Inject(APP_BASE_HREF) private baseHref: string) {
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         if (!req.url.toLocaleLowerCase().startsWith('http')) {
             const clonedReq = req.clone({ url: this.baseHref + req.url });
             return next.handle(clonedReq);

@@ -9,6 +9,7 @@ jobs:
       max-parallel: 4
       matrix:
         java-version: [ 21.x ]
+        graalvm-version: [ 21 ]
 
     steps:
       - name: Checkout
@@ -21,5 +22,14 @@ jobs:
           java-version: ${{ matrix.java-version }}
 
       - name: Run full build
-        run: ./mvnw test -B
+        run: ./mvnw clean test -B
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          distribution: 'graalvm-community'
+          java-version: ${{ matrix.graalvm-version }}
+
+      - name: GraalVM Compile
+        run: ./mvnw clean -Pnative native:compile
+        continue-on-error: true
 

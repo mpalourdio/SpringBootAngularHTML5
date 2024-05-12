@@ -20,6 +20,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
+          cache: 'maven'
 
       - name: Run full build
         run: ./mvnw clean test -B
@@ -28,6 +29,7 @@ jobs:
         with:
           distribution: 'graalvm-community'
           java-version: ${{ matrix.graalvm-version }}
+          cache: 'maven'
 
       - name: GraalVM Compile
         run: ./mvnw clean -Pnative native:compile

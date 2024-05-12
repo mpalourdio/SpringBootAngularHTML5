@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/mpalourdio/SpringBootAngularHTML5/workflows/back/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootAngularHTML5/actions)
-[![Build Status](https://github.com/mpalourdio/SpringBootAngularHTML5/workflows/front/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootAngularHTML5/actions)
+[![back](https://github.com/mpalourdio/SpringBootAngularHTML5/actions/workflows/back.yml/badge.svg)](https://github.com/mpalourdio/SpringBootAngularHTML5/actions/workflows/back.yml)
+[![front](https://github.com/mpalourdio/SpringBootAngularHTML5/actions/workflows/front.yml/badge.svg)](https://github.com/mpalourdio/SpringBootAngularHTML5/actions/workflows/front.yml)
 
 This project is available in **Kotlin** too. Take a look at [this repository](https://github.com/mpalourdio/SpringBootKotlinAngular).
 

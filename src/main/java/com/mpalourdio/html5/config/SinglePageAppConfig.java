@@ -28,7 +28,7 @@ import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.FRONT_
 import static com.mpalourdio.html5.frontcontroller.FrontControllerHandler.URL_SEPARATOR;
 
 @Slf4j
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class SinglePageAppConfig implements WebMvcConfigurer {
 
     public static final String IGNORED_PATH = "/api";

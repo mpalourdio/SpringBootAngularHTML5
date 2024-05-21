@@ -18,7 +18,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestHandler;
 import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class WebSecurityConfig {
 
     @Bean

@@ -6,14 +6,20 @@ Now you can refresh this page (hit F5) (or <a routerLink="/">go back</a>) <br>
 <button (click)="callAllQueries()">Click me to call BOTH slow and fast HTTP requests</button><br>
 <button (click)="forceSpinner()">Force the spinner visibility</button><br>
 
-<pre *ngIf="fastQueryResult">
-{{fastQueryResult | json}}
+@if (fastQueryResult) {
+<pre>
+{{ fastQueryResult | json }}
 </pre>
+}
 
-<pre *ngIf="slowQueryResult">
-{{slowQueryResult | json}}
+@if (slowQueryResult) {
+<pre>
+{{ slowQueryResult | json }}
 </pre>
+}
 
-<pre *ngIf="errorMessage">
-{{errorMessage | json}}
+@if (errorMessage) {
+<pre>
+{{ errorMessage | json }}
 </pre>
+}

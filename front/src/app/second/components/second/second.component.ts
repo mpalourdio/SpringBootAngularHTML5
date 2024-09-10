@@ -11,24 +11,28 @@ import { Component } from '@angular/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { forkJoin } from 'rxjs';
 import { HttpService } from '../../../http.service';
+import { JsonPipe } from "@angular/common";
+import { RouterLink } from "@angular/router";
 
 @Component({
     selector: 'app-second',
     templateUrl: './second.component.html',
-    styleUrls: ['./second.component.scss']
+    standalone: true,
+    styleUrls: ['./second.component.scss'],
+    imports: [JsonPipe, RouterLink]
 })
 export class SecondComponent {
 
-    fastQueryResult!: string[] | object;
-    slowQueryResult!: string[] | object;
+    fastQueryResult!: string[] | object | null;
+    slowQueryResult!: string[] | object | null;
     errorMessage: string | undefined;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
 
     private resetFields(): void {
-        this.fastQueryResult = {};
-        this.slowQueryResult = {};
+        this.fastQueryResult = null;
+        this.slowQueryResult = null;
         this.errorMessage = undefined;
     }
 

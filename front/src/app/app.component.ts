@@ -8,19 +8,22 @@
  */
 
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NgHttpLoaderComponent, PendingRequestsInterceptor } from 'ng-http-loader';
+import { NgHttpLoaderComponent, PendingRequestsInterceptorConfigurer } from 'ng-http-loader';
+import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    standalone: true,
+    styleUrls: ['./app.component.scss'],
+    imports: [RouterOutlet, NgHttpLoaderComponent]
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild('ngHttpLoader')
     ngHttpLoader!: NgHttpLoaderComponent;
 
-    constructor(private pendingRequestsInterceptor: PendingRequestsInterceptor) {
+    constructor(private pendingRequestsInterceptor: PendingRequestsInterceptorConfigurer) {
     }
 
     ngOnInit(): void {

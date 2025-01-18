@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer');
 
 const findPuppeteer: () => Promise<Browser> = async () => {
     const browserPath = puppeteer.executablePath();
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const version = await browser.version();
     const majorVersion = parseInt(version.split('/')[1]);
 
@@ -18,7 +18,7 @@ const findPuppeteer: () => Promise<Browser> = async () => {
         path: browserPath,
         channel: 'stable',
         isHeaded: false,
-        isHeadless: true,
+        isHeadless: true
     };
 };
 
@@ -32,6 +32,6 @@ export default defineConfig({
                 config.browsers.push(browser);
                 return config;
             });
-        },
-    },
+        }
+    }
 });

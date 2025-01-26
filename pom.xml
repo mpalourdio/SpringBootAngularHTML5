@@ -154,7 +154,7 @@
                         <configuration>
                             <executable>npm</executable>
                             <arguments>
-                                <argument>i</argument>
+                                <argument>ci</argument>
                             </arguments>
                             <skip>${build.nofront}</skip>
                         </configuration>

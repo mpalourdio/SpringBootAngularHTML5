@@ -20,17 +20,17 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    runFastQuery(): Observable<string[] | object> {
+    runFastQuery$(): Observable<string[] | object> {
         return this.http.post(
             'api/fast',
             null
         ).pipe(
             map(this.extractData),
-            catchError(this.handleError)
+            catchError(this.handleError$)
         );
     }
 
-    runSlowQuery(): Observable<string[] | object> {
+    runSlowQuery$(): Observable<string[] | object> {
         return this.http.get('http://localhost:10000/my-context/path/api/slow',
             {
                 headers: {
@@ -39,16 +39,16 @@ export class HttpService {
             }
         ).pipe(
             map(this.extractData),
-            catchError(this.handleError)
+            catchError(this.handleError$)
         );
     }
 
-    runReactiveQuery(): Observable<string[] | object> {
+    runReactiveQuery$(): Observable<string[] | object> {
         return this.http
             .get('api/slow-but-reactive')
             .pipe(
                 map(this.extractData),
-                catchError(this.handleError)
+                catchError(this.handleError$)
             );
     }
 
@@ -56,7 +56,7 @@ export class HttpService {
         return res || {};
     }
 
-    private handleError(error: HttpErrorResponse | unknown): Observable<never> {
+    private handleError$(error: HttpErrorResponse | unknown): Observable<never> {
         console.log(error);
         return throwError(() => error);
     }

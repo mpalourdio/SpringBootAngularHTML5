@@ -25,7 +25,7 @@ export class SecondComponent {
 
     fastQueryResult!: string[] | object | null;
     slowQueryResult!: string[] | object | null;
-    errorMessage: string | undefined;
+    errorMessage: unknown;
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
@@ -40,8 +40,8 @@ export class SecondComponent {
         this.resetFields();
 
         forkJoin([
-            this.httpService.runFastQuery(),
-            this.httpService.runSlowQuery(),
+            this.httpService.runFastQuery$(),
+            this.httpService.runSlowQuery$(),
         ])
             .subscribe({
                     next: results => {
@@ -49,7 +49,7 @@ export class SecondComponent {
                         this.fastQueryResult = results[0];
                         this.slowQueryResult = results[1];
                     },
-                    error: error => this.errorMessage = error
+                    error: (error: unknown) => this.errorMessage = error
                 }
             );
     }
@@ -57,10 +57,10 @@ export class SecondComponent {
     fastQuery(): void {
         this.resetFields();
 
-        this.httpService.runFastQuery()
+        this.httpService.runFastQuery$()
             .subscribe({
                     next: results => this.fastQueryResult = results,
-                    error: error => this.errorMessage = error
+                    error: (error: unknown) => this.errorMessage = error
                 }
             );
     }
@@ -68,10 +68,10 @@ export class SecondComponent {
     slowQuery(): void {
         this.resetFields();
 
-        this.httpService.runSlowQuery()
+        this.httpService.runSlowQuery$()
             .subscribe({
                     next: results => this.slowQueryResult = results,
-                    error: error => this.errorMessage = error
+                    error: (error: unknown) => this.errorMessage = error
                 }
             );
     }
@@ -79,10 +79,10 @@ export class SecondComponent {
     reactiveQuery(): void {
         this.resetFields();
 
-        this.httpService.runReactiveQuery()
+        this.httpService.runReactiveQuery$()
             .subscribe({
                     next: results => this.slowQueryResult = results,
-                    error: error => this.errorMessage = error
+                    error: (error: unknown) => this.errorMessage = error
                 }
             );
     }
@@ -90,7 +90,7 @@ export class SecondComponent {
     forceSpinner(): void {
         this.resetFields();
         this.spinner.show();
-        this.httpService.runSlowQuery().subscribe({
+        this.httpService.runSlowQuery$().subscribe({
                 next: () => this.spinner.hide(),
                 error: () => this.spinner.hide()
             }

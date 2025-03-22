@@ -6,6 +6,7 @@ updates:
       interval: "weekly"
     allow:
       - dependency-type: "direct"
+    versioning-strategy: "lockfile-only"
 
   - package-ecosystem: "maven"
     directory: "/"

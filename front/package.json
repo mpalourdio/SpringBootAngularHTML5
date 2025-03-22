@@ -38,7 +38,7 @@
     "@smarttools/eslint-plugin-rxjs": "^1.0.18",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/parser": "^8.23.0",
-    "angular-eslint": "^19.0.0",
+    "angular-eslint": "^19.3.0",
     "cypress": "latest",
     "eslint": "^9.16.0",
     "gzipper": "1.4.2",

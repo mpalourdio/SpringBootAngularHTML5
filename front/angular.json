@@ -93,16 +93,17 @@
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
+            "configPath": "./jest.config.ts",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "preserveSymlinks": true,
+            "preserveSymlinks": [
+              "true"
+            ],
             "watch": false,
             "styles": [
               "src/styles.scss"

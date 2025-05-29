@@ -12,6 +12,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondComponent } from './second.component';
 import { provideRouter } from "@angular/router";
+import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 
 describe('SecondComponent', () => {
     let component: SecondComponent;
@@ -24,15 +25,14 @@ describe('SecondComponent', () => {
                 provideHttpClient(),
                 provideHttpClientTesting(),
                 provideRouter([]),
+                provideExperimentalZonelessChangeDetection(),
             ]
         })
             .compileComponents();
-    });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(SecondComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
+        await fixture.whenStable();
     });
 
     it('should create a component instance', () => {

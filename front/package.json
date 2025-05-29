@@ -27,8 +27,7 @@
     "font-awesome": "^4.7.0",
     "ng-http-loader": "^17.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-builders/jest": "^19.0.0",

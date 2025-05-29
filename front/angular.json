@@ -26,9 +26,6 @@
             },
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "baseHref": "/my-context/path/",
@@ -96,10 +93,6 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "configPath": "./jest.config.ts",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
             "tsConfig": "tsconfig.spec.json",
             "preserveSymlinks": [
               "true"

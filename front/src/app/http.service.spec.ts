@@ -11,7 +11,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { HttpService } from './http.service';
-import { provideExperimentalZonelessChangeDetection } from "@angular/core";
+import { provideZonelessChangeDetection } from "@angular/core";
 
 describe('HttpServiceService', () => {
     beforeEach(() => {
@@ -19,7 +19,7 @@ describe('HttpServiceService', () => {
             providers: [
                 provideHttpClient(),
                 provideHttpClientTesting(),
-                provideExperimentalZonelessChangeDetection(),
+                provideZonelessChangeDetection(),
             ]
         });
     });

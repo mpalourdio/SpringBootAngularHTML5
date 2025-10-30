@@ -9,6 +9,7 @@
 
 package com.mpalourdio.html5.config;
 
+import org.springframework.boot.web.server.Cookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -24,6 +25,8 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         var tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        tokenRepository.setCookieCustomizer(c -> c.secure(true).sameSite(Cookie.SameSite.STRICT.attributeValue()));
+
         var delegate = getXorCsrfTokenRequestAttributeHandler();
         // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
         // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler

@@ -6,20 +6,20 @@ Now you can refresh this page (hit F5) (or <a routerLink="/">go back</a>) <br>
 <button (click)="callAllQueries()">Click me to call BOTH slow and fast HTTP requests</button><br>
 <button (click)="forceSpinner()">Force the spinner visibility</button><br>
 
-@if (fastQueryResult) {
+@if (fastQueryResult()) {
 <pre>
-{{ fastQueryResult | json }}
+{{ fastQueryResult() | json }}
 </pre>
 }
 
-@if (slowQueryResult) {
+@if (slowQueryResult()) {
 <pre>
-{{ slowQueryResult | json }}
+{{ slowQueryResult() | json }}
 </pre>
 }
 
-@if (errorMessage) {
+@if (errorMessage()) {
 <pre>
-{{ errorMessage | json }}
+{{ errorMessage() | json }}
 </pre>
 }

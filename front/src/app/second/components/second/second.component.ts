@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { forkJoin } from 'rxjs';
 import { HttpService } from '../../../http.service';
@@ -23,17 +23,17 @@ import { RouterLink } from "@angular/router";
 })
 export class SecondComponent {
 
-    fastQueryResult!: string[] | object | null;
-    slowQueryResult!: string[] | object | null;
-    errorMessage: unknown;
+    fastQueryResult = signal<string[] | object | null>(null);
+    slowQueryResult = signal<string[] | object | null>(null);
+    errorMessage = signal<unknown>(null);
 
     constructor(private httpService: HttpService, private spinner: SpinnerVisibilityService) {
     }
 
     private resetFields(): void {
-        this.fastQueryResult = null;
-        this.slowQueryResult = null;
-        this.errorMessage = undefined;
+        this.fastQueryResult.set(null);
+        this.slowQueryResult.set(null);
+        this.errorMessage.set(undefined);
     }
 
     callAllQueries(): void {
@@ -46,10 +46,10 @@ export class SecondComponent {
             .subscribe({
                     next: results => {
                         console.log(results);
-                        this.fastQueryResult = results[0];
-                        this.slowQueryResult = results[1];
+                        this.fastQueryResult.update(() => results[0]);
+                        this.slowQueryResult.update(() => results[1]);
                     },
-                    error: (error: unknown) => this.errorMessage = error
+                    error: (error: unknown) => this.errorMessage.update(() => error)
                 }
             );
     }
@@ -59,8 +59,8 @@ export class SecondComponent {
 
         this.httpService.runFastQuery$()
             .subscribe({
-                    next: results => this.fastQueryResult = results,
-                    error: (error: unknown) => this.errorMessage = error
+                    next: results => this.fastQueryResult.update(() => results),
+                    error: (error: unknown) => this.errorMessage.update(() => error)
                 }
             );
     }
@@ -70,8 +70,8 @@ export class SecondComponent {
 
         this.httpService.runSlowQuery$()
             .subscribe({
-                    next: results => this.slowQueryResult = results,
-                    error: (error: unknown) => this.errorMessage = error
+                    next: results => this.slowQueryResult.update(() => results),
+                    error: (error: unknown) => this.errorMessage.update(() => error)
                 }
             );
     }
@@ -81,8 +81,8 @@ export class SecondComponent {
 
         this.httpService.runReactiveQuery$()
             .subscribe({
-                    next: results => this.slowQueryResult = results,
-                    error: (error: unknown) => this.errorMessage = error
+                next: results => this.slowQueryResult.update(() => results),
+                error: (error: unknown) => this.errorMessage.update(() => error)
                 }
             );
     }

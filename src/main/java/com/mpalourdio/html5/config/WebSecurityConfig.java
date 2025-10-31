@@ -9,6 +9,7 @@
 
 package com.mpalourdio.html5.config;
 
+import com.mpalourdio.html5.csrf.SpaCsrfTokenRequestHandler;
 import org.springframework.boot.web.server.Cookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRequestHandler;
-import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler;
 
 @Configuration(proxyBeanMethods = false)
 public class WebSecurityConfig {
@@ -27,26 +26,12 @@ public class WebSecurityConfig {
         var tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
         tokenRepository.setCookieCustomizer(c -> c.secure(true).sameSite(Cookie.SameSite.STRICT.attributeValue()));
 
-        var delegate = getXorCsrfTokenRequestAttributeHandler();
-        // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
-        // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
-        CsrfTokenRequestHandler requestHandler = delegate::handle;
-        http
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(tokenRepository)
-                        .csrfTokenRequestHandler(requestHandler)
-                );
+        http.csrf(csrf -> csrf
+                .csrfTokenRepository(tokenRepository)
+                .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
+        );
 
         return http.build();
-    }
-
-    private static XorCsrfTokenRequestAttributeHandler getXorCsrfTokenRequestAttributeHandler() {
-        var delegate = new XorCsrfTokenRequestAttributeHandler();
-        // By setting the csrfRequestAttributeName to null, the CsrfToken must first be loaded to determine what attribute name to use.
-        // This causes the CsrfToken to be loaded on every request.
-        // Another solution would have been to create a OncePerRequestFilter to handle CrsfFilter.
-        delegate.setCsrfRequestAttributeName(null);
-        return delegate;
     }
 
     @Bean

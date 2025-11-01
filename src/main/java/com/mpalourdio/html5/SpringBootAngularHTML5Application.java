@@ -13,9 +13,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootAngularHTML5Application {
+class SpringBootAngularHTML5Application {
 
-    public static void main(String... args) {
+    static void main(String... args) {
         SpringApplication.run(SpringBootAngularHTML5Application.class, args);
     }
 }

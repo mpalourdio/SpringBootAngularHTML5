@@ -2,6 +2,7 @@ package com.mpalourdio.html5.csrf;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jspecify.annotations.Nullable;
 import org.springframework.security.web.csrf.*;
 import org.springframework.util.StringUtils;
 
@@ -26,7 +27,7 @@ public final class SpaCsrfTokenRequestHandler implements CsrfTokenRequestHandler
     }
 
     @Override
-    public String resolveCsrfTokenValue(HttpServletRequest request, CsrfToken csrfToken) {
+    public @Nullable String resolveCsrfTokenValue(HttpServletRequest request, CsrfToken csrfToken) {
         var headerValue = request.getHeader(csrfToken.getHeaderName());
         /*
          * If the request contains a request header, use CsrfTokenRequestAttributeHandler

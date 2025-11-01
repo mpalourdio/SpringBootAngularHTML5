@@ -11,11 +11,11 @@ package com.mpalourdio.html5.config;
 
 import com.mpalourdio.html5.frontcontroller.FrontControllerHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
@@ -58,7 +58,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
 
     private class SinglePageAppResourceResolver extends PathResourceResolver {
 
-        private final Resource frontControllerResource;
+        private final @Nullable Resource frontControllerResource;
 
         SinglePageAppResourceResolver() {
             this.frontControllerResource = Arrays
@@ -76,7 +76,7 @@ public class SinglePageAppConfig implements WebMvcConfigurer {
         }
 
         @Override
-        protected Resource getResource(@NonNull String resourcePath, Resource location) throws IOException {
+        protected @Nullable Resource getResource(String resourcePath, Resource location) throws IOException {
             var resource = location.createRelative(resourcePath);
             if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten

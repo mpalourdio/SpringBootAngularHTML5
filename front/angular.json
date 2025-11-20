@@ -90,21 +90,9 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "configPath": "./jest.config.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "preserveSymlinks": [
-              "true"
-            ],
-            "watch": false,
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/static"
-            ]
+            "watch": false
           }
         },
         "lint": {

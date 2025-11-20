@@ -12,7 +12,6 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondComponent } from './second.component';
 import { provideRouter } from "@angular/router";
-import { provideZonelessChangeDetection } from "@angular/core";
 
 describe('SecondComponent', () => {
     let component: SecondComponent;
@@ -25,7 +24,6 @@ describe('SecondComponent', () => {
                 provideHttpClient(),
                 provideHttpClientTesting(),
                 provideRouter([]),
-                provideZonelessChangeDetection(),
             ]
         })
             .compileComponents();

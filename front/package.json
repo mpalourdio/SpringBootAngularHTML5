@@ -22,7 +22,6 @@
     "@angular/core": "^21.0.0",
     "@angular/forms": "^21.0.0",
     "@angular/platform-browser": "^21.0.0",
-    "@angular/platform-browser-dynamic": "^21.0.0",
     "@angular/router": "^21.0.0",
     "font-awesome": "^4.7.0",
     "ng-http-loader": "^19.0.0",

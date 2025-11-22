@@ -1,7 +1,6 @@
 import { defineConfig } from 'cypress';
 import Browser = Cypress.Browser;
-
-const puppeteer = require('puppeteer');
+import puppeteer from "puppeteer";
 
 const findPuppeteer: () => Promise<Browser> = async () => {
     const browserPath = puppeteer.executablePath();

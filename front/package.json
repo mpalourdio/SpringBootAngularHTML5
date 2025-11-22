@@ -35,7 +35,7 @@
     "@cypress/schematic": "^3.0.0",
     "@smarttools/eslint-plugin-rxjs": "^1.0.18",
     "@typescript-eslint/parser": "^8.23.0",
-    "angular-eslint": "^20.0.0",
+    "angular-eslint": "^21.0.0",
     "cypress": "^14.2.0",
     "eslint": "^9.28.0",
     "gzipper": "1.4.2",

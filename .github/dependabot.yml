@@ -4,6 +4,7 @@ updates:
     directory: "/front"
     schedule:
       interval: "weekly"
+      day: "monday"
     allow:
       - dependency-type: "direct"
     versioning-strategy: "lockfile-only"
@@ -11,6 +12,7 @@ updates:
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
+      day: "monday"
       interval: "weekly"
     allow:
       - dependency-type: "direct"
@@ -18,4 +20,5 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
+      day: "monday"
       interval: "weekly"
